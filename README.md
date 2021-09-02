@@ -1,2 +1,2 @@
-# glovos-api
-Rest api para proyecto final Rolling Code
+# astrom-app
+App de gestion para el area de RRHH de una empresa
