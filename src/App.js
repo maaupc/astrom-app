@@ -1,15 +1,19 @@
-import { faBell } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import Login from "./pages/Login";
+import RouterDos from "./routes/RouterDos";
+import ProtectedRoute from "./routes/ProtectedRoute";
+
 
 function App() {
   return (
-   <>
-   <h1>Hola Mundo</h1>
-   <button className="btn btn-primary">Boton Bootstrap</button>
-   <FontAwesomeIcon icon={faBell} />
-   </>
+    <Router>
+      <Switch>
+        <Route exact path="/login" component={Login} />
+        <ProtectedRoute path="/" component={RouterDos} />
+      </Switch>
+    </Router>
   );
 }
 
