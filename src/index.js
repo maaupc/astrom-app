@@ -4,8 +4,9 @@ import './index.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "font-awesome/css/font-awesome.min.css";
 import "popper.js/dist/umd/popper";
-// import "bootstrap/dist/js/bootstrap.bundle";
-import App from "./App";
+import "bootstrap/dist/js/bootstrap.bundle";
+//import App from "./App";
+import Perfil from "./pages/Perfil"
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render( <Perfil />, document.getElementById("root"));
 
