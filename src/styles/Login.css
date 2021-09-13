@@ -9,6 +9,65 @@
     
 }
 
+.text-inicio{
+    text-align: center;
+    color: white;
+    font-size: 30px;
+}
+
+.container-logo{
+   height: 0px;
+}
+
+@media (max-width: 1024px) { #imagen-logo{
+    height: 80px;
+
+} }
+
+@media (max-width: 768px) { #imagen-logo{
+    height: 70px;
+
+} }
+
+@media (max-width: 425px) { #imagen-logo{
+    height: 90px;
+    margin-left:70px;
+
+} }
+
+@media (max-width: 375px) { #imagen-logo{
+    height: 80px;
+
+
+} }
+@media (max-width: 320px) { #imagen-logo{
+    height: 70px;
+    margin-right: 20px;
+
+
+} }
+
+@media (max-width: 768px) { #login-form-2{
+    padding: 5%;
+    border-radius: 10px;
+    background: rgb(26, 26, 26);
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    width: 350px;
+    opacity: 0.9;
+
+} }
+
+@media (max-width: 425px) { #login-form-2{
+    padding: 5%;
+    border-radius: 10px;
+    background: rgb(26, 26, 26);
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    width: 550px;
+    opacity: 0.9;
+
+} }
+
+
 .login-form-2{
     padding: 5%;
     border-radius: 10px;
