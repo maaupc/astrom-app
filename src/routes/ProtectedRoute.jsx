@@ -9,7 +9,7 @@ const ProtectedRoute = ({ component: Component, ...resto }) => {
     <Route
       {...resto}
       render={(props) => {
-        if (auth?.usuario.uid) { //esto es nuevo en javascript. sirve para ver si en auth hay un usuario con un uid.
+        if (auth?.empleado.uid) { 
           return <Component {...props} />;
         } else {
           return <Redirect to="/login" />;

@@ -9,7 +9,7 @@ import NavBarComponent from "../components/NavBarComponent";
 const RouterDos = () => {
   return (
     <>
-      <NavBarComponent/>
+      {/* <NavBarComponent/> */}
       <Switch>
         <Route exact path="/" component={Inicio} />
         <Route exact path="/admin" component={Admin} />
