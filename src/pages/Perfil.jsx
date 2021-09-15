@@ -1,9 +1,45 @@
 import React from "react";
-import CardPerfil from "../components/CardPerfil";
+import { useState,useEffect } from "react";
+import { obtenerEmpleado } from "../helpers/perfil";
+import { crearEmpleado } from "../helpers/perfil";
 import "../style/perfilUsuario.css"
 import logo2 from "../assets/logo2.png"
 
+import imag from "../assets/imag.jpeg"
+
 const Perfil=()=>{
+   const  [perfil, setPerfil] = useState({
+         nombre:"",
+         asociado:"",
+         email:"",
+   })
+   useEffect(() => {
+      const datos = JSON.parse(localStorage.getItem("auth"));
+      obtenerEmpleado(datos.iud).then((respuesta) => {
+            if(datos.dni===respuesta.dni)
+            setPerfil({
+                  nombre:respuesta.nombre,
+                  asociado:respuesta.dni,
+                  email:respuesta.email,
+            });
+            
+          });
+    
+   }, [])
+   const handleSubmit=(e)=>{
+      e.preventDefault();
+         const{nombre,asociado,email}=perfil
+         if(nombre&&asociado&&email){
+           setPerfil({
+                 
+
+           })
+
+         }
+   }
+
+
+
     return(
           <>
           <div className="container">
@@ -17,8 +53,48 @@ const Perfil=()=>{
           <div className="col-lg-4 col-sm-12 col-md-6">
           <div className="row">
                 <div className="col">
-                <CardPerfil />
+                <div className="card w-100 card-P">
+            <div className="card-title">
+            <i className="fa fa-pencil i-pencil" aria-hidden="true"></i>
+            </div>
+      <div className="card-body card-img">     
+       <img src={imag} alt="imgPerfil" className="imgPerfil"/>  
+      <h2>{perfil.nombre}</h2>
+      <form onSubmit={handleSubmit}>
+                <div className="form-group mb-2">
+                  <strong>ID Asociado</strong>
+                  <input
+                    type="string"
+                    className="form-control"
+                    name="asociado"
+                    value={perfil.asociado}
+                    onChange={handleChange}
+                  />
                 </div>
+                <div className="form-group mb-2">
+                  <strong>Correo</strong>
+                  <input
+                    type="email"
+                    className="form-control"
+                    name="email"
+                    value={perfil.email}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="form-group mb-2">
+                  <strong>N° Celular</strong>
+                  <input
+                    type="string"
+                    className="form-control"
+                    name="celular"
+                  />
+                </div>
+
+            </form>
+           
+      </div>
+      </div>
+           </div>
                      
              </div>
              <div className="row mt-3">
