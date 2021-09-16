@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import Error404 from "../pages/Error404";
 import Inicio from "../pages/Inicio";
 import Admin from "../pages/Admin";
-import NavBarComponent from "../components/NavBarComponent";
+// import NavBarComponent from "../components/NavBarComponent";
 
 
 const RouterDos = () => {
