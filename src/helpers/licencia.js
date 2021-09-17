@@ -15,4 +15,3 @@ export const empleadoGet = async () => {
 
     return empleados
 }
-

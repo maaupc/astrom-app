@@ -1,4 +1,4 @@
-import {React, useState} from 'react';
+import {React, useState, useEffect} from 'react';
 import "../styles/Filtro.css"
 import { empleadoGet } from '../helpers/licencia';
 import { Table, Form, Button, Row, Col, InputGroup, FormControl } from 'react-bootstrap';
@@ -11,22 +11,32 @@ import { Table, Form, Button, Row, Col, InputGroup, FormControl } from 'react-bo
 
 const FiltroBusqueda = () => {
 
-  const [filtro, setFiltro] = useState("")
+
+   
+   
+   const [filtro, setFiltro] = useState({
+     datos:[],
+     loading: true
+   })
 
 
+   useEffect(()=>{
+    empleadoGet().then((respuesta)=>{
+        setFiltro({
+            datos: respuesta.empleados,
+            loading:false
+        })
+    })
+}, [])
 
 
-  const BuscarDatos = (e) => {
+   const BuscarDatos = (e) => {
+    e.preventDefault();
+    empleadoGet().then((respuesta) => {
+      console.log(respuesta);
+    });
 
-    e.preventDefault()
-    const empleado = empleadoGet(filtro.NroDocumento) 
-
-
-
-    console.log(empleado)
-  
-  }
-
+  };
   const HandleChange = (e) => {
    
 
@@ -52,7 +62,7 @@ const FiltroBusqueda = () => {
         className="mt-3 mb-3"
         id="inlineFormInput"
         placeholder="Empleado"
-        onChange={HandleChange}
+        
         name="empleado"
       />
     </Col>
@@ -82,24 +92,28 @@ const FiltroBusqueda = () => {
 
 <Table striped bordered hover variant="dark" table-responsive>
   <thead>
+
     <tr>
       <th>#</th>
       <th>Empleado</th>
-      <th>Estado</th>
-      <th>Recibo de sueldo</th>
+      <th>Puesto</th>
       <th>Licencia</th>
+      
     </tr>
   </thead>
   <tbody>
-    <tr>
-      
-    </tr>
-    <tr>
-     
-    </tr>
-    <tr>
-      
-    </tr>
+  {filtro.datos.map((empleado)=>(
+                        
+                        <tr key={empleado.uid}>
+                            <th>{empleado.dni}</th>
+                            <td>{empleado.apellido}, {empleado.nombre}</td>
+                            <td>{empleado.puesto}</td>
+                            <td>{empleado.licencia? "VIGENTE" : "NO VIGENTE"}</td>
+                            
+                        </tr>
+                    ))}
+    
+  
   </tbody>
 </Table>
 
