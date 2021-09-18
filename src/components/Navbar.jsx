@@ -68,10 +68,10 @@ const Navbar = () => {
                   </Link>
                 </Dropdown.Item>
                 <Dropdown.Divider />
-                <Dropdown.Item onClick={closeMobileMenu}>
-                  <span className="nav-link">
-                    <i className="fa fa-sign-out" aria-hidden="true"></i> Salir
-                  </span>
+                <Dropdown.Item>
+                  <Link className="nav-link" to="/" onClick={closeMobileMenu}>
+                    <i className="fa fa-sign-out" aria-hidden="true" /> Salir
+                  </Link>
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>

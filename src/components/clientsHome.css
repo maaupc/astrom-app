@@ -1,8 +1,10 @@
-.block-logos-container{
-    background-color: #4e4c4c;
+.block-logos-container {
+    display: flex;
+    width: 100%;
+    background-color: #252525;
     padding: 3rem 0 4rem;
-    display: block;
-    font-size: 10px;
+    /* display: block; */
+    
 }
 
 .logos-container-heading{
@@ -12,7 +14,7 @@
     line-height: 1.71;
     padding: 0 1.6rem;
     text-align: center;
-    display: block;
+    /* display: block; */
 }
 
 .logos-container-description{
