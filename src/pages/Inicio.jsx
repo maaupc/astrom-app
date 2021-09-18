@@ -1,11 +1,21 @@
-import React from 'react'
+import React from "react";
+import "../index.css";
+import Navbar from "../components/Navbar";
+import HomeCarousel from "../components/HomeCarousel";
+import CardsHome from "../components/CardsHome";
+// import ClientsHome from "../components/ClientsHome";
+
 
 const Inicio = () => {
-    return (
-        <div>
-            <h1>INICIO</h1>
-        </div>
-    )
-}
+  return (
+    <>
+      <Navbar />
+      <HomeCarousel />
+      <CardsHome />
+      {/* <ClientsHome /> */}
+      
+    </>
+  );
+};
 
-export default Inicio
+export default Inicio;
