@@ -1,7 +1,7 @@
 import {React, useState, useEffect} from 'react';
 import "../styles/Filtro.css"
 import { empleadoGet } from '../helpers/licencia';
-import { Table, Form, Button, Row, Col, InputGroup, FormControl } from 'react-bootstrap';
+import { Table, Form, Button, Row, Col, InputGroup, FormControl, Container } from 'react-bootstrap';
 
 
 
@@ -37,6 +37,11 @@ const FiltroBusqueda = () => {
     });
 
   };
+
+
+
+
+
   const HandleChange = (e) => {
    
 
@@ -51,18 +56,23 @@ const FiltroBusqueda = () => {
 
 
   }
+
+  
   
      return (
  <>
 
-<Form onSubmit={BuscarDatos}>
-  <Row className="align-items-center">
+
+<Form onSubmit={BuscarDatos} >
+  <Row className="align-items-center ">
     <Col xs="auto">
       <Form.Control
+      
         className="mt-3 mb-3"
         id="inlineFormInput"
         placeholder="Empleado"
-        
+        maxLength="25"
+        onChange={HandleChange}
         name="empleado"
       />
     </Col>
@@ -71,16 +81,16 @@ const FiltroBusqueda = () => {
       <InputGroup className="mt-3 mb-3">
         
         <FormControl id="inlineFormInputGroup"
-        placeholder="Nro Documento"
+        placeholder="Documento"
         onChange={HandleChange}
+        maxLength="8"
         name="NroDocumento" />
       </InputGroup>
      </Col>
       
     <Col xs="auto">
       <Button type="submit" 
-      className="mb-2"
-      >
+      className="mt-3 mb-3">
         Buscar
       </Button>
     </Col>
@@ -94,7 +104,7 @@ const FiltroBusqueda = () => {
   <thead>
 
     <tr>
-      <th>#</th>
+      <th>Documento</th>
       <th>Empleado</th>
       <th>Puesto</th>
       <th>Licencia</th>
@@ -115,6 +125,7 @@ const FiltroBusqueda = () => {
     
   
   </tbody>
+  
 </Table>
 
          </>
