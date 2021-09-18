@@ -1,0 +1,99 @@
+*{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+}
+html{
+      scroll-behavior: smooth;
+}
+body{
+      min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+}
+h1, h2{
+      color:#4DAAA7 ;
+}
+.card{
+      border-radius: 3%;
+      box-shadow: 9px 8px 18px -3px #000000;
+      
+}
+.card-P{
+      background-color: #333333;
+      color: white;
+}
+.card .imgPerfil{
+      border-radius: 50%;
+      border: white 1px solid;
+      object-fit:cover center;
+      height: auto;
+      width: 200px;
+      height: 180px;
+      display: flex;
+      margin:auto; 
+}
+.card .i-pencil{
+   color: #4DAAA7;
+   font-size: 40px;
+   margin-top: 10px;
+   position:absolute;
+   right: 5%;
+   top:5%;
+}
+ .card-perfil{
+    height: 320px;
+    text-align:justify;
+}
+.card-img{
+      height: 494px;
+}
+.card-call{
+      height:160px ;
+}
+.card .img-logo{
+      width: 30px;
+      height: 30px;
+}
+.btn-save{
+      background-color:#4DAAA7 ;
+      color: white;
+      width: 100%;
+      margin-top: 5%;
+}
+#i-icon{
+      color: #4DAAA7;
+      font-size:30px ;
+    
+  
+}
+#i-verMas{
+      font-size: 17px;
+      color:#4DAAA7; 
+}
+.span-i{
+    margin-left: 20px;
+    text-justify:initial;
+}
+ 
+#i-phone{
+      color:gold;
+      font-size: 25px;    
+}
+#i-add{
+color: #4DAAA7;
+align-items: center;
+justify-content: center;
+text-align: center;
+margin-left: 30%;
+}
+.row-principal{
+      position:sticky;
+      top: 0;
+      height:min-content ;
+}
+@media (max-width: 780px) { .row-principal{
+     position:relative;
+     height: max-content;
+  } }

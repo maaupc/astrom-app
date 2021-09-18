@@ -5,6 +5,8 @@ import Inicio from "../pages/Inicio";
 import Admin from "../pages/Admin";
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
+import Perfil from "../pages/Perfil";
+
 
 const RouterDos = () => {
   return (
@@ -13,6 +15,7 @@ const RouterDos = () => {
       <Switch>
         <Route exact path="/inicio" component={Inicio} />
         <Route exact path="/admin" component={Admin} />
+        <Route exact path="/perfil" component={Perfil} />
         <Route component={Error404} />
       </Switch>
       <Footer/>
