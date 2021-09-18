@@ -3,16 +3,18 @@ import { Switch, Route } from "react-router-dom";
 import Error404 from "../pages/Error404";
 import Inicio from "../pages/Inicio";
 import Admin from "../pages/Admin";
-import NavBarComponent from "../components/NavBarComponent";
+import Perfil from "../pages/Perfil";
+// import NavBarComponent from "../components/NavBarComponent";
 
 
 const RouterDos = () => {
   return (
     <>
-      {/* <NavBarComponent/> */}
+      {/* <NavBarComponent/>  */}
       <Switch>
         <Route exact path="/" component={Inicio} />
         <Route exact path="/admin" component={Admin} />
+        <Route exact path="/perfil" component={Perfil} />
         <Route component={Error404} />
       </Switch>
     </>

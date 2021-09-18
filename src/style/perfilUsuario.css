@@ -3,6 +3,15 @@
       margin: 0;
       box-sizing: border-box;
 }
+html{
+      scroll-behavior: smooth;
+}
+body{
+      min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+}
 h1, h2{
       color:#4DAAA7 ;
 }
@@ -31,20 +40,27 @@ h1, h2{
    margin-top: 10px;
    position:absolute;
    right: 5%;
+   top:5%;
 }
  .card-perfil{
     height: 320px;
     text-align:justify;
 }
 .card-img{
-      height: 490px;
+      height: 494px;
 }
 .card-call{
-      height:140px ;
+      height:160px ;
 }
 .card .img-logo{
       width: 80px;
       height: 80px;
+}
+.btn-save{
+      background-color:#4DAAA7 ;
+      color: white;
+      width: 100%;
+      margin-top: 5%;
 }
 #i-icon{
       color: #4DAAA7;
@@ -63,7 +79,7 @@ h1, h2{
  
 #i-phone{
       color:gold;
-      font-size: 30px;    
+      font-size: 25px;    
 }
 #i-add{
 color: #4DAAA7;
@@ -71,4 +87,9 @@ align-items: center;
 justify-content: center;
 text-align: center;
 margin-left: 30%;
+}
+.row-principal{
+      position:sticky;
+      top: 0;
+      height:min-content ;
 }
