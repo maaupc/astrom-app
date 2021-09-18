@@ -4,6 +4,7 @@ import Error404 from "../pages/Error404";
 import Inicio from "../pages/Inicio";
 import Admin from "../pages/Admin";
 import Navbar from "../components/Navbar"
+import Footer from "../components/Footer"
 
 const RouterDos = () => {
   return (
@@ -14,6 +15,7 @@ const RouterDos = () => {
         <Route exact path="/admin" component={Admin} />
         <Route component={Error404} />
       </Switch>
+      <Footer/>
     </>
   );
 };
