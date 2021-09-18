@@ -6,11 +6,12 @@ import RouterDos from "./routes/RouterDos";
 import ProtectedRoute from "./routes/ProtectedRoute";
 
 
+
 function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/login" component={Login} />
+        <Route exact path="/" component={Login} />
         <ProtectedRoute path="/" component={RouterDos} />
       </Switch>
     </Router>
