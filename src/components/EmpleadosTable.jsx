@@ -18,6 +18,7 @@ const EmpleadosTable = () => {
                 datos: respuesta.empleados,
                 loading:false
             })
+            console.log(respuesta)
         })
     }, [])
 
@@ -45,10 +46,10 @@ const EmpleadosTable = () => {
                 <tbody>
                     {empleados.datos.map((empleado)=>(
                         
-                        <tr key={empleado.uid}>
+                        <tr key={empleado._id}>
                             <th>{empleado.dni}</th>
                             <td>{empleado.apellido}, {empleado.nombre}</td>
-                            <td>{empleado.puesto}</td>
+                            <td>{empleado.puesto.nombre}</td>
                             <td>{empleado.licencia? "LICENCIA" : "ACTIVO"}</td>
                             <td></td>
                         </tr>
