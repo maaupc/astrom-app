@@ -1,0 +1,35 @@
+.main-footer{
+    color: white;
+    background-color: #3F8F8B;
+    /* padding-top: relative;
+    position: relative; */
+    /* bottom: 0; */
+    width: 100%;
+
+}
+
+.list-unstyled-icon{
+    margin-top: 50px;
+}
+
+.list-unstyled{
+    float: right;
+    margin-top: 40px;
+}
+
+.logo{
+    text-align: center;
+}
+
+
+@media (max-width: 425px) { .list-unstyled-icon{
+    text-align: center;
+    font-size: 24px;
+}
+}
+@media (max-width: 320px) { .list-unstyled{
+    float: none;
+    text-align: center;
+}
+}
+

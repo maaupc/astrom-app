@@ -66,7 +66,7 @@ const Login = () => {
             Alertsucces()
             localStorage.setItem("auth", JSON.stringify(login));
             setTimeout(()=>{
-                history.push("/");
+                history.push("/inicio");
             },1000)
         }
       }, [login, history]);

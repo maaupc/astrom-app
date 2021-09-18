@@ -3,15 +3,14 @@ import { Switch, Route } from "react-router-dom";
 import Error404 from "../pages/Error404";
 import Inicio from "../pages/Inicio";
 import Admin from "../pages/Admin";
-import NavBarComponent from "../components/NavBarComponent";
-
+import Navbar from "../components/Navbar"
 
 const RouterDos = () => {
   return (
     <>
-      {/* <NavBarComponent/> */}
+      <Navbar/>
       <Switch>
-        <Route exact path="/" component={Inicio} />
+        <Route exact path="/inicio" component={Inicio} />
         <Route exact path="/admin" component={Admin} />
         <Route component={Error404} />
       </Switch>

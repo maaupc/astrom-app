@@ -8,12 +8,19 @@ import Login from "./pages/Login";
 
 function App() {
   return (
+    <div className="page-container ">
+    <div className="content-wrap">
+
     <Router>
       <Switch>
         <Route exact path="/" component={Login} />
         <ProtectedRoute path="/" component={RouterDos} />
       </Switch>
+       
     </Router>
+    </div>
+    <Footer/>
+    </div>
   );
 }
 
