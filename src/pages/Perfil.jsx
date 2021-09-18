@@ -4,17 +4,13 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { actualizarEmpleado, obtenerEmpleado } from "../helpers/perfil";
 import { puestosGet } from "../helpers/puesto";
-import { obtenerLicencia } from "../helpers/licencia";
-
 import "../style/perfilUsuario.css";
 import logo2 from "../assets/logo2.png";
-
 import imag from "../assets/imag.jpeg";
 
 
 const Perfil = () => {
   const [update, setUpdate] = useState(false);
-  const datos = JSON.parse(localStorage.getItem("auth"));
   const [perfil, setPerfil] = useState({
     nombre: "",
     apellido:"",
@@ -26,7 +22,6 @@ const Perfil = () => {
     const datos = JSON.parse(localStorage.getItem("auth"));
       console.log(datos)
     obtenerEmpleado(datos.empleado.uid).then((respuesta) => {
-      console.log("punto del control uno")
       setPerfil({
         nombre: respuesta.empleado.nombre,
         apellido:respuesta.empleado.apellido,
@@ -95,8 +90,11 @@ const Perfil = () => {
          if(licen==="true"){
                return ("Activa");
          }
+         if(licen==="false"){
+               return ("No cuenta con una licencia Activa") ;
+         }
          else{
-               return ("Inactiva") ;
+               return(" - ");
          }
    }
   
@@ -110,7 +108,7 @@ const Perfil = () => {
           </div>
         </div>
         <div className="row ">
-          <div className="col-lg-4 col-sm-12-p-relative col-md-6 row-principal">
+          <div className="col-lg-4 col-sm-12-p-relative col-md-6 row-principal id=col-primera">
             <div className="row">
               <div className="col ">
                 <div className="card w-100 card-P">
@@ -199,17 +197,18 @@ const Perfil = () => {
                       {" "}
                     </i>
                     <span className="span-i">387866282</span>
-                    <br /> <br />
+                    <hr />
+                    
                     <i
                       className="fa fa-envelope-o"
                       aria-hidden="true"
                       id="i-icon"
-                    >
+                    > 
                       {" "}
                     </i>{" "}
                     <span className="span-i">{perfil.email}</span>
-                    <br />
-                    <br />
+                    <hr />
+                  
                     <i
                       className="fa fa-map-marker"
                       aria-hidden="true"
@@ -218,6 +217,7 @@ const Perfil = () => {
                       {" "}
                     </i>{" "}
                     <span className="span-i">Av Spring 745</span>
+                    <hr />
                   </div>
                 </div>
               </div>
@@ -245,7 +245,7 @@ const Perfil = () => {
                 <div className="card">
                   <div className="card-body card-perfil">
                     <h3>Info Laboral </h3>
-                    <hr className="hr-card" />
+                    <hr/>
                     <strong>Puesto: </strong><span>{puesto.nombre}</span>
                     <hr />
                     <strong>Licencia:</strong><span> {licenciaEstado(perfil.licencia)}</span>
@@ -266,17 +266,11 @@ const Perfil = () => {
                         src={logo2}
                         alt="logo-astrom"
                         className="img-logo"
-                      />{" "}
-                      Lorem ipsum dolor sit amet consectetur, adipisicing
-                      elithdhsirgjtt .Lorem ipsum dolor sit amet consectetur,
-                      adipisicing elit.
+                      /> {" "}
+                      Trabajamos con el objetivo de ayudar a nuestros empleados y clientes en una mejor hambiente, desarrollando nuestra actividad de manera sostenible y ética.
+                      Nuestro marco estratégico integra la Responsabilidad Social Corporativa y se fundamenta en cuatro pilares: clientes, empleados, proveedores y entorno social. <Link className="nav-link" to="/Error404"><i class="fa fa-arrow-circle-right" aria-hidden="true" id="i-verMas">Ver mas</i></Link> 
                     </p>
-                    <i
-                      className="fa fa-map-marker"
-                      aria-hidden="true"
-                      id="i-location"
-                    ></i>
-                    <span> Lorem, ipsum.</span>
+      
                   </div>
                 </div>
               </div>
