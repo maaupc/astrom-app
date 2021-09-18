@@ -1,0 +1,19 @@
+.main-footer{
+    color: white;
+    background-color: #3F8F8B;
+    padding-top: relative;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+
+}
+
+.list-unstyled-icon{
+    float:right;
+    
+}
+
+.logo{
+    float: center;
+}
+
