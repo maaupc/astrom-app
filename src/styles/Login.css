@@ -1,97 +1,85 @@
 *{
- 
     margin: 0;
-    bottom: 0%;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+      background-image: url(https://i.postimg.cc/X7Bq6CZw/Home-Card2.jpg);
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+}
+
+.conrainer{
+      height: max-content;
+     
 }
 
 .login-container{
-    margin-top: 10%;
-    margin-bottom: 10%;
+  line-height: 50%;
     
 }
 
 .text-inicio{
+    margin-top: 30px;
     text-align: center;
-    color: white;
-    font-size: 30px;
+    font-size: 17px;
+    color:#3F8F9B ;
+}
+.text-inicio:hover{
+      color: chartreuse;
 }
 
 .container-logo{
-   height: 0px;
+   height: 70px;
+   width: 100%;
+   text-align: center;
+   justify-content: center;
+   align-items: center;
+   background:#333333;
+   border-radius: 5px;
+   border: double 1px #3F8F9B ;
+   
 }
-
-@media (max-width: 1024px) { #imagen-logo{
-    height: 80px;
-
-} }
-
-@media (max-width: 768px) { #imagen-logo{
-    height: 70px;
-
-} }
-
-@media (max-width: 425px) { #imagen-logo{
-    height: 90px;
-    margin-left:70px;
-
-} }
-
-@media (max-width: 375px) { #imagen-logo{
-    height: 80px;
-
-
-} }
-@media (max-width: 320px) { #imagen-logo{
-    height: 70px;
-    margin-right: 20px;
-
-
-} }
-
-@media (max-width: 768px) { #login-form-2{
-    padding: 5%;
-    border-radius: 10px;
-    background: rgb(26, 26, 26);
-    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
-    width: 350px;
-    opacity: 0.9;
-
-} }
-
-@media (max-width: 425px) { #login-form-2{
-    padding: 5%;
-    border-radius: 10px;
-    background: rgb(26, 26, 26);
-    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
-    width: 550px;
-    opacity: 0.9;
-
-} }
-
-
+.container-login{
+      display: flex;
+      height: 100%;
+}
+#imagen-logo{
+      width: auto;
+      height: 100%;
+      text-align: center;
+    
+}
+#row-padre{
+      height: 100vh;
+      display: flex;
+      justify-content:space-around;
+      align-content: center;
+      align-items: center;
+}
 .login-form-2{
     padding: 5%;
-    border-radius: 10px;
-    background: rgb(26, 26, 26);
+    border-radius: 40px;
+    background-color: rgb(20, 20, 20);
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
     height: 30rem;
-    opacity: 0.9;
+    border: #3F8F9B 2px solid;
 }
 
 .login-form-2 h3{
     text-align: center;
-    color: #ffffff;
     font-size:40px;
+    color: #FFFFFF;
+    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 20px #3F8F9B,8, 0 0 55px #3F8F9B ;
 }
 
-.login-container form{
-    padding-top: 20%;
-    padding-right: 10%;
-    padding-bottom: 0%;
-    padding-left: 10%;
-}
-.btnSubmit
-{
+
+.btnSubmit{
     width: 50%;
     height: 40px;
     margin-left: 25%;
@@ -102,15 +90,31 @@
     transition-duration: 0.4s;
     font-weight: 600;
     color: #fff;
-    background-color: #3F8F9B;
+    background-color: black;
+    border: #3F8F9B 2px solid;
 }
 
 .btnSubmit:hover{
     font-weight: 600;
-    color: #fbfbfb;
-    background-color: #000000
+    color:white;
+    background-color:#3F8F9B ;
+    opacity: 0.9;
 }
 
 .form-group{
     margin-top: 20px;
+}
+@media(max-width:600){login-form-2{
+      font-size: 5px;
+      margin-top: 20px;
+      line-height: 1.2
+}
+}
+@media only screen and (min-width:700px) and (max-width: 900px) { .login-form-2{
+      width: 50%;
+} }
+@media(min-width: 1024px){
+      body{
+            height: 100vh;
+      }
 }

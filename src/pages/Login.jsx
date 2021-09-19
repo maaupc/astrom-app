@@ -66,7 +66,7 @@ const Login = () => {
             Alertsucces()
             localStorage.setItem("auth", JSON.stringify(login));
             setTimeout(()=>{
-                history.push("/inicio");
+                history.push("/");
             },1000)
         }
       }, [login, history]);
@@ -76,16 +76,18 @@ const Login = () => {
 
   return (
     <>
-       <div className="container-fluid ">
-        <div id="overlay" className="d-flex justify-content-center align-items-center font-weight-bold">
+       <div className="container">
+        <div id="overlay" className=" font-weight-bold">
             <div className="container login-container">
-                <div className="row">
-                    <div className="col-md-6 mt-4 login-form-1">
+                <div className="row" id="row-padre">
+
+                    <div className="col-md-6 col-lg-8 col-sm-3 mt-4 login-form-1">
                     </div>
-                    <div className="col-md-5 login-form-2" id="login-form-2">
+                    <div className="col-md-6 col-lg-4 col-sm-9 login-form-2" id="login-form-2">
                         <h3>Iniciar Sesion</h3>
+                        <br /><br />
                         <div className="container container-logo col-sm-7">
-                        <img id="imagen-logo" src={logo} alt="" height="100px"  />
+                        <img id="imagen-logo" src={logo} alt="logo"   />
                         </div>
                         <form onSubmit={handleSubmit}>
                             <div>
@@ -102,8 +104,8 @@ const Login = () => {
                             </div>
                             
                             <div className="overlay">
-                                <div className="volver">
-                                    <h1 className="text-inicio">Volver al inicio</h1>
+                                <div class="volver">
+                                    <Link className=" nav-link text-inicio">Olvido su contraseña</Link>
                                 </div>
                             </div>
                         </form>
