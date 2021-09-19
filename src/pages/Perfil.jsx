@@ -268,7 +268,7 @@ const Perfil = () => {
                         className="img-logo"
                       /> {" "}
                       Trabajamos con el objetivo de ayudar a nuestros empleados y clientes en una mejor hambiente, desarrollando nuestra actividad de manera sostenible y ética.
-                      Nuestro marco estratégico integra la Responsabilidad Social Corporativa y se fundamenta en cuatro pilares: clientes, empleados, proveedores y entorno social. <Link className="nav-link" to="/Error404"><i class="fa fa-arrow-circle-right" aria-hidden="true" id="i-verMas">Ver mas</i></Link> 
+                      Nuestro marco estratégico integra la Responsabilidad Social Corporativa y se fundamenta en cuatro pilares: clientes, empleados, proveedores y entorno social. <Link className="nav-link" to="/Error404"><i className="fa fa-arrow-circle-right" aria-hidden="true" id="i-verMas">Ver mas</i></Link> 
                     </p>
       
                   </div>

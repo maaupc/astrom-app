@@ -102,7 +102,7 @@ const Login = () => {
                             </div>
                             
                             <div className="overlay">
-                                <div class="volver">
+                                <div className="volver">
                                     <h1 className="text-inicio">Volver al inicio</h1>
                                 </div>
                             </div>
