@@ -1,20 +1,27 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-// import NavBarComponent from '../components/NavBarComponent';
 import Error404 from "../pages/Error404";
 import Inicio from "../pages/Inicio";
 import Admin from "../pages/Admin";
+import Navbar from "../components/Navbar"
+import Footer from "../components/Footer"
+import Perfil from "../pages/Perfil";
+import Licencias from "../pages/Licencias";
+// import NavBarComponent from "../components/NavBarComponent";
 
 
 const RouterDos = () => {
   return (
     <>
-      {/* <NavBarComponent /> */}
+      <Navbar/>
       <Switch>
-        <Route exact path="/" component={Inicio} />
+        <Route exact path="/inicio" component={Inicio} />
         <Route exact path="/admin" component={Admin} />
+        <Route exact path="/perfil" component={Perfil} />
+        <Route exact path="/licencias" component={Licencias} />
         <Route component={Error404} />
       </Switch>
+      <Footer/>
     </>
   );
 };
