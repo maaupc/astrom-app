@@ -55,6 +55,7 @@ const ModalEmpleado = ({ show, handleClose }) => {
                 type="text"
                 name="nombre"
                 className="form-control"
+                autoComplete="off"
                 maxLength="25"
                 required
                 value={formValue.nombre}
@@ -67,6 +68,7 @@ const ModalEmpleado = ({ show, handleClose }) => {
                 type="text"
                 name="apellido"
                 maxLength="25"
+                autoComplete="off"
                 className="form-control"
                 required
                 value={formValue.apellido}
@@ -79,6 +81,7 @@ const ModalEmpleado = ({ show, handleClose }) => {
                 type="email"
                 name="email"
                 className="form-control"
+                autoComplete="off"
                 placeholder="ejemplo@ejemplo"
                 maxLength="30"
                 required
@@ -93,6 +96,7 @@ const ModalEmpleado = ({ show, handleClose }) => {
                 name="documento"
                 className="form-control"
                 autoComplete="off"
+                
                 maxLength="8"
                 required
                 value={formValue.documento}
