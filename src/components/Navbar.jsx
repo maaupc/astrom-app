@@ -3,7 +3,6 @@ import { Link, useHistory } from "react-router-dom";
 import "./navbar.css";
 import { Dropdown } from "react-bootstrap";
 
-
 import logo from "../assets/logo.png";
 import avatar from "../assets/Avatar.jpg";
 
@@ -14,12 +13,12 @@ const Navbar = () => {
 
   const closeMobileMenu = () => setClick(false);
 
-  // const [empleado, setEmpleado] = useState(null);
+  const [empleado, setEmpleado] = useState(null);
 
-  // useEffect(() => {
-  //   const datos = JSON.parse(localStorage.getItem("auth"));
-  //   setEmpleado(datos.empleado);
-  // }, []);
+  useEffect(() => {
+    const datos = JSON.parse(localStorage.getItem("auth"));
+    setEmpleado(datos.empleado);
+  }, []);
 
   const history = useHistory();
   const logout = () => {
@@ -39,12 +38,12 @@ const Navbar = () => {
           </div>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
-              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+              <Link to="/inicio" className="nav-links" onClick={closeMobileMenu}>
                 Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+              <Link to="/licencias" className="nav-links" onClick={closeMobileMenu}>
                 Recursos
               </Link>
             </li>
@@ -55,7 +54,7 @@ const Navbar = () => {
             </li>
 
             <li>
-              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+              <Link to="/error404" className="nav-links" onClick={closeMobileMenu}>
                 Nosotros
               </Link>
             </li>
@@ -66,20 +65,20 @@ const Navbar = () => {
 
               <Dropdown.Menu>
                 <Dropdown.Item>
-                  <Link className="nav-link" to="/" onClick={closeMobileMenu}>
+                  <Link className="nav-link" to="/perfil" onClick={closeMobileMenu}>
                     Mi Perfil
                   </Link>
                 </Dropdown.Item>
-                {/* {empleado?.rol === "ADMIN_ROLE" && (
+                {empleado?.rol === "ADMIN_ROLE" && (
                 <Dropdown.Item>
-                  <Link className="nav-link" to="/" onClick={closeMobileMenu}>
+                  <Link className="nav-link" to="/admin" onClick={closeMobileMenu}>
                     Admin
                   </Link>
                 </Dropdown.Item>
-                )} */}
+                )}
                 <Dropdown.Divider />
                 <Dropdown.Item>
-                  <Link className="nav-link" to="/" onClick={logout}>
+                  <Link className="nav-link" to="/login" onClick={logout}>
                     <i className="fa fa-sign-out" aria-hidden="true" /> Salir
                   </Link>
                 </Dropdown.Item>

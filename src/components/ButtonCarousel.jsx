@@ -1,6 +1,7 @@
 import React from "react";
 import "./buttonCarousel.css";
 import { Link } from "react-router-dom";
+import Error404 from "../pages/Error404";
 
 const STYLES = ["btn--primary", "btn--outline"];
 const SIZES = ["btn--medium", "btn--large"];
@@ -19,7 +20,7 @@ const ButtonCarousel = ({
   const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0];
 
   return (
-    <Link to="/" className="btn-mobile">
+    <Link to="/error404" className="btn-mobile">
       <button
         className={`btn ${checkButtonStyle} ${checkButtonSize}`}
         onClick={onClick}
