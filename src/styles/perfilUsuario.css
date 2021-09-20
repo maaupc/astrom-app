@@ -1,19 +1,6 @@
-*{
-      padding: 0;
-      margin: 0;
-      box-sizing: border-box;
-}
-html{
-      scroll-behavior: smooth;
-}
-body{
-      min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-
-}
-h1, h2{
+.title{
       color:#4DAAA7 ;
+      text-align:start;
 }
 .card{
       border-radius: 3%;
@@ -47,7 +34,7 @@ h1, h2{
     text-align:justify;
 }
 .card-img{
-      height: 494px;
+      height: 490px;
 }
 .card-call{
       height:160px ;
@@ -90,10 +77,10 @@ margin-left: 30%;
 }
 .row-principal{
       position:sticky;
-      top: 0;
-      height:min-content ;
+      top: 0px;
+      height:max-content ;
 }
-@media (max-width: 780px) { .row-principal{
+@media screen and (max-width: 780px) { .row-principal{
      position:relative;
      height: max-content;
   } }

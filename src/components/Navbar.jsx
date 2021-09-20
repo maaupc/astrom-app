@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./navbar.css";
 import { Dropdown } from "react-bootstrap";
+import {obtenerEmpleado} from '../helpers/perfil'
 
 import logo from "../assets/logo.png";
-import avatar from "../assets/Avatar.jpg";
+
 
 const Navbar = () => {
   const [click, setClick] = useState(false);
@@ -14,10 +15,18 @@ const Navbar = () => {
   const closeMobileMenu = () => setClick(false);
 
   const [empleado, setEmpleado] = useState(null);
+  const [imagen, setImagen] = useState({
+    img:" "
+  })
 
   useEffect(() => {
     const datos = JSON.parse(localStorage.getItem("auth"));
     setEmpleado(datos.empleado);
+    obtenerEmpleado(datos.empleado.uid).then((respuesta)=>{
+      setImagen({
+        img:respuesta.empleado.img
+      })
+    })
   }, []);
 
   const history = useHistory();
@@ -60,7 +69,7 @@ const Navbar = () => {
             </li>
             <Dropdown>
               <Dropdown.Toggle id="dropdown-basic">
-                <img src={avatar} alt="avatar" />
+                <img src={imagen.img} alt="avatar" />
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
@@ -78,7 +87,7 @@ const Navbar = () => {
                 )}
                 <Dropdown.Divider />
                 <Dropdown.Item>
-                  <Link className="nav-link" to="/login" onClick={logout}>
+                  <Link className="nav-link" to="/" onClick={logout}>
                     <i className="fa fa-sign-out" aria-hidden="true" /> Salir
                   </Link>
                 </Dropdown.Item>

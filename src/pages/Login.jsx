@@ -1,30 +1,30 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Login.css";
 import logo from "../assets/logo.png";
-// import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import { Link, useHistory } from "react-router-dom";
 import { postAuth } from "../helpers/autentication";
 
 const Login = () => {
-  // const Alertsuccess=() =>{
-  //     Swal.fire({
-  //         position: 'center',
-  //         icon: 'success',
-  //         title: 'Inicio de sesion exitoso!',
-  //         showConfirmButton: false,
-  //         timer: 1500
-  //       })
-  // }
+  const Alertsucces=() =>{
+      Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Inicio de sesion exitoso!',
+          showConfirmButton: false,
+          timer: 900
+        })
+  }
 
-  // const Alerterror=() =>{
-  //     Swal.fire({
-  //         position: 'center',
-  //         icon: 'error',
-  //         title: 'Inicio de sesion exitoso!',
-  //         showConfirmButton: false,
-  //         timer: 1500
-  //       })
-  // }
+  const Alerterror=() =>{
+      Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Inicio de sesion exitoso!',
+          showConfirmButton: false,
+          timer: 1500
+        })
+  }
 
   const history = useHistory();
 
@@ -55,7 +55,7 @@ const Login = () => {
 
   useEffect(() => {
     if (login.token) {
-      // Alertsucces()
+      Alertsucces()
       localStorage.setItem("auth", JSON.stringify(login));
       setTimeout(() => {
         history.push("/Inicio");

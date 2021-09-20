@@ -7,18 +7,4 @@
   font-family: 'PT Sans', sans-serif;
 }
 
-/* ADMIN PAGE STYLE */
-.admin-header{
-  background-color: #3F8F8B;
-  color: white;
 
-}
-
-.admin-button{
-  background-color: #333333;
-  width: 100%;
-}
-
-.admin-button i{
-  color: white;
-}

@@ -1,45 +1,49 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { actualizarEmpleado, obtenerEmpleado } from "../helpers/perfil";
 import { puestosGet } from "../helpers/puesto";
-import "../style/perfilUsuario.css";
-import logo2 from "../assets/logo2.png";
-import imag from "../assets/imag.jpeg";
 
+import "../styles/perfilUsuario.css";
+import logo2 from "../assets/logo2.png";
 
 const Perfil = () => {
   const [update, setUpdate] = useState(false);
   const [perfil, setPerfil] = useState({
     nombre: "",
-    apellido:"",
+    apellido: "",
     asociado: "",
     email: "",
-    licencia:""
+    licencia: "",
+    img: "",
   });
   useEffect(() => {
     const datos = JSON.parse(localStorage.getItem("auth"));
-      console.log(datos)
+    console.log(datos);
     obtenerEmpleado(datos.empleado.uid).then((respuesta) => {
+      console.log("entro primero por aca");
+      if (respuesta.empleado.rol === "ADMIN_ROLE") {
+        return alert("El admin no puede cuenta con permisos en esta seccion");
+      }
       setPerfil({
         nombre: respuesta.empleado.nombre,
-        apellido:respuesta.empleado.apellido,
+        apellido: respuesta.empleado.apellido,
         asociado: respuesta.empleado.dni,
         email: respuesta.empleado.email,
-        licencia:respuesta.empleado.licencia
+        licencia: respuesta.empleado.licencia,
+        img: respuesta.empleado.img,
       });
       cargarPuesto(respuesta.empleado.puesto);
     });
-    
+
+    console.log("pasa x aa");
   }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
     const { nombre, asociado, email } = perfil;
     const datos = JSON.parse(localStorage.getItem("auth"));
     if (nombre && asociado && email) {
-      actualizarEmpleado(datos.empleado.uid, perfil).then((respuesta) => {
-      });
+      actualizarEmpleado(datos.empleado.uid, perfil).then((respuesta) => {});
     }
     setUpdate(false);
   };
@@ -52,58 +56,59 @@ const Perfil = () => {
       });
     }
   };
-  const [puesto,setPuesto] = useState({
-        nombre:"",
-        horarios:"",
-        salario:0
-  })
+  const [puesto, setPuesto] = useState({
+    nombre: "",
+    horarios: "",
+    salario: 0,
+  });
 
-  const cargarPuesto=(puestoId)=> {
-      puestosGet().then((respuesta)=>{
-            if(!respuesta.puestos){
-                  return ;
-            }
-            const puestoEncontrado=respuesta.puestos.find((elem)=>{
-                  return elem._id===puestoId;
-            })
-            if(!puestoEncontrado){
-                  return;
-            }
-            setPuesto({
-                  nombre:puestoEncontrado.nombre,
-                  horarios:puestoEncontrado.horarios,
-                  salario:puestoEncontrado.salario
-            });
-       });
-      
-  }
-
-  const salarioAnual=(salarioMensual)=>{
-         return (salarioMensual*12)
-  }
-  const formatCurrency = function(number){
-      return new Intl.NumberFormat('en-US', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(number);
+  const cargarPuesto = (puestoId) => {
+    puestosGet().then((respuesta) => {
+      if (!respuesta.puestos) {
+        return;
+      }
+      const puestoEncontrado = respuesta.puestos.find((elem) => {
+        return elem._id === puestoId;
+      });
+      if (!puestoEncontrado) {
+        return;
+      }
+      setPuesto({
+        nombre: puestoEncontrado.nombre,
+        horarios: puestoEncontrado.horarios,
+        salario: puestoEncontrado.salario,
+      });
+    });
   };
- 
 
-   const licenciaEstado=(licen)=>{
-         if(licen==="true"){
-               return ("Activa");
-         }
-         if(licen==="false"){
-               return ("No cuenta con una licencia Activa") ;
-         }
-         else{
-               return(" - ");
-         }
-   }
-  
+  const salarioAnual = (salarioMensual) => {
+    return salarioMensual * 12;
+  };
+  const formatCurrency = function (number) {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      minimumFractionDigits: 2,
+    }).format(number);
+  };
+
+  const licenciaEstado = (licen) => {
+    console.log(licen);
+    if (licen === "true") {
+      console.log("hola");
+      return "Activa";
+    } else {
+      console.log("bola");
+      return "No Activa";
+    }
+  };
+
   return (
     <>
       <div className="container">
         <div className="row">
           <div className="col">
-            <h1>Mi Perfil</h1>
+            <h1 className="title">Mi Perfil</h1>
             <hr />
           </div>
         </div>
@@ -120,8 +125,14 @@ const Perfil = () => {
                     ></i>
                   </div>
                   <div className="card-body card-img">
-                    <img src={imag} alt="imgPerfil" className="imgPerfil" />
-                    <h2>{perfil.nombre} {perfil.apellido}</h2>
+                    <img
+                      src={perfil.img}
+                      alt="imgPerfil"
+                      className="imgPerfil"
+                    />
+                    <h2 className="title">
+                      {perfil.nombre} {perfil.apellido}
+                    </h2>
                     {/* <h2>Norali</h2> */}
                     <form onSubmit={handleSubmit}>
                       <div className="form-group mb-2">
@@ -146,9 +157,12 @@ const Perfil = () => {
                           onChange={handleChange}
                         />
                       </div>
-                  
+
                       <div>
-                        <button type="submit" className="btn btn-save btn-lg btn-block">
+                        <button
+                          type="submit"
+                          className="btn btn-save btn-lg btn-block"
+                        >
                           Actualizar
                         </button>
                       </div>
@@ -169,13 +183,14 @@ const Perfil = () => {
                       id="i-phone"
                     ></i>
                     <span> Por favor provee tu contacto de emergencia</span>
-                     <Link  className="nav-link" to="/Error404">
-                     <i
-                      className="fa fa-plus-circle "
-                      aria-hidden="true"
-                      id="i-add"
-                    >Agregar contacto  
-                    </i>
+                    <Link className="nav-link" to="/Error404">
+                      <i
+                        className="fa fa-plus-circle "
+                        aria-hidden="true"
+                        id="i-add"
+                      >
+                        Agregar contacto
+                      </i>
                     </Link>
                   </div>
                 </div>
@@ -198,17 +213,15 @@ const Perfil = () => {
                     </i>
                     <span className="span-i">387866282</span>
                     <hr />
-                    
                     <i
                       className="fa fa-envelope-o"
                       aria-hidden="true"
                       id="i-icon"
-                    > 
+                    >
                       {" "}
                     </i>{" "}
                     <span className="span-i">{perfil.email}</span>
                     <hr />
-                  
                     <i
                       className="fa fa-map-marker"
                       aria-hidden="true"
@@ -225,9 +238,9 @@ const Perfil = () => {
                 <div className="card">
                   <div className="card-body card-perfil">
                     <h3>Info Salarial</h3>
-                    <hr  className="hr-card"/>
+                    <hr className="hr-card" />
                     <strong>Anual</strong>
-                    <br/>
+                    <br />
                     <div className="alert alert-secondary" role="alert">
                       {formatCurrency(salarioAnual(puesto.salario))}
                     </div>
@@ -245,12 +258,15 @@ const Perfil = () => {
                 <div className="card">
                   <div className="card-body card-perfil">
                     <h3>Info Laboral </h3>
-                    <hr/>
-                    <strong>Puesto: </strong><span>{puesto.nombre}</span>
                     <hr />
-                    <strong>Licencia:</strong><span> {licenciaEstado(perfil.licencia)}</span>
+                    <strong>Puesto: </strong>
+                    <span>{puesto.nombre}</span>
                     <hr />
-                    <strong>Horarios:</strong><span> {puesto.horarios}</span>
+                    <strong>Licencia:</strong>
+                    <span> {licenciaEstado(perfil.licencia)}</span>
+                    <hr />
+                    <strong>Horarios:</strong>
+                    <span> {puesto.horarios}</span>
                     <hr />
                   </div>
                 </div>
@@ -266,11 +282,20 @@ const Perfil = () => {
                         src={logo2}
                         alt="logo-astrom"
                         className="img-logo"
-                      /> {" "}
-                      Trabajamos con el objetivo de ayudar a nuestros empleados y clientes en una mejor hambiente, desarrollando nuestra actividad de manera sostenible y ética.
-                      Nuestro marco estratégico integra la Responsabilidad Social Corporativa y se fundamenta en cuatro pilares: clientes, empleados, proveedores y entorno social. <Link className="nav-link" to="/Error404"><i className="fa fa-arrow-circle-right" aria-hidden="true" id="i-verMas">Ver mas</i></Link> 
+                      />{" "}
+                      Nuestro marco estratégico integra la Responsabilidad
+                      Social Corporativa y se fundamenta en cuatro pilares:
+                      clientes, empleados, proveedores y entorno social.{" "}
+                      <Link className="nav-link" to="/Error404">
+                        <i
+                          className="fa fa-arrow-circle-right"
+                          aria-hidden="true"
+                          id="i-verMas"
+                        >
+                          Ver mas
+                        </i>
+                      </Link>
                     </p>
-      
                   </div>
                 </div>
               </div>

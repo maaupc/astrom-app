@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import "../styles/admin.css";
 
 import { licenciasGet } from '../helpers/licencias'
 import ModalLicencia from './modals/ModalLicencia'
@@ -39,7 +40,7 @@ const LicenciasTable = () => {
 
     return (
         <>
-            <div>
+            <div className="header-licencias">
             <h1>Licencias</h1>
             </div>
             <button className="btn btn-warning"

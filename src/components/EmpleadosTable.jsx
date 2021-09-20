@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import '../styles/admin.css'
 
 //Importo conexiones con base de datos
 import { empleadoGet, empleadoPost, empleadoPut, empleadoDelete } from '../helpers/empleados'
@@ -25,7 +26,7 @@ const EmpleadosTable = () => {
     
     return (
         <div>
-            <div>
+            <div className="header-empleados">
             <h1 >Empleados</h1>
             </div>
             <button className="btn btn-warning">Crear empleado</button>
