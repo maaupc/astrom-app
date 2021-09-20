@@ -1,20 +1,12 @@
-<<<<<<< HEAD
+
 import React from "react";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import "./navbar.css";
 import { Dropdown } from "react-bootstrap";
 import { obtenerEmpleado } from "../helpers/perfil";
-=======
-import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import "./navbar.css";
-import { Dropdown } from "react-bootstrap";
-
-
->>>>>>> 53debe25ed922e46865b6d0a93efd22da18a14f9
 import logo from "../assets/logo.png";
-import avatar from "../assets/Avatar.jpg";
+
 
 const Navbar = () => {
   const [click, setClick] = useState(false);
@@ -23,12 +15,12 @@ const Navbar = () => {
 
   const closeMobileMenu = () => setClick(false);
 
-<<<<<<< HEAD
-  // const history = useHistory();
-  // const logout = () => {
-  //   localStorage.clear();
-  //   history.push("/login");
-  // };
+
+  const history = useHistory();
+  const logout = () => {
+     localStorage.clear();
+     history.push("/login");
+   };
   const [imagen,setImagen] = useState({
       img:""
   })
@@ -42,21 +34,19 @@ const Navbar = () => {
   }, [])
      
   
-=======
-  // const [empleado, setEmpleado] = useState(null);
 
-  // useEffect(() => {
-  //   const datos = JSON.parse(localStorage.getItem("auth"));
-  //   setEmpleado(datos.empleado);
-  // }, []);
+   const [empleado, setEmpleado] = useState(null);
+
+  useEffect(() => {
+    const datos = JSON.parse(localStorage.getItem("auth"));
+    setEmpleado(datos.empleado);
+  }, []);
 
   const history = useHistory();
   const logout = () => {
     localStorage.clear();
     history.push("/login");
   };
-
->>>>>>> 53debe25ed922e46865b6d0a93efd22da18a14f9
   return (
     <>
       <nav className="navbar">
@@ -69,12 +59,12 @@ const Navbar = () => {
           </div>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
-              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+              <Link to="/inicio" className="nav-links" onClick={closeMobileMenu}>
                 Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+              <Link to="/licencias" className="nav-links" onClick={closeMobileMenu}>
                 Recursos
               </Link>
             </li>
@@ -85,7 +75,7 @@ const Navbar = () => {
             </li>
 
             <li>
-              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+              <Link to="/error404" className="nav-links" onClick={closeMobileMenu}>
                 Nosotros
               </Link>
             </li>
@@ -96,20 +86,20 @@ const Navbar = () => {
 
               <Dropdown.Menu>
                 <Dropdown.Item>
-                  <Link className="nav-link" to="/" onClick={closeMobileMenu}>
+                  <Link className="nav-link" to="/perfil" onClick={closeMobileMenu}>
                     Mi Perfil
                   </Link>
                 </Dropdown.Item>
-                {/* {empleado?.rol === "ADMIN_ROLE" && (
+                {empleado?.rol === "ADMIN_ROLE" && (
                 <Dropdown.Item>
-                  <Link className="nav-link" to="/" onClick={closeMobileMenu}>
+                  <Link className="nav-link" to="/admin" onClick={closeMobileMenu}>
                     Admin
                   </Link>
                 </Dropdown.Item>
-                )} */}
+                )}
                 <Dropdown.Divider />
                 <Dropdown.Item>
-                  <Link className="nav-link" to="/" onClick={logout}>
+                  <Link className="nav-link" to="/login" onClick={logout}>
                     <i className="fa fa-sign-out" aria-hidden="true" /> Salir
                   </Link>
                 </Dropdown.Item>

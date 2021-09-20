@@ -10,12 +10,6 @@
       scroll-behavior: smooth;
 } */
 
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 /* ADMIN PAGE STYLE */
 .admin-header{
   background-color: #3F8F8B;
