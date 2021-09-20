@@ -1,4 +1,4 @@
-const url = "http://localhost:8080";
+const url = "https://calm-castle-34951.herokuapp.com";
 
 export const licenciasGet = async ()=>{
     const resp = await fetch(`${url}/api/licencias`,{

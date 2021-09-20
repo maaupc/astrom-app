@@ -17,15 +17,6 @@ const Login = () => {
         })
   }
 
-  const Alerterror=() =>{
-      Swal.fire({
-          position: 'center',
-          icon: 'error',
-          title: 'Inicio de sesion exitoso!',
-          showConfirmButton: false,
-          timer: 1500
-        })
-  }
 
   const Alerterror=() =>{
       Swal.fire({

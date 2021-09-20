@@ -16,20 +16,8 @@ const Navbar = () => {
 
   const closeMobileMenu = () => setClick(false);
   
-  const [imagen,setImagen] = useState({
-      img:""
-  })
-  useEffect(() => {
-      const datos = JSON.parse(localStorage.getItem("auth"));
-      obtenerEmpleado(datos.empleado.uid).then((respuesta)=>{
-            setImagen({
-                  img:respuesta.empleado.img
-            })
-      })
-  }, [])
-     
-  
 
+  
   const [empleado, setEmpleado] = useState(null);
   const [imagen, setImagen] = useState({
     img:" "

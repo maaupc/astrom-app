@@ -3,12 +3,6 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { actualizarEmpleado, obtenerEmpleado } from "../helpers/perfil";
 import { puestosGet } from "../helpers/puesto";
-<<<<<<< HEAD
-=======
-
-import "../style/perfilUsuario.css";
-import logo2 from "../assets/logo2.png";
->>>>>>> adcf421de34a7fe4e2a58eb9a2d6abdf2b258615
 
 import "../styles/perfilUsuario.css";
 import logo2 from "../assets/logo2.png";
@@ -20,51 +14,29 @@ const Perfil = () => {
     apellido: "",
     asociado: "",
     email: "",
-<<<<<<< HEAD
     licencia: "",
     img: "",
-=======
-    licencia:"",
-    img:""
->>>>>>> adcf421de34a7fe4e2a58eb9a2d6abdf2b258615
   });
   useEffect(() => {
     const datos = JSON.parse(localStorage.getItem("auth"));
     console.log(datos);
     obtenerEmpleado(datos.empleado.uid).then((respuesta) => {
-<<<<<<< HEAD
       console.log("entro primero por aca");
       if (respuesta.empleado.rol === "ADMIN_ROLE") {
         return alert("El admin no puede cuenta con permisos en esta seccion");
       }
-=======
-          console.log("entro primero por aca")
-          if(respuesta.empleado.rol === "ADMIN_ROLE"){
-                return alert("El admin no puede cuenta con permisos en esta seccion")
-          }
->>>>>>> adcf421de34a7fe4e2a58eb9a2d6abdf2b258615
       setPerfil({
         nombre: respuesta.empleado.nombre,
         apellido: respuesta.empleado.apellido,
         asociado: respuesta.empleado.dni,
         email: respuesta.empleado.email,
-<<<<<<< HEAD
         licencia: respuesta.empleado.licencia,
         img: respuesta.empleado.img,
-=======
-        licencia:respuesta.empleado.licencia,
-        img:respuesta.empleado.img
->>>>>>> adcf421de34a7fe4e2a58eb9a2d6abdf2b258615
       });
       cargarPuesto(respuesta.empleado.puesto);
     });
 
-<<<<<<< HEAD
     console.log("pasa x aa");
-=======
-    console.log("pasa x aa")
-    
->>>>>>> adcf421de34a7fe4e2a58eb9a2d6abdf2b258615
   }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -131,22 +103,6 @@ const Perfil = () => {
     }
   };
 
-<<<<<<< HEAD
-=======
-   const licenciaEstado=(licen)=>{
-         console.log(licen)
-         if(licen==="true"){
-               console.log("hola")
-               return ("Activa");
-        }
-         else{
-               console.log("bola")
-               return ("No Activa") ;
-         }
-        
-   }
-  
->>>>>>> adcf421de34a7fe4e2a58eb9a2d6abdf2b258615
   return (
     <>
       <div className="container">
@@ -169,7 +125,6 @@ const Perfil = () => {
                     ></i>
                   </div>
                   <div className="card-body card-img">
-<<<<<<< HEAD
                     <img
                       src={perfil.img}
                       alt="imgPerfil"
@@ -178,10 +133,6 @@ const Perfil = () => {
                     <h2 className="title">
                       {perfil.nombre} {perfil.apellido}
                     </h2>
-=======
-                    <img src={perfil.img} alt="imgPerfil" className="imgPerfil" />
-                    <h2 className="title">{perfil.nombre} {perfil.apellido}</h2>
->>>>>>> adcf421de34a7fe4e2a58eb9a2d6abdf2b258615
                     {/* <h2>Norali</h2> */}
                     <form onSubmit={handleSubmit}>
                       <div className="form-group mb-2">
@@ -331,7 +282,6 @@ const Perfil = () => {
                         src={logo2}
                         alt="logo-astrom"
                         className="img-logo"
-<<<<<<< HEAD
                       />{" "}
                       Nuestro marco estratégico integra la Responsabilidad
                       Social Corporativa y se fundamenta en cuatro pilares:
@@ -345,11 +295,6 @@ const Perfil = () => {
                           Ver mas
                         </i>
                       </Link>
-=======
-                      /> {" "}
-                      Trabajamos con el objetivo de ayudar a nuestros empleados y clientes en una mejor hambiente.
-                      Nuestro marco estratégico integra la Responsabilidad Social Corporativa y se fundamenta en cuatro pilares: clientes, empleados, proveedores y entorno social. <Link className="nav-link" to="/Error404"><i className="fa fa-arrow-circle-right" aria-hidden="true" id="i-verMas">Ver mas</i></Link> 
->>>>>>> adcf421de34a7fe4e2a58eb9a2d6abdf2b258615
                     </p>
                   </div>
                 </div>
