@@ -1,35 +1,105 @@
 .main-footer{
     color: white;
-    background-color: #3F8F8B;
-    /* padding-top: relative;
-    position: relative; */
-    /* bottom: 0; */
+    background-color: #333333;
+    height: 300px;
     width: 100%;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: space-around;
+    text-align: center;
+    flex-wrap: wrap;
 }
-
+.col-content{
+    display:block;
+    height: 100%;
+    width: min-content;
+}
 .list-unstyled-icon{
-    margin-top: 50px;
+      text-align: center;
 }
-
-.list-unstyled{
-    float: right;
-    margin-top: 40px;
+.list-unstyled-icon i{
+      color: white;
+      font-size: 20px;
+      margin-left: 5px;
 }
+#logo-astrom{
+      font-size:50px;
+}
+.fa-map-marker:before {
+      content: "\f041";
+      color:yellow;
+  }
+  .fa-phone:before {
+      content: "\f095";
+      color:springgreen;
+  }
+  .fa-thumb-tack:before {
+      content: "\f08d";
+      color: red;
+  }
 
 .logo{
     text-align: center;
 }
-
-
-@media (max-width: 425px) { .list-unstyled-icon{
-    text-align: center;
-    font-size: 24px;
-}
-}
-@media (max-width: 320px) { .list-unstyled{
-    float: none;
-    text-align: center;
-}
+.secundary-unstyled li{
+      display:block;
 }
 
+@media screen and (max-width: 700px) { .main-footer{
+    display: inline-flex;
+    flex-direction: row; 
+    height: 200px; 
+}
+.list-unstyled-icon i{
+      font-size: 8px;
+}
+p{
+      font-size: 10px;
+}
+span{
+      font-size: 14px;
+}
+.secundary-unstyled i{
+      font-size: 10px;
+}
+#logo-astrom{
+      width: 50px;
+      height: 30px;
+}
+}
+@media screen and (max-width: 380px) { .main-footer{
+      height: 100px;
+}
+p{
+   font-size: 6px;
+}
+.list-unstyled-icon i{
+      font-size: 0%;
+      margin: 0;
+}
+span{
+      font-size: 9px;
+}
+.secundary-unstyled i{
+      font-size: 3px;
+}
+#logo-astrom{
+      width: 30px;
+      height: 10px;
+}
+.secundary-unstyled li{
+      display:initial;
+      margin-left: 2px;
+      height: 10px;
+      width: 15px;
+}
+.secundary-unstyled {
+      height: min-content;
+}
+}
+@media screen and (min-width: 1024px){
+      body{
+            height: 100vh;
+      }
+}
