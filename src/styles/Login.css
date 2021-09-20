@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-body{
+.container-principal{
       background-image: url(https://i.postimg.cc/X7Bq6CZw/Home-Card2.jpg);
       background-repeat: no-repeat;
       background-position: center center;
@@ -13,12 +13,6 @@ body{
       display: flex;
       flex-direction: column;
 }
-
-.conrainer{
-      height: max-content;
-     
-}
-
 .login-container{
   line-height: 50%;
     

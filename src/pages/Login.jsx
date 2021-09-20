@@ -66,7 +66,7 @@ const Login = () => {
             Alertsucces()
             localStorage.setItem("auth", JSON.stringify(login));
             setTimeout(()=>{
-                history.push("/");
+                history.push("/inicio");
             },1000)
         }
       }, [login, history]);
@@ -76,7 +76,7 @@ const Login = () => {
 
   return (
     <>
-       <div className="container">
+       <div className="container container-principal">
         <div id="overlay" className=" font-weight-bold">
             <div className="container login-container">
                 <div className="row" id="row-padre">

@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { actualizarEmpleado, obtenerEmpleado } from "../helpers/perfil";
 import { puestosGet } from "../helpers/puesto";
+
 import "../style/perfilUsuario.css";
 import logo2 from "../assets/logo2.png";
-import imag from "../assets/imag.jpeg";
 
 
 const Perfil = () => {
@@ -16,21 +16,29 @@ const Perfil = () => {
     apellido:"",
     asociado: "",
     email: "",
-    licencia:""
+    licencia:"",
+    img:""
   });
   useEffect(() => {
     const datos = JSON.parse(localStorage.getItem("auth"));
       console.log(datos)
     obtenerEmpleado(datos.empleado.uid).then((respuesta) => {
+          console.log("entro primero por aca")
+          if(respuesta.empleado.rol === "ADMIN_ROLE"){
+                return alert("El admin no puede cuenta con permisos en esta seccion")
+          }
       setPerfil({
         nombre: respuesta.empleado.nombre,
         apellido:respuesta.empleado.apellido,
         asociado: respuesta.empleado.dni,
         email: respuesta.empleado.email,
-        licencia:respuesta.empleado.licencia
+        licencia:respuesta.empleado.licencia,
+        img:respuesta.empleado.img
       });
       cargarPuesto(respuesta.empleado.puesto);
     });
+
+    console.log("pasa x aa")
     
   }, []);
   const handleSubmit = (e) => {
@@ -87,15 +95,16 @@ const Perfil = () => {
  
 
    const licenciaEstado=(licen)=>{
+         console.log(licen)
          if(licen==="true"){
+               console.log("hola")
                return ("Activa");
-         }
-         if(licen==="false"){
-               return ("No cuenta con una licencia Activa") ;
-         }
+        }
          else{
-               return(" - ");
+               console.log("bola")
+               return ("No Activa") ;
          }
+        
    }
   
   return (
@@ -103,7 +112,7 @@ const Perfil = () => {
       <div className="container">
         <div className="row">
           <div className="col">
-            <h1>Mi Perfil</h1>
+            <h1 className="title">Mi Perfil</h1>
             <hr />
           </div>
         </div>
@@ -120,8 +129,8 @@ const Perfil = () => {
                     ></i>
                   </div>
                   <div className="card-body card-img">
-                    <img src={imag} alt="imgPerfil" className="imgPerfil" />
-                    <h2>{perfil.nombre} {perfil.apellido}</h2>
+                    <img src={perfil.img} alt="imgPerfil" className="imgPerfil" />
+                    <h2 className="title">{perfil.nombre} {perfil.apellido}</h2>
                     {/* <h2>Norali</h2> */}
                     <form onSubmit={handleSubmit}>
                       <div className="form-group mb-2">
@@ -267,7 +276,7 @@ const Perfil = () => {
                         alt="logo-astrom"
                         className="img-logo"
                       /> {" "}
-                      Trabajamos con el objetivo de ayudar a nuestros empleados y clientes en una mejor hambiente, desarrollando nuestra actividad de manera sostenible y ética.
+                      Trabajamos con el objetivo de ayudar a nuestros empleados y clientes en una mejor hambiente.
                       Nuestro marco estratégico integra la Responsabilidad Social Corporativa y se fundamenta en cuatro pilares: clientes, empleados, proveedores y entorno social. <Link className="nav-link" to="/Error404"><i className="fa fa-arrow-circle-right" aria-hidden="true" id="i-verMas">Ver mas</i></Link> 
                     </p>
       

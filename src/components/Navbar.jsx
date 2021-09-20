@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./navbar.css";
 import { Dropdown } from "react-bootstrap";
-
+import { obtenerEmpleado } from "../helpers/perfil";
 import logo from "../assets/logo.png";
 import avatar from "../assets/Avatar.jpg";
 
@@ -18,7 +19,19 @@ const Navbar = () => {
   //   localStorage.clear();
   //   history.push("/login");
   // };
-
+  const [imagen,setImagen] = useState({
+      img:""
+  })
+  useEffect(() => {
+      const datos = JSON.parse(localStorage.getItem("auth"));
+      obtenerEmpleado(datos.empleado.uid).then((respuesta)=>{
+            setImagen({
+                  img:respuesta.empleado.img
+            })
+      })
+  }, [])
+     
+  
   return (
     <>
       <nav className="navbar">
@@ -53,7 +66,7 @@ const Navbar = () => {
             </li>
             <Dropdown>
               <Dropdown.Toggle id="dropdown-basic">
-                <img src={avatar} alt="avatar" />
+                <img src={imagen.img} alt="avatar" />
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
