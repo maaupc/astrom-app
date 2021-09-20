@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import "./navbar.css";
 import { Dropdown } from "react-bootstrap";
+
 
 import logo from "../assets/logo.png";
 import avatar from "../assets/Avatar.jpg";
@@ -13,11 +14,18 @@ const Navbar = () => {
 
   const closeMobileMenu = () => setClick(false);
 
-  // const history = useHistory();
-  // const logout = () => {
-  //   localStorage.clear();
-  //   history.push("/login");
-  // };
+  // const [empleado, setEmpleado] = useState(null);
+
+  // useEffect(() => {
+  //   const datos = JSON.parse(localStorage.getItem("auth"));
+  //   setEmpleado(datos.empleado);
+  // }, []);
+
+  const history = useHistory();
+  const logout = () => {
+    localStorage.clear();
+    history.push("/login");
+  };
 
   return (
     <>
@@ -62,14 +70,16 @@ const Navbar = () => {
                     Mi Perfil
                   </Link>
                 </Dropdown.Item>
+                {/* {empleado?.rol === "ADMIN_ROLE" && (
                 <Dropdown.Item>
                   <Link className="nav-link" to="/" onClick={closeMobileMenu}>
                     Admin
                   </Link>
                 </Dropdown.Item>
+                )} */}
                 <Dropdown.Divider />
                 <Dropdown.Item>
-                  <Link className="nav-link" to="/" onClick={closeMobileMenu}>
+                  <Link className="nav-link" to="/" onClick={logout}>
                     <i className="fa fa-sign-out" aria-hidden="true" /> Salir
                   </Link>
                 </Dropdown.Item>
@@ -84,6 +94,3 @@ const Navbar = () => {
 
 export default Navbar;
 
-// Esto iria dps
-// !Importar useHistory en react-router-dom
-/* <Dropdown.Item onClick={logout} onClick={closeMobileMenu}> */

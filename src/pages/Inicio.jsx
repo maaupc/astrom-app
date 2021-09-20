@@ -3,7 +3,8 @@ import "../index.css";
 import Navbar from "../components/Navbar";
 import HomeCarousel from "../components/HomeCarousel";
 import CardsHome from "../components/CardsHome";
-// import ClientsHome from "../components/ClientsHome";
+import ClientsHome from "../components/ClientsHome";
+import SubscribeForm from "../components/SubscribeForm";
 
 
 const Inicio = () => {
@@ -12,8 +13,8 @@ const Inicio = () => {
       <Navbar />
       <HomeCarousel />
       <CardsHome />
-      {/* <ClientsHome /> */}
-      
+      <ClientsHome />
+      <SubscribeForm />
     </>
   );
 };

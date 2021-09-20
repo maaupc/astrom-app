@@ -1,0 +1,195 @@
+.header-subscribe {
+  margin-top: 50px;
+  font-size: 48px;
+  color: #121212;
+  text-align: center;
+  opacity: 1;
+}
+
+.subscribe-text {
+  margin: 32px 150px;
+  font-size: 20px;
+  text-align: center;
+  color: #212529;
+}
+
+.parent-wrapper {
+  position: relative;
+  width: 700px;
+  height: 270px;
+  margin: 100px auto 0;
+  margin-bottom: 40px;
+  background-image: url("https://i.postimg.cc/GtNqLdV3/city-lights.jpg");
+  background-size: 100%;
+  background-position-y: -600%;
+  border-radius: 4px;
+  color: #fff;
+  box-shadow: 0px 0px 50px 5px rgba(0, 0, 0, 0.5);
+}
+
+.close-btn {
+  margin: 20px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.subscribe-wrapper {
+  position: absolute;
+  top: 50px;
+  left: -30px;
+  right: -30px;
+  height: 170px;
+  padding: 30px;
+  background-position-x: 272%;
+  background-position-y: -1px;
+  background-repeat: no-repeat;
+  background-color: rgb(234, 241, 245);
+  border-radius: 4px;
+  color: #3F8F8B;
+  box-shadow: 0px 0px 60px 5px rgba(0, 0, 0, 0.4);
+}
+
+.subscribe-wrapper:after {
+  position: absolute;
+  content: "";
+  right: -10px;
+  bottom: 71px;
+  width: 0;
+  height: 0;
+  border-left: 0px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #252525;
+}
+
+.subscribe-wrapper h4 {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  line-height: 28px;
+}
+
+.subscribe-wrapper input {
+  position: absolute;
+  bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #4DAAA7;
+  padding: 10px;
+  width: 65%;
+  background: transparent;
+  transition: all 0.25s ease;
+}
+
+.subscribe-wrapper input:focus {
+  outline: none;
+  border-bottom: 1px solid #4DAAA7;
+}
+
+.subscribe-wrapper .submit-btn {
+  position: absolute;
+  border-radius: 30px;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  background-color: #4DAAA7;
+  color: #fff;
+  padding: 12px 25px;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  right: -10px;
+  bottom: 30px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: -5px 6px 20px 0px rgba(51, 51, 51, 0.4);
+}
+
+.subscribe-wrapper .submit-btn:hover {
+  background-color: #3F8F8B;
+}
+
+@media screen and (max-width: 960px) {
+  .parent-wrapper {
+    width: 600px;
+  }
+  .header-subscribe {
+    margin: 30px 50px;
+    font-size: 30px;
+    text-align: center;
+  }
+  .subscribe-text {
+    margin: 30px 50px;
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .parent-wrapper {
+    width: 450px;
+    background-position-y: -200%;
+  }
+  .header-subscribe {
+    margin: 30px 50px;
+    font-size: 25px;
+    text-align: center;
+  }
+  .subscribe-text {
+    margin: 30px 50px;
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .parent-wrapper {
+    width: 350px;
+    background-position-y: -120%;
+  }
+  
+}
+
+@media screen and (max-width: 460px) {
+  .parent-wrapper {
+    width: 270px;
+    background-position-y: -70%;
+  }
+  .header-subscribe {
+    margin: 30px 50px;
+    font-size: 20px;
+    text-align: center;
+  }
+  .subscribe-text {
+    margin: 30px 50px;
+    font-size: 15px;
+  }
+  .subscribe-wrapper h4 {
+    font-size: 15px;
+    line-height: 22px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .header-subscribe {
+    margin: 30px 50px;
+    font-size: 25px;
+    text-align: center;
+  }
+  .subscribe-text {
+    margin: 30px 50px;
+    font-size: 15px;
+  }
+  .parent-wrapper {
+    margin-top: 70px;
+    width: 200px;
+    background-position-y: -50%;
+    height: 250px;
+    margin-bottom: 40px;
+  }
+  .subscribe-wrapper{
+    margin-top: -10px;
+  }
+  .subscribe-wrapper h4 {
+    font-size: 12px;
+    line-height: 22px;
+  }
+}
+

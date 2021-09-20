@@ -1,27 +1,122 @@
 .block-logos-container {
-    display: flex;
-    width: 100%;
-    background-color: #252525;
-    padding: 3rem 0 4rem;
-    /* display: block; */
-    
+  height: 215px;
+  background-color: hsl(0, 0%, 15%);
+  padding: 3rem 0 4rem;
+  overflow: hidden;
 }
 
-.logos-container-heading{
-    color: #121212;
-    font-size: 2.8rem;
+.logos-heading {
+  color: #fff;
+  margin-top: -30px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1.71;
+  padding: 0 1.6rem;
+  text-align: center;
+}
+
+.logos-description {
+  color: #fff;
+  font-size: 1.1rem;
+  line-height: 1;
+  margin-bottom: 35px;
+  /* margin: 0.1rem 0 0; */
+  padding: 0.5rem 1.6rem;
+  text-align: center;
+}
+
+.slider {
+  height: 100px;
+  overflow: hidden;
+  position: relative;
+}
+
+
+.slider ul {
+  display: block;
+  width: 200%;
+  position: absolute;
+  animation: marquee 20s linear infinite;
+}
+
+.slider li {
+  padding: 0 10px;
+  list-style: none;
+}
+
+.slider img {
+  width: 12vw;
+  float: left;
+}
+
+@keyframes marquee {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .block-logos-container {
+    height: 200px;
+  }
+  .logos-heading {
+    font-size: 1.2rem;
     font-weight: bold;
-    line-height: 1.71;
-    padding: 0 1.6rem;
-    text-align: center;
-    /* display: block; */
+  }
+  
+  .logos-description {
+    font-size: 0.9rem;
+    line-height: 1.1;
+  }
 }
 
-.logos-container-description{
-    color: #121212;
-    font-size: 1.6rem;
+@media screen and (max-width: 460px) {
+  .block-logos-container {
+    height: 180px;
+  }
+  .logos-heading {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .logos-description {
+    padding: 0.3rem 1rem;
+    font-size: 0.8rem;
+    line-height: 1;
+  }
+  .slider ul{
+    width: 300%;
+  }
+  .slider img {
+    width: 18vw;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .block-logos-container {
+    height: 160px;
+  }
+  .logos-heading {
+    padding: 0 1.2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 2px;
+  }
+  
+  .logos-description {
+    font-size: 0.7rem;
     line-height: 1.5;
-    margin: 0.8rem 0 0;
-    padding: 0 1.6rem;
     text-align: center;
+    margin-bottom: 20px;
+    padding: 0.5rem 0.5rem;
+  }
+  .slider ul{
+    width: 300%;
+  }
+  .slider img {
+    width: 18vw;
+  }
 }
