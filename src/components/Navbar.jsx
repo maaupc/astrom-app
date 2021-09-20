@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+
+import React from "react";
+import { useState, useEffect } from "react";
 import "./navbar.css";
 import { Dropdown } from "react-bootstrap";
 import {obtenerEmpleado} from '../helpers/perfil'
 
+import { Link, useHistory } from "react-router-dom";
 import logo from "../assets/logo.png";
 
 
@@ -13,6 +15,20 @@ const Navbar = () => {
   const handleClick = () => setClick(!click);
 
   const closeMobileMenu = () => setClick(false);
+  
+  const [imagen,setImagen] = useState({
+      img:""
+  })
+  useEffect(() => {
+      const datos = JSON.parse(localStorage.getItem("auth"));
+      obtenerEmpleado(datos.empleado.uid).then((respuesta)=>{
+            setImagen({
+                  img:respuesta.empleado.img
+            })
+      })
+  }, [])
+     
+  
 
   const [empleado, setEmpleado] = useState(null);
   const [imagen, setImagen] = useState({
@@ -34,7 +50,6 @@ const Navbar = () => {
     localStorage.clear();
     history.push("/login");
   };
-
   return (
     <>
       <nav className="navbar">

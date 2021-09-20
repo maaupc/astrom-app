@@ -8,11 +8,24 @@
   flex-direction: column;
 }
 
+<<<<<<< HEAD
+.container-principal{
+      background-image: url(https://i.postimg.cc/X7Bq6CZw/Home-Card2.jpg);
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+}
+.login-container{
+=======
 .container {
   height: max-content;
 }
 
 .login-container {
+>>>>>>> b3e9b511b539e6fcb0dec568ee02064e0e12d53e
   line-height: 50%;
 }
 
