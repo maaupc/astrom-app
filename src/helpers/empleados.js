@@ -35,6 +35,7 @@ export const empleadoPut = async (id, data)=>{
         body: JSON.stringify(data),
         headers:{
             "Content-type": "application/json; charset=UTF-8",
+            "x-token": JSON.parse(localStorage.getItem("auth")).token
         }
     })
 

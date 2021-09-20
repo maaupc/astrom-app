@@ -1,10 +1,18 @@
+<<<<<<< HEAD
 const url = "https://calm-castle-34951.herokuapp.com";
+=======
+const url = "http://localhost:8080";
+>>>>>>> Martin
 
 export const licenciasGet = async ()=>{
     const resp = await fetch(`${url}/api/licencias`,{
         method: 'GET',
         headers : {
             "Content-type": "application/json; charset=UTF-8",
+<<<<<<< HEAD
+=======
+            "x-token": JSON.parse(localStorage.getItem("auth")).token,
+>>>>>>> Martin
         }
     })
 
@@ -42,6 +50,7 @@ export const licenciasPut = async (id, data)=>{
 
     return datos
 
+<<<<<<< HEAD
 }
 
 export const licenciasPost = async (data)=>{
@@ -58,4 +67,6 @@ export const licenciasPost = async (data)=>{
 
     return datos
 
+=======
+>>>>>>> Martin
 }
