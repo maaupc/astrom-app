@@ -18,24 +18,19 @@ export const NavBarComponent = () => {
         <li className="nav-item">
           <a className="nav-link active" aria-current="page" href="#">INICIO</a>
         </li>
-        
         <li className="nav-item">
           <a className="nav-link" href="#">RECURSOS</a>
         </li>
-
         <li className="nav-item">
           <a className="nav-link" href="#">PERFIL</a>
         </li>
-
         <li className="nav-item">
           <a className="nav-link" href="#">CONTACTO</a>
         </li>
-
         <li className="nav-item dropdown">
           <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <img className="Avatar" src="http://www.w3bai.com/w3css/img_avatar3.png" alt="" width="50" height="40"/>
           </a>
-
           <ul clasName="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li><a className="dropdown-item" href="#">Action</a></li>
             <li><a className="dropdown-item" href="#">Another action</a></li>
