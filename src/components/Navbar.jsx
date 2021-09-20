@@ -14,13 +14,7 @@ const Navbar = () => {
   const handleClick = () => setClick(!click);
 
   const closeMobileMenu = () => setClick(false);
-
-
-  const history = useHistory();
-  const logout = () => {
-     localStorage.clear();
-     history.push("/login");
-   };
+  
   const [imagen,setImagen] = useState({
       img:""
   })

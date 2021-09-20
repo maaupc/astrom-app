@@ -1,31 +1,30 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Login.css";
 import logo from "../assets/logo.png";
-// import Swal from 'sweetalert2'
+import Swal from 'sweetalert2'
 import { Link, useHistory } from "react-router-dom";
 import { postAuth } from "../helpers/autentication";
 
 const Login = () => {
-  // const Alertsuccess=() =>{
-  //     Swal.fire({
-  //         position: 'center',
-  //         icon: 'success',
-  //         title: 'Inicio de sesion exitoso!',
-  //         showConfirmButton: false,
-  //         timer: 1500
-  //       })
-  // }
+  const Alertsucces=() =>{
+      Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Inicio de sesion exitoso!',
+          showConfirmButton: false,
+          timer: 1500
+        })
+  }
 
-  // const Alerterror=() =>{
-  //     Swal.fire({
-  //         position: 'center',
-  //         icon: 'error',
-  //         title: 'Inicio de sesion exitoso!',
-  //         showConfirmButton: false,
-  //         timer: 1500
-  //       })
-  // }
-
+  const Alerterror=() =>{
+      Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Inicio de sesion exitoso!',
+          showConfirmButton: false,
+          timer: 1500
+        })
+  }
   const history = useHistory();
 
   const [formValue, setFormValue] = useState({
@@ -53,52 +52,9 @@ const Login = () => {
 
   const [login, setLogin] = useState({});
 
-<<<<<<< HEAD
-    const handleChange = ({ target }) => {
-        setFormValue({
-          ...formValue,
-          [target.name]: target.value,
-        });
-      };
-
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        const {dni, password} = formValue;
-
-        if (dni && password){
-           
-            postAuth(formValue).then((respuesta)=>{
-                setLogin(respuesta);
-                
-            })
-            
-        }
-      
-      };
-
-      const [login, setLogin] = useState({});
-
-      useEffect( ()=>{
-        if (login.token)
-         {
-            Alertsucces()
-            localStorage.setItem("auth", JSON.stringify(login));
-            setTimeout(()=>{
-                history.push("/inicio");
-            },1000)
-        }
-      }, [login, history]);
-
-
-
-
-  return (
-    <>
-       <div className="container container-principal">
-=======
   useEffect(() => {
     if (login.token) {
-      // Alertsucces()
+       Alertsucces()
       localStorage.setItem("auth", JSON.stringify(login));
       setTimeout(() => {
         history.push("/Inicio");
@@ -109,7 +65,6 @@ const Login = () => {
   return (
     <>
       <div className="container-login-page">
->>>>>>> b3e9b511b539e6fcb0dec568ee02064e0e12d53e
         <div id="overlay" className=" font-weight-bold">
           <div className="container login-container">
             <div className="row" id="row-padre">
