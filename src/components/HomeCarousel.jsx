@@ -8,21 +8,21 @@ const HomeCarousel = () => {
     <div className="carousel-container">
       <video src="/video/video-2.mp4" autoPlay loop muted />
       <h1>SEEK REINVENTION</h1>
-      <p>¿What are you waiting for?</p>
+      <p>Las empresas deben reinventarse a través de la tecnología.</p>
       <div className="carousel-btns">
         <ButtonCarousel
           className="btns"
           buttonStyle="btn--outline"
           buttonSize="btn--large"
         >
-          GET STARTED
+          CONTÁCTANOS
         </ButtonCarousel>
         <ButtonCarousel
           className="btns"
           buttonStyle="btn--primary"
           buttonSize="btn--large"
         >
-          MORE INFO <i className="fa fa-arrow-right" aria-hidden="true" />
+          MÁS INFO <i className="fa fa-arrow-right" aria-hidden="true" />
         </ButtonCarousel>
       </div>
     </div>

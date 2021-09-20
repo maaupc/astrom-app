@@ -2,7 +2,8 @@ import React from "react";
 import "../index.css";
 import HomeCarousel from "../components/HomeCarousel";
 import CardsHome from "../components/CardsHome";
-// import ClientsHome from "../components/ClientsHome";
+import ClientsHome from "../components/ClientsHome";
+import SubscribeForm from "../components/SubscribeForm";
 
 
 const Inicio = () => {
@@ -10,8 +11,8 @@ const Inicio = () => {
     <>
       <HomeCarousel />
       <CardsHome />
-      {/* <ClientsHome /> */}
-      
+      <ClientsHome />
+      <SubscribeForm />
     </>
   );
 };

@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./navbar.css";
 import { Dropdown } from "react-bootstrap";
 import { obtenerEmpleado } from "../helpers/perfil";
+=======
+import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import "./navbar.css";
+import { Dropdown } from "react-bootstrap";
+
+
+>>>>>>> 53debe25ed922e46865b6d0a93efd22da18a14f9
 import logo from "../assets/logo.png";
 import avatar from "../assets/Avatar.jpg";
 
@@ -14,6 +23,7 @@ const Navbar = () => {
 
   const closeMobileMenu = () => setClick(false);
 
+<<<<<<< HEAD
   // const history = useHistory();
   // const logout = () => {
   //   localStorage.clear();
@@ -32,6 +42,21 @@ const Navbar = () => {
   }, [])
      
   
+=======
+  // const [empleado, setEmpleado] = useState(null);
+
+  // useEffect(() => {
+  //   const datos = JSON.parse(localStorage.getItem("auth"));
+  //   setEmpleado(datos.empleado);
+  // }, []);
+
+  const history = useHistory();
+  const logout = () => {
+    localStorage.clear();
+    history.push("/login");
+  };
+
+>>>>>>> 53debe25ed922e46865b6d0a93efd22da18a14f9
   return (
     <>
       <nav className="navbar">
@@ -75,14 +100,16 @@ const Navbar = () => {
                     Mi Perfil
                   </Link>
                 </Dropdown.Item>
+                {/* {empleado?.rol === "ADMIN_ROLE" && (
                 <Dropdown.Item>
                   <Link className="nav-link" to="/" onClick={closeMobileMenu}>
                     Admin
                   </Link>
                 </Dropdown.Item>
+                )} */}
                 <Dropdown.Divider />
                 <Dropdown.Item>
-                  <Link className="nav-link" to="/" onClick={closeMobileMenu}>
+                  <Link className="nav-link" to="/" onClick={logout}>
                     <i className="fa fa-sign-out" aria-hidden="true" /> Salir
                   </Link>
                 </Dropdown.Item>
@@ -97,6 +124,3 @@ const Navbar = () => {
 
 export default Navbar;
 
-// Esto iria dps
-// !Importar useHistory en react-router-dom
-/* <Dropdown.Item onClick={logout} onClick={closeMobileMenu}> */

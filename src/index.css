@@ -11,3 +11,23 @@
 } */
 
 
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* ADMIN PAGE STYLE */
+.admin-header{
+  background-color: #3F8F8B;
+  color: white;
+
+}
+
+.admin-button{
+  background-color: #333333;
+  width: 100%;
+}
+
+.admin-button i{
+  color: white;
+}

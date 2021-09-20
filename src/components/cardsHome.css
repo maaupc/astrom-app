@@ -4,7 +4,16 @@
 }
 
 h1 {
+  font-size: 48px;
+  color: #3F8F8B;
   text-align: center;
+}
+
+p {
+  margin-bottom: 0;
+  font-size: 20px;
+  text-align: center;
+  color: #212529;
 }
 
 .cards__container {
@@ -64,10 +73,11 @@ h1 {
   margin-left: 10px;
   padding: 6px 8px;
   max-width: calc((100%) - 60px);
-  font-size: 12px;
+  font-size: 13px;
+  font: bold;
   font-weight: 700;
-  color: #fff;
-  background-color: #4DAAA7;
+  color: #4DAAA7;
+  background-color: #070707;
   border-radius: 5px;
   box-sizing: border-box;
 }
@@ -118,3 +128,36 @@ h1 {
     margin-bottom: 2rem;
   }
 }
+
+@media screen and (max-width: 920px){
+  .cards {
+    padding: 3rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 32px;
+  }
+  
+  p {
+    margin-bottom: 0;
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .cards{
+    padding: 1rem;
+  }
+  h1 {
+    font-size: 32px;
+  }
+  
+  p {
+    margin-bottom: 0;
+    font-size: 18px;
+  }
+}
+
+
