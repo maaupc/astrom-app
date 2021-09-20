@@ -30,12 +30,11 @@ export const empleadoPost = async (data)=>{
 }
 
 export const empleadoPut = async (id, data)=>{
-    const resp = await fetch(`url/api/empleados/${id}`, {
+    const resp = await fetch(`${url}/api/empleados/${id}`, {
         method: 'PUT',
         body: JSON.stringify(data),
         headers:{
             "Content-type": "application/json; charset=UTF-8",
-            "x-token": JSON.parse(localStorage.getItem("auth")).token
         }
     })
 

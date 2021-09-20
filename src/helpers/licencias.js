@@ -5,7 +5,6 @@ export const licenciasGet = async ()=>{
         method: 'GET',
         headers : {
             "Content-type": "application/json; charset=UTF-8",
-            "x-token": JSON.parse(localStorage.getItem("auth")).token,
         }
     })
 
@@ -32,6 +31,22 @@ export const licenciaGet = async (id)=>{
 export const licenciasPut = async (id, data)=>{
     const resp = await fetch(`${url}/api/licencias/${id}`,{
         method: 'PUT',
+        body: JSON.stringify(data),
+        headers : {
+            "Content-type": "application/json; charset=UTF-8",
+            "x-token": JSON.parse(localStorage.getItem("auth")).token,
+        }
+    })
+
+    const datos = await resp.json()
+
+    return datos
+
+}
+
+export const licenciasPost = async (data)=>{
+    const resp = await fetch(`${url}/api/licencias/`,{
+        method: 'POST',
         body: JSON.stringify(data),
         headers : {
             "Content-type": "application/json; charset=UTF-8",

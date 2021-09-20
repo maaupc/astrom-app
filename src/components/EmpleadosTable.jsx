@@ -46,7 +46,7 @@ const EmpleadosTable = () => {
                 <tbody>
                     {empleados.datos.map((empleado)=>(
                         
-                        <tr key={empleado._id}>
+                        <tr key={empleado.uid}>
                             <th>{empleado.dni}</th>
                             <td>{empleado.apellido}, {empleado.nombre}</td>
                             <td>{empleado.puesto.nombre}</td>

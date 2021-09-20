@@ -8,7 +8,23 @@ import LicenciasTable from '../components/LicenciasTable'
 
 
 const Admin = () => {
+    const [state, setState] = useState({ rol: "" });
     const [btn, setBtn] = useState("empleados")
+
+
+    useEffect(() => {
+        const datos = JSON.parse(localStorage.getItem("auth"));
+        setState(datos.empleado);
+
+    }, [state.rol]);
+
+    if (state.rol !== "ADMIN_ROLE") {
+        return (
+          <div className="alert alert-danger text-center" role="alert">
+            🚫No autorizado🚫
+          </div>
+        );
+      }
 
 
     return (

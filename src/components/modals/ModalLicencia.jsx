@@ -3,20 +3,23 @@ import { Modal, Button } from "react-bootstrap";
 import {useState} from 'react'
 import { useEffect } from 'react'
 
-import {empleadoGet, } from '../../helpers/empleados'
+import {empleadoGet, empleadoPut} from '../../helpers/empleados'
 
-import { licenciaGet } from '../../helpers/licencias'
+import { licenciaGet, licenciasPut, licenciasPost } from '../../helpers/licencias'
 
-const ModalLicencia = ({show, handleClose, actualizar}) => {
-    const user = JSON.parse(localStorage.getItem("auth"))
+
+const ModalLicencia = ({show, handleClose, actualizar, user}) => {
+    // const user = JSON.parse(localStorage.getItem("auth"))
+    
 
     const [formValue, setFormValue] = useState({
-        empleado: "",
+        empleado: user.empleado.uid,
+        motivo: "",
         fecha: "",
-        motivo: ""
+        activa: false
     })
 
-    const [licencias, setLicencias] = useState([])
+    // const [licencias, setLicencias] = useState([])
 
     const [empleados, setEmpleados] = useState({
         datos: [],
@@ -29,68 +32,165 @@ const ModalLicencia = ({show, handleClose, actualizar}) => {
                 datos: respuesta.empleados,
                 loading:false
             })
-            console.log(respuesta)
         })
     }, [])
 
     useEffect(()=>{
         setFormValue({
-            empleado: "",
+            empleado: user.empleado.uid,
             fecha: "",
-            motivo: ""
+            motivo: "",
+            activa: false
         })
         if(actualizar){
             licenciaGet(actualizar).then((respuesta)=>{
-                console.log(respuesta)
                 setFormValue({
-                    empleado: respuesta.licencias.nombre,
+                    empleado: respuesta.licencias.empleado.uid,
                     motivo: respuesta.licencias.motivo,
-                    fecha: respuesta.licencias.fecha
+                    fecha: respuesta.licencias.fecha,
+                    activa: respuesta.licencias.activa
                 })
-                console.log("algo", formValue)
+                console.log("carga formvalue", formValue)
             })
         }
     }, [actualizar])
 
     const handleChange = ({target})=>{
+        if(target.name ==="activa"){
+            setFormValue({
+                ...formValue,
+                [target.name] : target.checked,
+            })
+
+        }else{
+            setFormValue({
+                ...formValue,
+                [target.name] : target.value
+            })
+        }
 
     }
 
+    const handleSubmit = (e)=>{
+        e.preventDefault();
 
+        if(actualizar){
+            licenciasPut(actualizar, formValue).then((respuesta)=>{
+                if(respuesta.errors){
+                    return window.alert(respuesta.errors[0].msg);
+                }
+                if(respuesta.msg){
+                    window.alert(respuesta.msg)
+                }
+
+                console.log("formValue", formValue)
+
+                empleadoPut(formValue.empleado, {licencia: formValue.activa}).then((respuesta)=>{
+                    if(respuesta.errors){
+                        return window.alert(respuesta.errors[0].msg);
+                    }
+                    if(respuesta.msg){
+                        window.alert(respuesta.msg)
+                    }
+                })
+
+
+                setFormValue({
+                    empleado: user.empleado.uid,
+                    fecha: "",
+                    motivo: "",
+                    activa: false
+                })
+                handleClose()
+            })
+            
+
+
+        }else{
+            console.log("nuevo")
+            licenciasPost(formValue).then((respuesta)=>{
+                console.log(formValue)
+                console.log(respuesta)
+                if(respuesta.errors){
+                    return window.alert(respuesta.errors[0].msg);
+                }
+                if(respuesta.msg){
+                    window.alert(respuesta.msg)
+                }
+                setFormValue({
+                    empleado: user.empleado.uid,
+                    fecha: "",
+                    motivo: "",
+                    activa: false
+                })
+                handleClose()
+                
+            })
+
+        }
+    }
 
 
 
     return (
         <>
-         <Modal show={show} onHide={handleClose}>
+         <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
         <Modal.Header closeButton>
           <Modal.Title>{actualizar? "Ver detalles" : "Nueva licencia"}</Modal.Title>
         </Modal.Header>
 
-            <form action="">
+            <form onSubmit={handleSubmit} >
         <Modal.Body>
             <div>
                 <label>Nombre</label>
+                {user.empleado.rol==="ADMIN_ROLE"
+                ? 
                 <select className="form-select"
                 name="empleado"
                 value={formValue.empleado}
                 onChange={handleChange}
                 required
                 >
+                    <option key={formValue.empleado.uid} value={formValue.empleado.uid} defaultValue>{formValue.empleado.apellido}, {formValue.empleado.nombre}</option>
                     {empleados.datos.map((empleado)=>(
-                        <option key={empleados.datos.uid} value={empleados.datos.dni}>
+                        <option key={empleado.uid} value={empleado.uid}>
                             {empleado.apellido}, {empleado.nombre}
                         </option>
                     ))}
                 </select>
+                :
+                <p>{user.empleado.apellido}, {user.empleado.nombre}</p>
+                }
             </div>
+
+
+
             <div>
                 <label>Fecha</label>
-                <input type="date" className="form-control" value={formValue.fecha} onChange={handleChange}/>
+                {user.empleado.rol==="ADMIN_ROLE"
+                ?
+                <input name="fecha" type="date" className="form-control" value={formValue.fecha} onChange={handleChange}/>
+                :
+                <p>{formValue.fecha}</p>                
+                }
             </div>
             <div>
                 <label>Motivo</label>
-                <textarea readyOnly className="form-control" id="" cols="30" rows="10" value={formValue.motivo} onChange={handleChange}></textarea>
+                {user.empleado.rol==="ADMIN_ROLE"
+                ?
+                <textarea  name="motivo" className="form-control" id="" cols="30" rows="10" value={formValue.motivo} onChange={handleChange} />
+                :
+                <p>{formValue.motivo}</p>
+                }
+            </div>
+            <div className="form-check form-switch">
+                <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault"
+                checked={formValue.activa}
+                value={formValue.activa}
+                onChange={handleChange}
+                disabled={user.empleado.rol==="ADMIN_ROLE"? false : true}
+                name="activa"/>
+                <label className="form-check-label" htmlFor="flexSwitchCheckDefault">{formValue.activa? "VIGENTE" : "NO VIGENTE"}</label>
             </div>
 
         </Modal.Body>
@@ -99,7 +199,7 @@ const ModalLicencia = ({show, handleClose, actualizar}) => {
           <Button variant="secondary" onClick={handleClose}>
             Cerrar
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="success" type="submit" onClick={handleClose} disabled={user.empleado.rol==="ADMIN_ROLE"? false : true}>
             Guardar cambios
           </Button>
         </Modal.Footer>        
