@@ -4,7 +4,7 @@ import { useState } from "react";
 import ModalEmpleado from "./modals/ModalEmpleado";
 
 //Importo conexiones con base de datos
-import { empleadoGet, empleadoPost } from "../helpers/empleados";
+import { empleadoGet } from "../helpers/empleados";
 
 const EmpleadosTable = () => {
   const [empleados, setEmpleados] = useState({
