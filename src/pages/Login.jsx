@@ -49,7 +49,7 @@ const Login = () => {
       postAuth(formValue).then((respuesta) => {
         setLogin(respuesta);
         console.log(respuesta.msg)
-        if(respuesta.msg = "Usuario o contraseña incorrecta"){
+        if(respuesta.msg){
           Alerterror()
         }
       });
