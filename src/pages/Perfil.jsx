@@ -6,17 +6,19 @@ import { actualizarEmpleado, obtenerEmpleado } from "../helpers/perfil";
 import { puestosGet } from "../helpers/puesto";
 import "../style/perfilUsuario.css";
 import logo2 from "../assets/logo2.png";
-import imag from "../assets/imag.jpeg";
+//import imag from "../assets/imag.jpeg";
 
 
 const Perfil = () => {
   const [update, setUpdate] = useState(false);
+ 
   const [perfil, setPerfil] = useState({
     nombre: "",
     apellido:"",
     asociado: "",
     email: "",
-    licencia:""
+    licencia:"",
+    imagen:""
   });
   useEffect(() => {
     const datos = JSON.parse(localStorage.getItem("auth"));
@@ -27,7 +29,8 @@ const Perfil = () => {
         apellido:respuesta.empleado.apellido,
         asociado: respuesta.empleado.dni,
         email: respuesta.empleado.email,
-        licencia:respuesta.empleado.licencia
+        licencia:respuesta.empleado.licencia,
+        imagen:respuesta.empleado.img
       });
       cargarPuesto(respuesta.empleado.puesto);
     });
@@ -35,6 +38,9 @@ const Perfil = () => {
   }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formData = new FormData();
+
+    formData.append('File', perfil.imagen);
     const { nombre, asociado, email } = perfil;
     const datos = JSON.parse(localStorage.getItem("auth"));
     if (nombre && asociado && email) {
@@ -42,6 +48,7 @@ const Perfil = () => {
       });
     }
     setUpdate(false);
+   
   };
 
   const handleChange = (e) => {
@@ -50,6 +57,7 @@ const Perfil = () => {
         ...perfil,
         [e.target.name]: e.target.value,
       });
+      
     }
   };
   const [puesto,setPuesto] = useState({
@@ -97,6 +105,7 @@ const Perfil = () => {
                return(" - ");
          }
    }
+
   
   return (
     <>
@@ -120,10 +129,14 @@ const Perfil = () => {
                     ></i>
                   </div>
                   <div className="card-body card-img">
-                    <img src={imag} alt="imgPerfil" className="imgPerfil" />
-                    <h2>{perfil.nombre} {perfil.apellido}</h2>
+                   
                     {/* <h2>Norali</h2> */}
                     <form onSubmit={handleSubmit}>
+                    <div className="custom-file">
+                 <input type="file" name="imagen" value={perfil.imagen} onChange={handleChange} disabled={update ? false : true}/><img src={perfil.imagen} alt="imgPerfil" className="imgPerfil"   />
+
+                  </div> 
+                  <h2>{perfil.nombre} {perfil.apellido}</h2>
                       <div className="form-group mb-2">
                         <strong>ID Asociado</strong>
                         <input

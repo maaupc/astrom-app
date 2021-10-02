@@ -1,3 +1,4 @@
+
 const url = "http://localhost:8080/api/empleados";
 
 //traer los datos del empleado por su id
@@ -16,6 +17,7 @@ export const crearEmpleado = async (data) => {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
+      "body": "formData",
       "Content-type": "application/json; charset=UTF-8",
       "x-token": JSON.parse(localStorage.getItem("auth")).token,
     },
