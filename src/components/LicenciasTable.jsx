@@ -19,6 +19,7 @@ const LicenciasTable = () => {
 
     
     useEffect(() => {
+
         licenciasGet().then((respuesta)=>{
             setLicencias({
                 datos: respuesta.licencias,
@@ -26,15 +27,22 @@ const LicenciasTable = () => {
             })
         })
 
-    }, [])
+        // console.log("Show cambio de estado a", show)
+
+    }, [show])
+
+    // useEffect(() => {
+    //     console.log("Show cambio de estado a", show)
+    // }, [show])
 
     
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     const licenciasUsuario = licencias.datos.filter((licencia)=>{
-        return licencia.empleado.uid === user.empleado.uid
+        return licencia.empleado._id === user.empleado.uid
     })
+
 
 
     return (
@@ -44,7 +52,8 @@ const LicenciasTable = () => {
             </div>
             <button className="btn btn-warning"
             onClick={()=>{handleShow(); setActualizar("")}}
-            hidden={user.empleado.rol==="ADMIN_ROLE"? false : true} >
+            // hidden={user.empleado.rol==="ADMIN_ROLE"? false : true}
+            >
             Cargar Licencia
             </button>
 
@@ -60,8 +69,10 @@ const LicenciasTable = () => {
                 <thead className="table-dark">
                     <tr>
                         <th>DNI</th>
+                        <th></th>
                         <th>EMPLEADO</th>
-                        <th>FECHA</th>
+                        <th>FECHA INICIO</th>
+                        <th>FECHA FIN</th>
                         <th>ESTADO</th>
                         <th>LICENCIA</th>
                     </tr>
@@ -72,8 +83,10 @@ const LicenciasTable = () => {
                         {licencias.datos.map((licencia)=>(
                             <tr key={licencia._id}>
                                 <th>{licencia.empleado.dni}</th>
+                                <th>{licencia.empleado.apellido[0]}{licencia.empleado.nombre[0]}</th>
                                 <th>{licencia.empleado.apellido}, {licencia.empleado.nombre}</th>
-                                <td>{licencia.fecha}</td>
+                                <td>{licencia.inicio}</td>
+                                <td>{licencia.fin}</td>
                                 <td>{licencia.activa? "VIGENTE" : "NO VIGENTE"}</td>
                                 <th>
                                     <button className="btn btn-succes" onClick={()=>{handleShow(); setActualizar(licencia._id)}}>

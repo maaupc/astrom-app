@@ -15,7 +15,8 @@ const ModalLicencia = ({show, handleClose, actualizar, user}) => {
     const [formValue, setFormValue] = useState({
         empleado: user.empleado.uid,
         motivo: "",
-        fecha: "",
+        inicio: "",
+        fin: "",
         activa: false
     })
 
@@ -38,16 +39,18 @@ const ModalLicencia = ({show, handleClose, actualizar, user}) => {
     useEffect(()=>{
         setFormValue({
             empleado: user.empleado.uid,
-            fecha: "",
+            inicio: "",
+            fin: "",
             motivo: "",
             activa: false
         })
         if(actualizar){
             licenciaGet(actualizar).then((respuesta)=>{
                 setFormValue({
-                    empleado: respuesta.licencias.empleado.uid,
+                    empleado: respuesta.licencias.empleado,
                     motivo: respuesta.licencias.motivo,
-                    fecha: respuesta.licencias.fecha,
+                    inicio: respuesta.licencias.inicio,
+                    fin: respuesta.licencias.fin,
                     activa: respuesta.licencias.activa
                 })
                 console.log("carga formvalue", formValue)
@@ -69,6 +72,8 @@ const ModalLicencia = ({show, handleClose, actualizar, user}) => {
             })
         }
 
+        console.log(formValue)
+
     }
 
     const handleSubmit = (e)=>{
@@ -76,6 +81,7 @@ const ModalLicencia = ({show, handleClose, actualizar, user}) => {
 
         if(actualizar){
             licenciasPut(actualizar, formValue).then((respuesta)=>{
+                console.log("PUT LICENCIAS",formValue)
                 if(respuesta.errors){
                     return window.alert(respuesta.errors[0].msg);
                 }
@@ -83,9 +89,8 @@ const ModalLicencia = ({show, handleClose, actualizar, user}) => {
                     window.alert(respuesta.msg)
                 }
 
-                console.log("formValue", formValue)
 
-                empleadoPut(formValue.empleado, {licencia: formValue.activa}).then((respuesta)=>{
+                empleadoPut(formValue.empleado._id, {licencia: formValue.activa}).then((respuesta)=>{
                     if(respuesta.errors){
                         return window.alert(respuesta.errors[0].msg);
                     }
@@ -97,7 +102,8 @@ const ModalLicencia = ({show, handleClose, actualizar, user}) => {
 
                 setFormValue({
                     empleado: user.empleado.uid,
-                    fecha: "",
+                    inicio: "",
+                    fin: "",
                     motivo: "",
                     activa: false
                 })
@@ -107,10 +113,8 @@ const ModalLicencia = ({show, handleClose, actualizar, user}) => {
 
 
         }else{
-            console.log("nuevo")
+
             licenciasPost(formValue).then((respuesta)=>{
-                console.log(formValue)
-                console.log(respuesta)
                 if(respuesta.errors){
                     return window.alert(respuesta.errors[0].msg);
                 }
@@ -119,7 +123,8 @@ const ModalLicencia = ({show, handleClose, actualizar, user}) => {
                 }
                 setFormValue({
                     empleado: user.empleado.uid,
-                    fecha: "",
+                    inicio: "",
+                    fin: "",
                     motivo: "",
                     activa: false
                 })
@@ -151,7 +156,6 @@ const ModalLicencia = ({show, handleClose, actualizar, user}) => {
                 onChange={handleChange}
                 required
                 >
-                    <option key={formValue.empleado.uid} value={formValue.empleado.uid} defaultValue>{formValue.empleado.apellido}, {formValue.empleado.nombre}</option>
                     {empleados.datos.map((empleado)=>(
                         <option key={empleado.uid} value={empleado.uid}>
                             {empleado.apellido}, {empleado.nombre}
@@ -166,17 +170,26 @@ const ModalLicencia = ({show, handleClose, actualizar, user}) => {
 
 
             <div>
-                <label>Fecha</label>
-                {user.empleado.rol==="ADMIN_ROLE"
+                <label>Fecha inicio</label>
+                {user.empleado.rol==="ADMIN_ROLE" || !actualizar
                 ?
-                <input name="fecha" type="date" className="form-control" value={formValue.fecha} onChange={handleChange}/>
+                <input name="inicio" type="date" className="form-control" value={formValue.inicio} onChange={handleChange}/>
                 :
-                <p>{formValue.fecha}</p>                
+                <p>{formValue.inicio}</p>                
+                }
+            </div>
+            <div>
+                <label>Fecha fin</label>
+                {user.empleado.rol==="ADMIN_ROLE" || !actualizar
+                ?
+                <input name="fin" type="date" className="form-control" value={formValue.fin} onChange={handleChange}/>
+                :
+                <p>{formValue.fin}</p>                
                 }
             </div>
             <div>
                 <label>Motivo</label>
-                {user.empleado.rol==="ADMIN_ROLE"
+                {user.empleado.rol==="ADMIN_ROLE" || !actualizar
                 ?
                 <textarea  name="motivo" className="form-control" id="" cols="30" rows="10" value={formValue.motivo} onChange={handleChange} />
                 :
@@ -199,7 +212,7 @@ const ModalLicencia = ({show, handleClose, actualizar, user}) => {
           <Button variant="secondary" onClick={handleClose}>
             Cerrar
           </Button>
-          <Button variant="success" type="submit" onClick={handleClose} disabled={user.empleado.rol==="ADMIN_ROLE"? false : true}>
+          <Button variant="success" type="submit" onClick={handleClose} disabled={user.empleado.rol==="ADMIN_ROLE" || !actualizar ? false : true}>
             Guardar cambios
           </Button>
         </Modal.Footer>        
