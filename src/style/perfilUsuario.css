@@ -24,15 +24,15 @@ h1, h2{
       background-color: #333333;
       color: white;
 }
-.card .imgPerfil{
+.card-form .imgPerfil{
       border-radius: 50%;
       border: white 1px solid;
       object-fit:cover center;
       height: auto;
       width: 200px;
       height: 180px;
-      display: flex;
-      margin:auto; 
+      /* display: flex;
+      margin:auto;  */
 }
 .card .i-pencil{
    color: #4DAAA7;
@@ -93,7 +93,7 @@ margin-left: 30%;
       top: 0;
       height:min-content ;
 }
-@media (max-width: 780px) { .row-principal{
+@media screen and (max-width: 780px) { .row-principal{
      position:relative;
      height: max-content;
   } }

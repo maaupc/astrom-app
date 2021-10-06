@@ -4,14 +4,15 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { actualizarEmpleado, obtenerEmpleado } from "../helpers/perfil";
 import { puestosGet } from "../helpers/puesto";
+import FormImagen from "../components/FormImg.jsx";
+
 import "../style/perfilUsuario.css";
 import logo2 from "../assets/logo2.png";
-//import imag from "../assets/imag.jpeg";
 
 
 const Perfil = () => {
   const [update, setUpdate] = useState(false);
- 
+  const [image, setImage] = useState('');
   const [perfil, setPerfil] = useState({
     nombre: "",
     apellido:"",
@@ -19,11 +20,16 @@ const Perfil = () => {
     email: "",
     licencia:"",
     imagen:""
+  
   });
   useEffect(() => {
     const datos = JSON.parse(localStorage.getItem("auth"));
       console.log(datos)
     obtenerEmpleado(datos.empleado.uid).then((respuesta) => {
+          console.log("entro primero por aca")
+          if(respuesta.empleado.rol === "ADMIN_ROLE"){
+                return alert("El admin no puede cuenta con permisos en esta seccion")
+          }
       setPerfil({
         nombre: respuesta.empleado.nombre,
         apellido:respuesta.empleado.apellido,
@@ -33,14 +39,14 @@ const Perfil = () => {
         imagen:respuesta.empleado.img
       });
       cargarPuesto(respuesta.empleado.puesto);
+      console.log(perfil.imagen)
     });
     
   }, []);
+  
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData();
-
-    formData.append('File', perfil.imagen);
     const { nombre, asociado, email } = perfil;
     const datos = JSON.parse(localStorage.getItem("auth"));
     if (nombre && asociado && email) {
@@ -48,7 +54,6 @@ const Perfil = () => {
       });
     }
     setUpdate(false);
-   
   };
 
   const handleChange = (e) => {
@@ -56,8 +61,8 @@ const Perfil = () => {
       setPerfil({
         ...perfil,
         [e.target.name]: e.target.value,
+
       });
-      
     }
   };
   const [puesto,setPuesto] = useState({
@@ -95,15 +100,13 @@ const Perfil = () => {
  
 
    const licenciaEstado=(licen)=>{
+         console.log(licen)
          if(licen==="true"){
                return ("Activa");
-         }
-         if(licen==="false"){
-               return ("No cuenta con una licencia Activa") ;
-         }
+        }
          else{
-               return(" - ");
-         }
+               return ("No Activa") ;
+         }      
    }
 
   
@@ -112,7 +115,7 @@ const Perfil = () => {
       <div className="container">
         <div className="row">
           <div className="col">
-            <h1>Mi Perfil</h1>
+            <h1 className="title">Mi Perfil</h1>
             <hr />
           </div>
         </div>
@@ -129,14 +132,29 @@ const Perfil = () => {
                     ></i>
                   </div>
                   <div className="card-body card-img">
-                   
-                    {/* <h2>Norali</h2> */}
                     <form onSubmit={handleSubmit}>
-                    <div className="custom-file">
-                 <input type="file" name="imagen" value={perfil.imagen} onChange={handleChange} disabled={update ? false : true}/><img src={perfil.imagen} alt="imgPerfil" className="imgPerfil"   />
-
-                  </div> 
-                  <h2>{perfil.nombre} {perfil.apellido}</h2>
+                    <div className="text-center">
+                    <FormImagen setImage={setImage}/>
+                    <div className="d-flex justify-content-center align-items-end ml-4 m-2 card-form">
+                        <div
+                            className="rounded-circle overflow-hidden d-flex align-items-center "
+            
+                        >
+                            <img className="img-fluid " src={perfil.imagen} alt="profile" className="imgPerfil"
+                         />
+                        </div>
+                        <label htmlFor="file-input" style={{ cursor: 'pointer' }}>
+                            <img
+                                src="https://icongr.am/feather/camera.svg?size=128&color=293f8e"
+                                alt="camera edit"
+                                width="20"
+                              
+                            />
+                        </label>
+                       
+                    </div>
+                </div>
+                    <h2 className="title">{perfil.nombre} {perfil.apellido}</h2>
                       <div className="form-group mb-2">
                         <strong>ID Asociado</strong>
                         <input
@@ -280,8 +298,8 @@ const Perfil = () => {
                         alt="logo-astrom"
                         className="img-logo"
                       /> {" "}
-                      Trabajamos con el objetivo de ayudar a nuestros empleados y clientes en una mejor hambiente, desarrollando nuestra actividad de manera sostenible y ética.
-                      Nuestro marco estratégico integra la Responsabilidad Social Corporativa y se fundamenta en cuatro pilares: clientes, empleados, proveedores y entorno social. <Link className="nav-link" to="/Error404"><i class="fa fa-arrow-circle-right" aria-hidden="true" id="i-verMas">Ver mas</i></Link> 
+                      Trabajamos con el objetivo de ayudar a nuestros empleados y clientes en una mejor hambiente.
+                      Nuestro marco estratégico integra la Responsabilidad Social Corporativa y se fundamenta en cuatro pilares: clientes, empleados, proveedores y entorno social. <Link className="nav-link" to="/Error404"><i className="fa fa-arrow-circle-right" aria-hidden="true" id="i-verMas">Ver mas</i></Link> 
                     </p>
       
                   </div>

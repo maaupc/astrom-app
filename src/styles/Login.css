@@ -5,8 +5,8 @@
 }
 
 body{
-      background-image: url(https://i.postimg.cc/1t4P0kwp/pexels-pixabay-373543.jpg);
-      background-repeat: no-repeat;
+     /* background-image: url(https://i.postimg.cc/1t4P0kwp/pexels-pixabay-373543.jpg);
+     */ background-repeat: no-repeat;
       background-position: center center;
       background-size: cover;
       height: 100vh;
