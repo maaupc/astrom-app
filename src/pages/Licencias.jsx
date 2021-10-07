@@ -3,13 +3,12 @@ import LicenciasTable from '../components/LicenciasTable'
 
 const Licencias = () => {
     return (
-        <div className="container">
+        <div className="container-fluid">
             <div className="row">
                 <div className="col-12">
                     <LicenciasTable/>
                 </div>
             </div>
-
         </div>
 
     )

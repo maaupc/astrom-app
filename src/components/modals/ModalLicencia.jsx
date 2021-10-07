@@ -53,7 +53,6 @@ const ModalLicencia = ({show, handleClose, actualizar, user}) => {
                     fin: respuesta.licencias.fin,
                     activa: respuesta.licencias.activa
                 })
-                console.log("carga formvalue", formValue)
             })
         }
     }, [actualizar])
@@ -139,8 +138,8 @@ const ModalLicencia = ({show, handleClose, actualizar, user}) => {
 
     return (
         <>
-         <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
-        <Modal.Header closeButton>
+         <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false} dialogClassName="modalPrueba">
+        <Modal.Header>
           <Modal.Title>{actualizar? "Ver detalles" : "Nueva licencia"}</Modal.Title>
         </Modal.Header>
 

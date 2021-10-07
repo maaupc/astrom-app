@@ -13,12 +13,6 @@ code {
 }
 
 /* ADMIN PAGE STYLE */
-.admin-header{
-  background-color: #3F8F8B;
-  color: white;
-
-}
-
 .admin-button{
   background-color: #333333;
   width: 100%;
@@ -26,4 +20,57 @@ code {
 
 .admin-button i{
   color: white;
+}
+
+/* LICENCIA & PUESTOS STYLES */
+.button-header{
+  padding: 20px;
+  background-color: #3F8F8B;
+  color: white;
+}
+
+.licencias-button{
+  background-color: #333333 !important;
+  color: white !important;
+  border-radius: 25px !important;
+}
+
+.licencias-header{
+  height: 150px;
+  background-image: url('https://image.freepik.com/foto-gratis/hombre-joven-primer-que-busca-vinilos-tienda_23-2148237245.jpg');
+  background-color: #333333;
+  background-position-y: center;
+  background-size: cover;
+  color: white;
+
+}
+
+
+.btn-delete{
+  color: rgb(110, 17, 17) !important;
+}
+
+.btn-edit{
+  color: #3F8F8B !important;
+}
+
+.name-ab{
+  color: white;
+  background: #3F8F8B;
+  border-radius: 25px;
+  width: 25px;
+  height: 25px;
+  font-size: 12px;
+}
+
+
+/* GENERAL MODAL STYLES */
+.modal-header{
+  background-color: #3F8F8B !important;
+  color: white !important;
+}
+
+.modal-footer{
+  background-color: #3F8F8B !important;
+  color: white !important;
 }

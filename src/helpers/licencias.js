@@ -59,3 +59,17 @@ export const licenciasPost = async (data)=>{
     return datos
 
 }
+
+export const licenciaDelete = async (id)=>{
+    const resp = await fetch(`${url}/api/licencias/${id}`, {
+        method: 'DELETE',
+        headers:{
+            "Content-type": "application/json; charset=UTF-8",
+            "x-token": JSON.parse(localStorage.getItem("auth")).token
+        }
+    })
+
+    const datos = resp.json()
+
+    return datos
+}

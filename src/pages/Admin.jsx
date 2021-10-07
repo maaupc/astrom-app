@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 //Importacion de componentes
 import EmpleadosTable from '../components/EmpleadosTable'
 import LicenciasTable from '../components/LicenciasTable'
+import PuestosTable from '../components/PuestosTable'
 
 
 const Admin = () => {
@@ -28,18 +29,18 @@ const Admin = () => {
 
 
     return (
-        <div className="container">
+        <div className="container-fluid">
             <div className="row">
-                <div className="col-12 admin-header">
+                {/* <div className="col-12 licencias-header">
                 <h1>Admin</h1>
-                </div>
+                </div> */}
                 <div className="col-4 d-grid gap-2 admin-button">
                     <button className="btn" onClick={()=>{setBtn("empleados")}}>
-                        <i className="fa fa-user " aria-hidden="true"></i>
+                        <i className="fa fa-users " aria-hidden="true"></i>
                     </button></div>
                 <div className="col-4 d-grid gap-2 admin-button">
-                    <button className="btn" onClick={()=>{setBtn("empleados")}}>
-                    <i className="fa fa-money" aria-hidden="true"></i>
+                    <button className="btn" onClick={()=>{setBtn("puestos")}}>
+                        <i className="fa fa-briefcase" aria-hidden="true"></i>
                     </button>
                 </div>
                 <div className="col-4 d-grid gap-2 admin-button">
@@ -52,7 +53,8 @@ const Admin = () => {
             {/* ROMPIENDO TODO */}
             <div className="row">
                 {{empleados: <div className="col-12"> <EmpleadosTable /> </div>,
-                  licencias: <div className="col-12"> <LicenciasTable /> </div>
+                  licencias: <div className="col-12"> <LicenciasTable /> </div>,
+                  puestos: <div className="col-12"> <PuestosTable /> </div>,
             }[btn]}
             </div>
                 
