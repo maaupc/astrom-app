@@ -69,13 +69,14 @@ body{
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
     height: 30rem;
     border: #3F8F9B 2px solid;
+    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 20px #3F8F9B, 0 0 30px #49FF18, 0 0 75px #49ff18, 0 0 55px #3F8F9B ;
 }
 
 .login-form-2 h3{
     text-align: center;
     font-size:40px;
     color: #FFFFFF;
-    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 20px #3F8F9B, 0 0 30px #49FF18, 0 0 75px #49ff18, 0 0 55px #3F8F9B ;
+   
 }
 
 

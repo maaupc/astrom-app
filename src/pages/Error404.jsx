@@ -1,35 +1,52 @@
 import React from 'react'
 import "../style/error.css"
 import "animate.css"
+import logo from "../assets/upmy.svg"
+import { Link} from "react-router-dom";
 
 const Error404 = () => {
 
       return (
             <>
             <div className="container-fluid container-error" >
-            
-                  <div className="row ">
-                        <div className="col col-md-6">
+                  <div className="row">
+                  <div className="col col-md-6 primary">
                               <div className="div1-error">
-                                   <img src="https://i.postimg.cc/T16bT0bF/Whats-App-Image-2021-10-03-at-23-34-22.jpg" alt="" />
+                                   <img src={logo} alt="logoError" />
+                                   
                               </div>
                         </div>
-                        <div className="col col-md-6  text-align-center">
+                        <div className="col col-md-6  col-sm-12 text-align-center">
+                        
                               <div className="div2-error">
-                              <p className="p1-error">Wooops! Pagina no encontrada</p>
-                              <p className="p2-error">404</p>
-                              <p className="p3-error">
-                                    Lo sentimos, pero la pagina solicitada no fue encontrada
+                              <p className="p1-error">Wops! Pagina no encontrada ...</p> 
+                              <p className="p2-error"> 404 </p>
+                               
+                              <p className="p3-error" >
+                                    Lo sentimos, la pagina solicitada no fue encontrada 🤧
                               </p>
+                              <div className="div4-error">
+                              <div className="icono-error"> 
+                              <i class="fa fa-instagram" aria-hidden="true"></i>
+                              </div>
+                              <div className="icono-error ">
+                              <i class="fa fa-linkedin" aria-hidden="true"></i>
+                              </div>
+                              <div className="icono-error">
+                              <i class="fa fa-github" aria-hidden="true"></i>
+                               </div>
+                              <div className="icono-error"> 
+                              <i class="fa fa-facebook" aria-hidden="true"></i>
+                              </div>
+                              </div>
+                              
                               <div className="div3-error">
-                               <button className="btn btn-error">Volver</button>
+                               <button className="btn btn-error"> <Link className="nav-link p-0" to="/"> IR A HOME  <i class="fa fa-arrow-right" aria-hidden="true"></i> </Link>  </button>
                               </div>
                             
                               </div>      
-                        </div>
-                       
-                  </div>     
-                
+                        </div>     
+                  </div>  
             </div>
                
             </>

@@ -1,3 +1,4 @@
+
 .container-error{
 height: 100vh;
 width: 100vw;
@@ -7,55 +8,195 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 text-transform: uppercase;
-font-weight: bold;
+ background-image: linear-gradient(to right bottom, #111212, #1c1e1d, #282928, #343533, #41413f);  
+background-size: contain;
+background-repeat: no-repeat;
 }
 .div1-error{
-      width: 100%;
-      height: 100%;   
+      width:  420px;
+      height: 100%; 
+      clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+      border-bottom: #4DAAA7 2px solid;
+      border-top: #4DAAA7 2px solid; 
 }
 .div1-error img{
-      width: 100%;
-      height: 100%;
-      margin-left: 100px;
-
-} 
+      width:100%;
+      height: 100%; 
+      float: right;  
+}
 .div2-error{
-      width: 100%;
+      width: 420px;
       height: 100%;
       display: flex;
       flex-direction: column;
       flex-wrap: nowrap;
       justify-content: center;
-      align-items: flex-start;
 }
 
 .p1-error{
-color:crimson;
+color:#4DAAA7;
 margin-bottom: 0;
+text-justify: distribute;
 }
 .p2-error{
       margin-top: 0;
-      font-size: 150px;
+      font-size: 120px;
       margin-bottom: 0;
-     color:rgba(0,0,0,.6);  
+     color: #545283;
+     font-family: 'Poppins', sans-serif;
+     text-align: center;
+     font-weight: bold;
+     opacity: 0,6;
+     filter: alpha(opacity=60);
 }
 .p3-error{
-      margin-top: 0;
-      color:crimson;
+      margin-bottom: 5px;
+      color:#4DAAA7;
+      text-justify: distribute;
+      display: flex;
+      align-items: flex-start;
 }
-
+.div4-error{
+      margin-top: 10px;
+      width: 100%;
+      height: auto;
+}
+.icono-error{
+      display: grid;
+      place-items: center ;
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 50%;
+      opacity: 0.5;
+      border:#4DAAA7 solid 2px;
+      backface-visibility: hidden;
+      margin: 5px;
+      display: inline-block;
+      text-align: center;
+      line-height:50px;
+}
+.icono-error:hover{
+      opacity: 1.0;
+      background-color: white;
+}
+.fa-instagram{
+ background:linear-gradient(to right top, #f28d17, #ff613b, #ff2a63, #ee0090, #bb1abc);;
+ color: white;
+}
+.fa-linkedin{
+      color: #0081CF;
+}
+.fa-github{
+      color: black;
+}
+.fa-facebook{
+  color: #009EFA;
+}
 .div3-error{
-      width: 30%;
+      width: 100%;
+      height: 46px;
+      margin-top: 30px;
+      display: flex;
+     justify-content:center;
+   
 }
 .btn-error{
-      background-color:#4DAAA7 ;
-      color: white;
+      width: 80%;
+      background-color:#545283;
       cursor: pointer;
-      width: 200px;
       border-radius: 30px;
       padding: 10px;
+      font-weight: bold;
+      color: white;    
+}
+.btn-error .nav-link{
+      color: white;
 }
 .btn-error:hover{
-      background-color: #41413F;
       color: white;
+      background-color:transparent;
+      border: solid 2px white;
+     
+}
+
+@media screen  and ( max-width:700px){
+      .div1-error {
+            display: none;
+      } 
+      .p2-error{
+            font-size: 80px;
+      }
+      .div2-error{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 0;
+      }
+      .icono-error{
+      width: 2.3rem;
+      height:2.3rem;
+      line-height:30px;
+      margin: 10px;
+      }
+      .btn-error{
+            display: inline-block;
+            padding: 5px; 
+            width: 300px; 
+            font-size: 12px;
+      }
+      .p3-error{
+            display: inline-block;
+            font-size: 12px;
+      }
+      .col{
+            flex: none;
+      }
+}
+@media screen and (max-width:810px) {
+      .div1-error {
+            display: none;
+      } 
+      .div1-error igm{
+            display: none;
+      }
+      .div2-error{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 0;
+      }
+      .icono-error{
+      width: 2.3rem;
+      height:2.3rem;
+      line-height:30px;
+      margin: 10px;
+      }
+      .btn-error{
+            display: inline-block;
+            padding: 10px; 
+            width: 300px; 
+      }
+      .col{
+            flex: none;
+      }
+      
+}
+@media screen and (max-width: 810px){
+      .col-md-6 .primary{
+         display: none;
+        }
+        .col-md-6 {
+              width: 100%;
+        }
+}
+@media screen and (max-width:360px){
+      
+      .btn-error{
+            width: 180px;
+      }
+      .col{
+            flex: none!important;
+      }
 }
