@@ -93,15 +93,15 @@ const ModalPuesto = ({show, handleClose, actualizar}) => {
                     <Modal.Body>
                         <div>
                              <label>Nombre</label>
-                             <input name="nombre" type="text" className="form-control" value={formValue.nombre} onChange={handleChange}/>
+                             <input name="nombre" type="text" className="form-control" value={formValue.nombre} onChange={handleChange} maxLength="50"/>
                         </div>
                         <div>
                             <label>Horarios</label>
-                            <input name="horarios" type="text" className="form-control" value={formValue.horarios} onChange={handleChange}/>
+                            <input name="horarios" type="text" className="form-control" value={formValue.horarios} onChange={handleChange} maxLength="50"/>
                         </div>
                         <div>
                             <label>Salario</label>
-                            <input name="salario" type="text" className="form-control" value={formValue.salario} onChange={handleChange}/>
+                            <input name="salario" type="text" className="form-control" value={formValue.salario} onChange={handleChange} maxLength="10"/>
                         </div>
                     </Modal.Body>
 

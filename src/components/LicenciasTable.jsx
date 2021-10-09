@@ -19,7 +19,6 @@ const LicenciasTable = () => {
 
     
     useEffect(() => {
-
         licenciasGet().then((respuesta)=>{
             setLicencias({
                 datos: respuesta.licencias,
@@ -27,13 +26,8 @@ const LicenciasTable = () => {
             })
         })
 
-        // console.log("Show cambio de estado a", show)
 
     }, [show])
-
-    // useEffect(() => {
-    //     console.log("Show cambio de estado a", show)
-    // }, [show])
 
     
     const handleClose = () => setShow(false);
@@ -66,28 +60,33 @@ const LicenciasTable = () => {
 
     return (
         <>
+        <div className="position-relative">
             <div className="licencias-header">
-            <h1>Licencias</h1>
+                <div className="line-header"></div>
+                <h1 className="h1-header">Licencias</h1>
             </div>
+                <div className="overlay-header"></div>
             <div className="button-header d-flex justify-content-end">
-                <button className="btn licencias-button"
+                <button className="btn agregar-button"
                 onClick={()=>{handleShow(); setActualizar("")}}
                 // hidden={user.empleado.rol==="ADMIN_ROLE"? false : true}
                 >
                 Cargar Licencia
                 </button>
             </div>
+            
+        </div>
 
             {licencias.loading ? (
-                <div className="alert alert-success text-center" role="alert">
-                    Cargando...
+                <div className="d-flex justify-content-center">
+                    <img src="https://www.grupoyomar.com/img/loading.gif" className="gif-loading"/>
                 </div>
             ) : (
 
                 <div className="table-responsive">
 
             <table className="table">
-                <thead className="table-dark">
+                <thead >
                     <tr>
                         <th>DNI</th>
                         <th></th>
@@ -100,12 +99,12 @@ const LicenciasTable = () => {
                 </thead>
                 {user.empleado.rol==="ADMIN_ROLE"
                 ? 
-                <tbody>
+                <tbody className="table-content">
                         {licencias.datos.map((licencia)=>(
                             <tr key={licencia._id}>
                                 <th>{licencia.empleado.dni}</th>
-                                <th><div className="d-flex justify-content-center align-items-center name-ab">{licencia.empleado.apellido[0]}{licencia.empleado.nombre[0]}</div></th>
-                                <th>{licencia.empleado.apellido}, {licencia.empleado.nombre}</th>
+                                <th><div className="d-flex justify-content-center align-items-center name-ab">{licencia.empleado.nombre[0]}{licencia.empleado.apellido[0]}</div></th>
+                                <td>{licencia.empleado.apellido}, {licencia.empleado.nombre}</td>
                                 <td>{licencia.inicio}</td>
                                 <td>{licencia.fin}</td>
                                 <td>{licencia.activa? "VIGENTE" : "NO VIGENTE"}</td>

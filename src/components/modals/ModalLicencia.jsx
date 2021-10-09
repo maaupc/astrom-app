@@ -130,7 +130,7 @@ const ModalLicencia = ({show, handleClose, actualizar, user}) => {
                 handleClose()
                 
             })
-
+            
         }
     }
 
@@ -157,7 +157,10 @@ const ModalLicencia = ({show, handleClose, actualizar, user}) => {
                 >
                     {empleados.datos.map((empleado)=>(
                         <option key={empleado.uid} value={empleado.uid}>
-                            {empleado.apellido}, {empleado.nombre}
+                            {actualizar ? formValue.empleado.apellido+", "+formValue.empleado.nombre                                
+                            :
+                            empleado.apellido+", "+empleado.nombre
+                            }
                         </option>
                     ))}
                 </select>
@@ -190,7 +193,7 @@ const ModalLicencia = ({show, handleClose, actualizar, user}) => {
                 <label>Motivo</label>
                 {user.empleado.rol==="ADMIN_ROLE" || !actualizar
                 ?
-                <textarea  name="motivo" className="form-control" id="" cols="30" rows="10" value={formValue.motivo} onChange={handleChange} />
+                <textarea  name="motivo" className="form-control" id="" cols="30" rows="10" value={formValue.motivo} onChange={handleChange} maxLength="300"/>
                 :
                 <p>{formValue.motivo}</p>
                 }

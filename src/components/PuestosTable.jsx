@@ -21,8 +21,7 @@ const PuestosTable = () => {
                 loading: false
             })
         })
-        
-    }, [])
+    }, [show])
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -49,18 +48,26 @@ const PuestosTable = () => {
 
     return (
         <div>
-            <h1>Puestos</h1>
-            <button className="btn btn-warning" onClick={()=>{handleShow(); setActualizar("")}}>Agregar puesto</button>
+            <div className="position-relative">
+                <div className="puestos-header">
+                    <div className="line-header"></div>
+                    <h1 className="h1-header">Puestos</h1>
+                </div>
+                <div className="overlay-header"></div>
+                <div className="button-header d-flex justify-content-end">
+                    <button className="btn agregar-button" onClick={()=>{handleShow(); setActualizar("")}}>Agregar puesto</button>
+                </div>
+            </div>
 
             {puestos.loading ? (
-                <div className="alert alert-success text-center" role="alert">
-                Cargando...
+                <div className="d-flex justify-content-center">
+                    <img src="https://www.grupoyomar.com/img/loading.gif" className="gif-loading"/>
                 </div>
             ) : 
             (
                 <div className="table-responsive">
                     <table className="table">
-                        <thead className="table-dark">
+                        <thead>
                             <tr>
                                 <th>NOMBRE</th>
                                 <th>HORARIOS</th>
@@ -68,23 +75,23 @@ const PuestosTable = () => {
                                 <th>ACCION</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className="table-content">
                             {
-                                puestos.datos.map((puesto)=>(
-                                    <tr key={puesto._id}>
-                                        <th>{puesto.nombre}</th>
-                                        <th>{puesto.horarios}</th>
-                                        <th>$ {puesto.salario}</th>
-                                        <th>
-                                            <button className="btn btn-succes btn-edit" onClick={()=>{handleShow(); setActualizar(puesto._id)}}>
-                                                <i className="fa fa-pencil" aria-hidden="true"></i>
-                                            </button>
-                                            <button className="btn btn-succes btn-delete" onClick={()=>{borrarPuesto(puesto._id)}} >
-                                                <i className="fa fa-trash" aria-hidden="true"></i>
-                                            </button>
-                                        </th>
-                                    </tr>
-                                ))
+                                    puestos.datos.map((puesto)=>(
+                                        <tr key={puesto._id}>
+                                            <th>{puesto.nombre}</th>
+                                            <td>{puesto.horarios}</td>
+                                            <td>$ {puesto.salario}</td>
+                                            <th>
+                                                <button className="btn btn-succes btn-edit" onClick={()=>{handleShow(); setActualizar(puesto._id)}}>
+                                                    <i className="fa fa-pencil" aria-hidden="true"></i>
+                                                </button>
+                                                <button className="btn btn-succes btn-delete" onClick={()=>{borrarPuesto(puesto._id)}} >
+                                                    <i className="fa fa-trash" aria-hidden="true"></i>
+                                                </button>
+                                            </th>
+                                        </tr>
+                                    ))
                             }
     
                         </tbody>

@@ -1,7 +1,7 @@
 const url = "http://localhost:8080";
 
-export const licenciasGet = async ()=>{
-    const resp = await fetch(`${url}/api/licencias`,{
+export const licenciasGet = async (limite)=>{
+    const resp = await fetch(`${url}/api/licencias?limite=${limite}`,{
         method: 'GET',
         headers : {
             "Content-type": "application/json; charset=UTF-8",

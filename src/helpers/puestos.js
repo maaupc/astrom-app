@@ -1,7 +1,7 @@
 const url = "http://localhost:8080";
 
-export const puestosGet = async ()=>{
-    const resp = await fetch(`${url}/api/puestos`, {
+export const puestosGet = async (limite)=>{
+    const resp = await fetch(`${url}/api/puestos?limite=${limite}`, {
         method: 'GET',
         headers: {
             "Content-type": "application/json; charset=UTF-8",
