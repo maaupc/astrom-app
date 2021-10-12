@@ -66,7 +66,7 @@ const Navbar = () => {
             </li>
 
             <li>
-              <Link to="/error404" className="nav-links" onClick={closeMobileMenu}>
+              <Link to="/nosotros" className="nav-links" onClick={closeMobileMenu}>
                 Nosotros
               </Link>
             </li>

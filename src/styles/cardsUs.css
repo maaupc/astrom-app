@@ -1,0 +1,121 @@
+.container_cards-nosotros {
+  display: grid;
+  width: 100%;
+  align-items: center;
+}
+
+.animated__cards-nosotros {
+  display: grid;
+  gap: 50px;
+  width: 90%;
+  margin: auto auto;
+  grid-auto-rows: 27rem;
+  grid-template-columns: repeat(3, minmax(10rem, 1fr));
+}
+
+.animated__cards-nosotros .mycard_item {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: 0.5s;
+}
+
+.img_nosotros {
+  position: absolute;
+  left: 0;
+  right: 0;
+  transition: 0.5s ease;
+  width: 100%;
+  height: 100%;
+}
+
+.img_nosotros img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mycard_item .content {
+  position: absolute;
+  width: 100%;
+  height: 60%;
+  bottom: -100%;
+  padding: 60px 20px 20px;
+  box-sizing: border-box;
+  text-align: center;
+  transition: 0.5s;
+  background-color: rosybrown;
+}
+.mycard_item:hover .content {
+  bottom: 0;
+  background: linear-gradient(0deg, #000, transparent);
+}
+
+.name {
+  margin-bottom: 8px;
+  padding: 0;
+  color: #fff;
+  font-size: 22px;
+}
+
+.profession {
+  color: #ffeb3b;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.description {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  font-size: 14px;
+}
+
+.content .social_media-icons {
+  display: flex;
+  margin: 20px 0 0;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+}
+
+.social_media-icons .icons-cards a {
+  color: #ccc;
+  font-size: 18px;
+  transition: 0.5s;
+}
+
+.social_media-icons .icons-cards a:hover {
+  color: #f8e21a;
+}
+
+.social_media-icons .icons-cards a {
+  margin-left: 5px;
+  height: 25px;
+  width: 25px;
+  color: black;
+  background-color: #fff;
+  display: block;
+  line-height: 28px;
+}
+
+@media screen and (max-width: 920px) {
+  .animated__cards-nosotros {
+    grid-template-columns: repeat(2, minmax(7rem, 1fr));
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .animated__cards-nosotros {
+    grid-template-columns: repeat(1, minmax(10rem, 1fr));
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .animated__cards-nosotros {
+    grid-template-columns: repeat(1, minmax(10rem, 1fr));
+  }
+}
