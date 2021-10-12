@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import "../styles/admin.css";
-
+import Footer from "../components/Footer"
 //Importacion de componentes
 import EmpleadosTable from "../components/EmpleadosTable";
 import LicenciasTable from "../components/LicenciasTable";
@@ -64,6 +64,7 @@ const Admin = () => {
       
 
       {/* ROMPIENDO TODO */}
+      <div className = "container-fluid">
       <div className="row">
         {
           {
@@ -83,7 +84,7 @@ const Admin = () => {
         }
       </div>
       </div>
-    
+      </div>    
   );
 };
 

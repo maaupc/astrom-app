@@ -10,7 +10,7 @@ const Footer = () => {
                
                <div className="container">
       <div className="row pt-5">
-        <div className="col-sm">
+        <div className="col">
         <ul className="list-unstyled-icon">
            <i className="fa fa-facebook fa-2x text-white mx-2" aria-hidden="true"></i>
            <i className="fa fa-twitter fa-2x text-white mx-2" aria-hidden="true"></i>

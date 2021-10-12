@@ -33,3 +33,24 @@
 }
 }
 
+@media (min-width: 540px) and (max-width:768px){.list-unstyled{
+    margin-top:5%
+}
+}
+
+@media (min-width: 768px) and (max-width:1024px){.main-footer{
+    margin-top:5%
+}
+}
+
+@media (min-width: 540px) and (max-width:720px){.main-footer{
+    margin-top:5%
+}
+}
+
+
+@media (min-width: 1024px) and (max-width: 1366px) {.main-footer{
+   margin-top: 29%
+}
+}
+ 

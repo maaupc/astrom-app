@@ -77,14 +77,14 @@ const EmpleadosTable = () => {
       </div>
 
       {/* TABLA EMPLEADOS */}
-      <table className="table table-responsive mt-3">
+<div clasName="table-responsive"> 
+      <table className="table mt-3">
         <thead className="table-dark">
           <tr>
             <th>DNI</th>
             <th>EMPLEADO</th>
             <th>PUESTO</th>
             <th>ESTADO</th>
-            
           </tr>
         </thead>
         <tbody>
@@ -101,6 +101,7 @@ const EmpleadosTable = () => {
           ))}
         </tbody>
       </table>
+      </div>
       <ModalEmpleado show={show} handleClose={handleClose} />
     </div>
   );
