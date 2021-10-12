@@ -5,6 +5,8 @@ import CardItemNosotros from "./CardItemNosotros";
 const CardsUs = () => {
   return (
     <section className="animated__hover py-5">
+      <h1 className="team-title">Nuestro equipo</h1>
+      <hr className="elementor_divider-cards" />
       <div className="container_cards-nosotros">
         <div className="animated__cards-nosotros py-5">
           <CardItemNosotros

@@ -67,7 +67,7 @@ const Navbar = () => {
 
             <li>
               <Link to="/nosotros" className="nav-links" onClick={closeMobileMenu}>
-                Nosotros
+                Acerca de Aström
               </Link>
             </li>
             <Dropdown>
@@ -77,20 +77,20 @@ const Navbar = () => {
 
               <Dropdown.Menu>
                 <Dropdown.Item>
-                  <Link className="nav-link" to="/perfil" onClick={closeMobileMenu}>
+                  <Link className="nav-link-drop" to="/perfil" onClick={closeMobileMenu}>
                     Mi Perfil
                   </Link>
                 </Dropdown.Item>
                 {empleado?.rol === "ADMIN_ROLE" && (
                 <Dropdown.Item>
-                  <Link className="nav-link" to="/admin" onClick={closeMobileMenu}>
+                  <Link className="nav-link-drop" to="/admin" onClick={closeMobileMenu}>
                     Admin
                   </Link>
                 </Dropdown.Item>
                 )}
                 <Dropdown.Divider />
                 <Dropdown.Item>
-                  <Link className="nav-link" to="/" onClick={logout}>
+                  <Link className="nav-link-drop" to="/" onClick={logout}>
                     <i className="fa fa-sign-out" aria-hidden="true" /> Salir
                   </Link>
                 </Dropdown.Item>

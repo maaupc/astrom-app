@@ -1,9 +1,3 @@
-.container_cards-nosotros {
-  display: grid;
-  width: 100%;
-  align-items: center;
-}
-
 .animated__cards-nosotros {
   display: grid;
   gap: 50px;
@@ -51,6 +45,18 @@
 .mycard_item:hover .content {
   bottom: 0;
   background: linear-gradient(0deg, #000, transparent);
+}
+
+.team-title{
+  font-size: 2.5rem;
+  color: black;
+}
+
+.elementor_divider-cards{
+  text-align: center;
+  width: 40%;
+  margin: 35px auto;
+  display: flex;
 }
 
 .name {
@@ -112,10 +118,19 @@
   .animated__cards-nosotros {
     grid-template-columns: repeat(1, minmax(10rem, 1fr));
   }
+  .elementor_divider-cards{
+    width: 60%;
+  }
 }
 
 @media screen and (max-width: 460px) {
   .animated__cards-nosotros {
     grid-template-columns: repeat(1, minmax(10rem, 1fr));
+  }
+  .team-title{
+    font-size: 2.1rem;
+  }
+  .elementor_divider-cards{
+    width: 70%;
   }
 }

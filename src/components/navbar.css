@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1rem;
+  font-size: 1.1rem;
   position: sticky;
   top: 0;
   z-index: 999;
@@ -75,6 +75,21 @@ ul {
   color: #4DAAA7;
   text-decoration: none;
   border-bottom: 4px solid #4DAAA7;
+  transition: all 0.2s ease-out;
+}
+
+.nav-link-drop{
+  font-size: 1.1rem ;
+  text-decoration: none;
+  list-style: none;
+  align-items: center;
+  color: #4DAAA7;
+}
+
+.nav-link-drop:hover{
+  background-color: #f2f2f2;
+  color: #4DAAA7;
+  text-decoration: none;
   transition: all 0.2s ease-out;
 }
 
@@ -157,10 +172,8 @@ ul {
     width: 100% !important;
   }
   
-  .nav-link{
-    color: #4DAAA7 !important;
-    display: flex !important;
-    align-items: center !important;
+  .nav-link-drop{
+    display: flex;
     justify-content: center;
   }
 

@@ -1,6 +1,5 @@
 .item {
   padding: 30px;
-  /* margin: auto auto; */
   background: white;
 }
 
@@ -16,8 +15,15 @@
   font-size: 2.5rem;
 }
 
-.tittle-beneficio {
+.title-beneficio {
   font-size: 1.3rem;
+}
+
+.elementor_divider-benefits {
+  text-align: center;
+  width: 30%;
+  margin: 8px auto;
+  display: flex;
 }
 
 .parrafo-beneficio {
@@ -68,16 +74,17 @@
     display: flex;
     flex-direction: column;
   }
-  
-  .beneficios{
+  .beneficios {
     font-size: 2.1rem;
   }
-
+  .elementor_divider-benefits {
+    width: 50%;
+    margin: 25px auto;
+  }
   .item img {
     max-width: 15%;
     margin: 15px;
   }
-
   .container-valores {
     grid-auto-rows: 15rem;
     grid-template-columns: repeat(1, minmax(10rem, 1fr));
