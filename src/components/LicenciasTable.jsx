@@ -37,6 +37,28 @@ const LicenciasTable = () => {
         return licencia.empleado._id === user.empleado.uid
     })
 
+    
+    const handleVencidas = ({target})=>{
+        if(target.checked){
+            licenciasGet(5, Date.now()).then((respuesta)=>{
+                console.log(respuesta)
+                setLicencias({
+                    datos: respuesta.licencias,
+                    loading: false
+                })
+            })
+        }else{
+            licenciasGet().then((respuesta)=>{
+                setLicencias({
+                    datos: respuesta.licencias,
+                    loading: false
+                })
+            })
+        }
+
+        
+    }
+
     const borrarLicencia = (id)=>{
         let licencia = licencias.datos.find((data)=>{
 
@@ -66,13 +88,19 @@ const LicenciasTable = () => {
                 <h1 className="h1-header">Licencias</h1>
             </div>
                 <div className="overlay-header"></div>
-            <div className="button-header d-flex justify-content-end">
+            <div className="button-header d-flex justify-content-between">
+                <div className="form-check form-switch licencias-switch">
+                    <input className="form-check-input" type="checkbox" role="switch" onChange={handleVencidas}/>
+                    <label className="form-check-label">Vencidas</label>
+                </div>
+
                 <button className="btn agregar-button"
                 onClick={()=>{handleShow(); setActualizar("")}}
                 // hidden={user.empleado.rol==="ADMIN_ROLE"? false : true}
                 >
                 Cargar Licencia
                 </button>
+
             </div>
             
         </div>

@@ -12,6 +12,12 @@ code {
   monospace;
 }
 
+.form-check-input:checked{
+  background-color: #3F8F8B !important;
+  border-color: #3F8F8B !important;
+
+}
+
 /* GENERAL MODAL STYLES */
 .modal-header{
   background-color: #3F8F8B !important;
@@ -81,6 +87,13 @@ code {
 }
 
 /* LICENCIA & PUESTOS STYLES */
+.licencias-switch{
+  align-self: center;
+
+  color: white;
+
+}
+
 .licencias-header{
   height: 250px;
   background-image: url('https://image.freepik.com/foto-gratis/hombre-joven-primer-que-busca-vinilos-tienda_23-2148237245.jpg');
