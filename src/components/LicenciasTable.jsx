@@ -41,7 +41,7 @@ const LicenciasTable = () => {
     
     const handleVencidas = ({target})=>{
         if(target.checked){
-            licenciasGet(5, Date.now()).then((respuesta)=>{
+            licenciasGet(10, Date.now()).then((respuesta)=>{
                 console.log(respuesta)
                 setLicencias({
                     datos: respuesta.licencias,
@@ -90,14 +90,18 @@ const LicenciasTable = () => {
             </div>
                 <div className="overlay-header"></div>
             <div className="button-header d-flex justify-content-between">
-                <div className="form-check form-switch licencias-switch">
-                    <input className="form-check-input" type="checkbox" role="switch" onChange={handleVencidas}/>
-                    <label className="form-check-label">Vencidas</label>
-                </div>
+                {user.empleado.rol==="ADMIN_ROLE"
+                ? (
+                    <div className="form-check form-switch licencias-switch">
+                        <input className="form-check-input" type="checkbox" role="switch" onChange={handleVencidas}/>
+                        <label className="form-check-label">Vencidas</label>
+                    </div>
+                ) : (
+                    <div></div>
+                )}
 
                 <button className="btn agregar-button"
                 onClick={()=>{handleShow(); setActualizar("")}}
-                // hidden={user.empleado.rol==="ADMIN_ROLE"? false : true}
                 >
                 Cargar Licencia
                 </button>

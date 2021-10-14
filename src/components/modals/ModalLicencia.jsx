@@ -72,7 +72,7 @@ const ModalLicencia = ({show, handleClose, actualizar, user}) => {
             })
         }
 
-        console.log(formValue)
+        console.log("handleChange() - FormValue:", formValue)
 
     }
 
@@ -115,6 +115,7 @@ const ModalLicencia = ({show, handleClose, actualizar, user}) => {
         }else{
 
             licenciasPost(formValue).then((respuesta)=>{
+                console.log("entrando")
                 if(respuesta.errors){
                     return window.alert(respuesta.errors[0].msg);
                 }

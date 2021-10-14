@@ -1,7 +1,7 @@
 const url = "http://localhost:8080";
 
 export const licenciasGet = async (limite, vencimiento)=>{
-    console.log(vencimiento)
+    console.log("LicenciasGet - vencimiento:", vencimiento)
     const resp = await fetch(`${url}/api/licencias?limite=${limite}&vencimiento=${vencimiento}`,{
         method: 'GET',
         headers : {
@@ -46,6 +46,7 @@ export const licenciasPut = async (id, data)=>{
 }
 
 export const licenciasPost = async (data)=>{
+    console.log("intentando hacer peticion POST")
     const resp = await fetch(`${url}/api/licencias/`,{
         method: 'POST',
         body: JSON.stringify(data),
