@@ -2,6 +2,7 @@ import React from 'react'
 import { Modal, Button } from "react-bootstrap";
 import {useState} from 'react'
 import { useEffect } from 'react'
+import '../../styles/Modal.css'
 
 import {empleadoGet, empleadoPut} from '../../helpers/empleados'
 

@@ -1,0 +1,36 @@
+/* LICENCIA & PUESTOS STYLES */
+.licencias-switch{
+    align-self: center;
+  
+    color: white;
+  
+  }
+  
+.licencias-header{
+    height: 250px;
+    background-image: url('https://image.freepik.com/foto-gratis/hombre-joven-primer-que-busca-vinilos-tienda_23-2148237245.jpg');
+    background-color: #333333;
+    background-position-y: center;
+    background-size: cover;
+    color: white;
+    
+}
+
+ 
+.btn-delete{
+    color: rgb(110, 17, 17) !important;
+  }
+  
+.btn-edit{
+    color: #3F8F8B !important;
+  }
+  
+  
+.name-ab{
+    color: white;
+    background: #3F8F8B;
+    border-radius: 25px;
+    width: 25px;
+    height: 25px;
+    font-size: 12px;
+} 

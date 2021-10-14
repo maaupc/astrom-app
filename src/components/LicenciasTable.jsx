@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import '../styles/LicenciasTable.css'
 
 import { licenciasGet, licenciaDelete } from '../helpers/licencias'
 import ModalLicencia from './modals/ModalLicencia'

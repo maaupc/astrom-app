@@ -2,6 +2,8 @@ import React from 'react'
 import { Modal, Button } from "react-bootstrap";
 import {useState} from 'react'
 import { useEffect } from 'react'
+import '../../styles/Modal.css'
+
 import { puestoGet, puestoPost, puestoPut } from '../../helpers/puestos'
 
 const ModalPuesto = ({show, handleClose, actualizar}) => {

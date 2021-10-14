@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import '../styles/PuestosTable.css'
 
 import { puestosGet, puestoDelete } from '../helpers/puestos'
 import ModalPuesto from './modals/ModalPuesto'

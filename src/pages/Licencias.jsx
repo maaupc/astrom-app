@@ -1,5 +1,6 @@
 import React from 'react'
 import LicenciasTable from '../components/LicenciasTable'
+import '../styles/Admin.css'
 
 const Licencias = () => {
     return (
