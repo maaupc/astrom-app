@@ -2,19 +2,42 @@
     display: grid;
     margin-bottom: 50px;
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: 10rem;
-    background-image: url(https://i.postimg.cc/D0c9N5YV/pexels-laura-tancredi-7078666.jpg);
+    grid-template-rows: 22rem;
+    background-image: url(https://i.postimg.cc/mgKcQytr/pexels-kindel-media-7688460.jpg);
     background-position: center center;
     background-size: cover;
 }
 
-.container_title-nosotros{
-   text-align: center;
-   height: 150px;
+.header_overlay-nosotros{
+    background-color: black;
+    opacity: 0.6;
+    transition: 0.3s;
+    height: 352px;
 }
+
 .title_header-nosotros{
-    text-align: justify center;
-    font-size: 30px;
+    text-align: center;
+    font-size: 40px;
     color: #f2f2f2;
-    margin: -30px 40px;
+    margin: auto auto;
+    position: absolute;
 }
+@media screen and (max-width: 1024px) {
+    .title_header-nosotros{
+        margin: auto 40px;
+    } 
+}
+
+@media screen and (max-width: 920px) {
+    .title_header-nosotros{
+        margin: auto 40px;
+    } 
+}
+  
+@media screen and (max-width: 460px) {
+    .title_header-nosotros{
+        text-align: center;
+        font-size: 32px;
+    }
+}
+

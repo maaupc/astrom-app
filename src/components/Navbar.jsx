@@ -1,10 +1,7 @@
-
 import React from "react";
 import { useState, useEffect } from "react";
 import "./navbar.css";
-import { Dropdown } from "react-bootstrap";
 import {obtenerEmpleado} from '../helpers/perfil'
-
 import { Link, useHistory } from "react-router-dom";
 import logo from "../assets/logo.png";
 
@@ -17,7 +14,6 @@ const Navbar = () => {
   const closeMobileMenu = () => setClick(false);
   
 
-  
   const [empleado, setEmpleado] = useState(null);
   const [imagen, setImagen] = useState({
     img:" "
@@ -64,38 +60,34 @@ const Navbar = () => {
                 Perfil
               </Link>
             </li>
-
             <li>
               <Link to="/nosotros" className="nav-links" onClick={closeMobileMenu}>
                 Acerca de Aström
               </Link>
             </li>
-            <Dropdown>
-              <Dropdown.Toggle id="dropdown-basic">
+         
+            <ul className="navbar-nav">
+              <li className="nav-item dropdown">
+              <Link className="nav-link dropdown-toogle" id="dropdown-basic" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src={imagen.img} alt="avatar" />
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item>
-                  <Link className="nav-link-drop" to="/perfil" onClick={closeMobileMenu}>
-                    Mi Perfil
-                  </Link>
-                </Dropdown.Item>
+                <i className="fa fa-chevron-circle-down"></i>
+              </Link>
+              <ul className="dropdown-menu">
                 {empleado?.rol === "ADMIN_ROLE" && (
-                <Dropdown.Item>
-                  <Link className="nav-link-drop" to="/admin" onClick={closeMobileMenu}>
+                <li>
+                  <Link className="dropdown-item" to="/admin" onClick={closeMobileMenu}>
                     Admin
                   </Link>
-                </Dropdown.Item>
+                </li>
                 )}
-                <Dropdown.Divider />
-                <Dropdown.Item>
-                  <Link className="nav-link-drop" to="/" onClick={logout}>
+                <li>
+                  <Link className="dropdown-item"to="/" onClick={logout}>
                     <i className="fa fa-sign-out" aria-hidden="true" /> Salir
                   </Link>
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+                </li>
+              </ul>
+              </li>
+            </ul>
           </ul>
         </div>
       </nav>

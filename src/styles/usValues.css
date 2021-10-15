@@ -61,6 +61,9 @@
     margin-left: 3.3rem;
     margin-top: -10px;
   }
+  .container-valores {
+    grid-template-columns: repeat(2, minmax(20rem, 1fr));
+  }
 }
 
 @media screen and (max-width: 768px) {

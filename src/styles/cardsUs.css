@@ -95,7 +95,7 @@
 }
 
 .social_media-icons .icons-cards a:hover {
-  color: #f8e21a;
+  color: rgb(214, 124, 124);
 }
 
 .social_media-icons .icons-cards a {
@@ -116,10 +116,17 @@
 
 @media screen and (max-width: 768px) {
   .animated__cards-nosotros {
-    grid-template-columns: repeat(1, minmax(10rem, 1fr));
+    grid-template-columns: repeat(2, minmax(10rem, 1fr));
   }
   .elementor_divider-cards{
     width: 60%;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .animated__cards-nosotros {
+    grid-auto-rows: 30rem;
+    grid-template-columns: repeat(1, minmax(10rem, 1fr));
   }
 }
 
