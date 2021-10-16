@@ -179,8 +179,7 @@ const Perfil = () => {
         <div className="row">
           <div className="col">
           <div className="perfil-header">
-                <div className="line-perfil"></div>
-                <h1 className="h1-header"> Mi Perfil</h1>
+                <h1 className="h1-perfil"> Mi Perfil</h1>
       </div>
           </div>
         </div>
