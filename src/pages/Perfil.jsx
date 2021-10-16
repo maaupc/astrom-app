@@ -2,57 +2,105 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { actualizarEmpleado, obtenerEmpleado } from "../helpers/perfil";
+import { actualizarEmpleado, obtenerEmpleado, subirImagen } from "../helpers/perfil";
 import { puestosGet } from "../helpers/puesto";
-import FormImagen from "../components/FormImg.jsx";
-
 import "../style/perfilUsuario.css";
+import "../style/switchStyled.css"
 import logo2 from "../assets/logo2.png";
 
 
 const Perfil = () => {
   const [update, setUpdate] = useState(false);
-  const [image, setImage] = useState('');
+  const [isCheckend, setCheckend]=useState({
+            check1:false,
+            check2:false      
+  });
+  //const [image, setImage] = useState('');
+  //const [selectedFile, setSelectedFile] = useState();
   const [perfil, setPerfil] = useState({
     nombre: "",
     apellido:"",
-    asociado: "",
+    telefono: "",
     email: "",
+    provincia:"",
+    localidad:"",
+    domicilio:"",
     licencia:"",
-    imagen:""
-  
+    imagen:null,
+    dni:"",
+    nacimiento:""
   });
+//     const handleChangeImg= async (e) => {  
+//       const imagen = e.target.files[0];
+//       const file= await getBase64(imagen);
+//        setImage(file);
+//       // console.log(file)
+//        console.log(file)
+//        };
+// function getBase64(imagen) {
+// return new Promise((resolve, reject) => {
+//     const reader = new FileReader();
+//     reader.addEventListener('load', () => resolve(reader.result));
+//   //  reader.readAsDataURL(imagen);
+// })
+// };
+// useEffect(() => {
+//       if (image) {
+//         setPerfil( {
+//             ...perfil, 
+//           imagen:image || "",
+//         });
+//       }   
+//     }, [image]);  
+//    useEffect (  async () =>{
+//        if (selectedFile){ 
+//              const file= await getBase64(selectedFile);
+//              console.log(file)
+//              setImage(file);
+             
+//        }   
+//      }, [selectedFile]);
+
   useEffect(() => {
     const datos = JSON.parse(localStorage.getItem("auth"));
       console.log(datos)
     obtenerEmpleado(datos.empleado.uid).then((respuesta) => {
-          console.log("entro primero por aca")
-          if(respuesta.empleado.rol === "ADMIN_ROLE"){
-                return alert("El admin no puede cuenta con permisos en esta seccion")
-          }
+      //     if(respuesta.empleado.rol === "ADMIN_ROLE"){
+      //           return alert("El admin no cuenta con permisos en esta seccion")
+      //     }
       setPerfil({
         nombre: respuesta.empleado.nombre,
         apellido:respuesta.empleado.apellido,
-        asociado: respuesta.empleado.dni,
+        telefono: respuesta.empleado.telefono,
         email: respuesta.empleado.email,
+        provincia: respuesta.empleado.provincia,
+        localidad: respuesta.empleado.localidad,
+        domicilio: respuesta.empleado.domicilio,
         licencia:respuesta.empleado.licencia,
-        imagen:respuesta.empleado.img
+        imagen:respuesta.empleado.img,
+        dni:respuesta.empleado.dni,
+        nacimiento:respuesta.empleado.nacimiento
       });
       cargarPuesto(respuesta.empleado.puesto);
-      console.log(perfil.imagen)
+     
     });
-    
   }, []);
   
  
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { nombre, asociado, email } = perfil;
+    const { nombre, telefono, email ,provincia,localidad ,domicilio,imagen } = perfil;
     const datos = JSON.parse(localStorage.getItem("auth"));
-    if (nombre && asociado && email) {
+    if (nombre && telefono && email && provincia && localidad && domicilio ) {
       actualizarEmpleado(datos.empleado.uid, perfil).then((respuesta) => {
       });
     }
+    if(imagen){
+          subirImagen(datos.empleado.uid,imagen).then((respuesta)=>{
+
+          })
+    }
+    console.log(perfil)
     setUpdate(false);
   };
 
@@ -65,6 +113,24 @@ const Perfil = () => {
       });
     }
   };
+  const handleChangeSwitch =(value)=>{
+        setCheckend({
+              value
+        })
+       console.log(value)   
+        // checkboxes[name]=value
+                       // e.target.checkend)               
+      } 
+      useEffect(() => {
+            if(isCheckend=== true){
+                  const datos = JSON.parse(localStorage.getItem("auth"));
+                  obtenerEmpleado(datos.empleado.uid).then((respuesta) => {
+                 if(respuesta.empleado.rol === "ADMIN_ROLE"){
+                 return alert("El admin no cuenta con permisos en esta seccion")
+                  }
+                  })
+            }
+}, [isCheckend]); 
   const [puesto,setPuesto] = useState({
         nombre:"",
         horarios:"",
@@ -100,26 +166,25 @@ const Perfil = () => {
  
 
    const licenciaEstado=(licen)=>{
-         console.log(licen)
          if(licen==="true"){
                return ("Activa");
         }
          else{
                return ("No Activa") ;
          }      
-   }
-
-  
+   } 
   return (
     <>
       <div className="container">
         <div className="row">
           <div className="col">
-            <h1 className="title">Mi Perfil</h1>
-            <hr />
+          <div className="perfil-header">
+                <div className="line-perfil"></div>
+                <h1 className="h1-header"> Mi Perfil</h1>
+      </div>
           </div>
         </div>
-        <div className="row ">
+        <div className="row mt-4">
           <div className="col-lg-4 col-sm-12-p-relative col-md-6 row-principal id=col-primera">
             <div className="row">
               <div className="col ">
@@ -134,35 +199,41 @@ const Perfil = () => {
                   <div className="card-body card-img">
                     <form onSubmit={handleSubmit}>
                     <div className="text-center">
-                    <FormImagen setImage={setImage}/>
                     <div className="d-flex justify-content-center align-items-end ml-4 m-2 card-form">
                         <div
                             className="rounded-circle overflow-hidden d-flex align-items-center "
             
                         >
-                            <img className="img-fluid " src={perfil.imagen} alt="profile" className="imgPerfil"
-                         />
+                            <img src={perfil.imagen  } alt="profile" className="imgPerfil"/>
                         </div>
-                        <label htmlFor="file-input" style={{ cursor: 'pointer' }}>
+                        <label htmlFor="file-input" style={{ cursor: 'pointer' }}  >
                             <img
-                                src="https://icongr.am/feather/camera.svg?size=128&color=293f8e"
+                                src="https://icongr.am/jam/camera.svg?size=148&color=4daaa7"
                                 alt="camera edit"
-                                width="20"
-                              
-                            />
+                                width="25"
+                                />
                         </label>
+                        <input
+                            id="file-input"
+                            className="d-none"
+                            accept="image/png, .png .jpeg, .jpg, image/gif"
+                            type="file"
+                        //     onChange={ (e) => setSelectedFile (e.target.files[0])}
+                            name="imagen"
+                        />
                        
                     </div>
                 </div>
+               
                     <h2 className="title">{perfil.nombre} {perfil.apellido}</h2>
                       <div className="form-group mb-2">
-                        <strong>ID Asociado</strong>
+                        <strong>N° Telefono</strong>
                         <input
                           type="string"
                           className="form-control"
-                          name="asociado"
+                          name="telefono"
                           disabled={update ? false : true}
-                          value={perfil.asociado}
+                          value={perfil.telefono}
                           onChange={handleChange}
                         />
                       </div>
@@ -177,8 +248,40 @@ const Perfil = () => {
                           onChange={handleChange}
                         />
                       </div>
-                  
-                      <div>
+                      {/* <div className="form-group mb-2">
+                        <strong>Provincia</strong>
+                        <input
+                          type="string"
+                          className="form-control"
+                          provincia="provincia"
+                          value={perfil.provincia}
+                          disabled={update ? false : true}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <div className="form-group mb-2">
+                        <strong>Localidad</strong>
+                        <input
+                          type="string"
+                          className="form-control"
+                          localidad="localidad"
+                          value={perfil.localidad}
+                          disabled={update ? false : true}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <div className="form-group mb-2">
+                        <strong>domicilio</strong>
+                        <input
+                          type="string"
+                          className="form-control"
+                          domicilio="domicilio"
+                          value={perfil.domicilio}
+                          disabled={update ? false : true}
+                          onChange={handleChange}
+                        />
+                      </div> */}
+                          <div>
                         <button type="submit" className="btn btn-save btn-lg btn-block">
                           Actualizar
                         </button>
@@ -220,34 +323,12 @@ const Perfil = () => {
                   <div className="card-body card-perfil">
                     <h3>Info Personal</h3>
                     <hr className="hr-card" />
-                    <i
-                      className="fa fa-mobile movile"
-                      aria-hidden="true"
-                      id="i-icon"
-                    >
-                      {" "}
-                    </i>
-                    <span className="span-i">387866282</span>
+                    <span className="span-i"> ID Empleado : {perfil.dni}</span>
                     <hr />
-                    
-                    <i
-                      className="fa fa-envelope-o"
-                      aria-hidden="true"
-                      id="i-icon"
-                    > 
-                      {" "}
-                    </i>{" "}
-                    <span className="span-i">{perfil.email}</span>
+                    <span className="span-i"> Fecha Nac. : {perfil.nacimiento}</span>
                     <hr />
-                  
-                    <i
-                      className="fa fa-map-marker"
-                      aria-hidden="true"
-                      id="i-icon"
-                    >
-                      {" "}
-                    </i>{" "}
-                    <span className="span-i">Av Spring 745</span>
+                    <p className="span-i">Ubicacion : {perfil.domicilio} , {perfil.localidad} , {perfil.provincia} .</p>
+
                     <hr />
                   </div>
                 </div>
@@ -260,12 +341,32 @@ const Perfil = () => {
                     <strong>Anual</strong>
                     <br/>
                     <div className="alert alert-secondary" role="alert">
-                      {formatCurrency(salarioAnual(puesto.salario))}
+                      {formatCurrency(salarioAnual(puesto.salario))}  
+                      <label class="switch">
+                         <input   onChange={ (e) => handleChangeSwitch (e.target.value)}
+                        checkend={isCheckend}
+                        disabled={isCheckend ? false : true}
+                         type="checkbox"
+                         value="check1"/>
+                         
+                        <div class="slider round"></div>
+                        </label>
                     </div>
+                   
                     <strong>Mensual</strong>
                     <br />
                     <div className="alert alert-secondary" role="alert">
                       {formatCurrency(puesto.salario)}
+                      <label class="switch">
+                         <input   onChange={ (e) => handleChangeSwitch (e.target.value)}
+                        checkend={isCheckend}
+                        disabled={isCheckend ? false : true}
+                         type="checkbox"
+                         value="check2"/>
+                         
+                        <div class="slider round"></div>
+                        </label>
+                      
                     </div>
                   </div>
                 </div>
