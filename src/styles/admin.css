@@ -10,25 +10,6 @@
 
 
 
-/* se modifica objectfit por backgroundsize para ajustar imagen a lo ancho */
-.admin-header {
-  background-image: url(https://i.ibb.co/H2Hj2Sd/admin-edited.jpg);
-  background-repeat: no-repeat;
-  background-size: cover; 
-  height: 450px;
-  width: 100%;
-  background-color: #3f8f8b;
-  color: white;
-}
-
-.admin-header h1{
-  text-align: left;
-  margin-top: 400px;
-  font-size: 50px;
-  color: #fff;
-}
-
-
 /* GENERAL PUESTOS Y LICENCIAS STYLES  */
 .form-check-input:checked{
     background-color: #3F8F8B !important;
