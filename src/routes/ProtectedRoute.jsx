@@ -12,7 +12,7 @@ const ProtectedRoute = ({ component: Component, ...resto }) => {
         if (auth?.empleado.uid) { 
           return <Component {...props} />;
         } else {
-          return <Redirect to="/login" />;
+          return <Redirect to="/" />;
         }
       }}
     />

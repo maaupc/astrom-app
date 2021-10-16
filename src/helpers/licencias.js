@@ -1,4 +1,5 @@
-const url = "https://calm-castle-34951.herokuapp.com";
+// const url = "https://calm-castle-34951.herokuapp.com";
+const url = "http://localhost:8080";
 
 export const licenciasGet = async (limite, vencimiento)=>{
     console.log("LicenciasGet - vencimiento:", vencimiento)

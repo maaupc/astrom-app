@@ -1,4 +1,5 @@
-const url = "https://calm-castle-34951.herokuapp.com";
+// const url = "https://calm-castle-34951.herokuapp.com";
+const url = "http://localhost:8080";
 
 export const empleadoGet = async () => {
     const resp = await fetch(`${url}/api/empleados`, {
