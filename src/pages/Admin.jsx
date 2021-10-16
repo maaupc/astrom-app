@@ -10,21 +10,59 @@ import PuestosTable from '../components/PuestosTable'
 
 
 const Admin = () => {
-  const [state, setState] = useState({ rol: "" });
-  const [btn, setBtn] = useState("empleados");
+    const [state, setState] = useState({ rol: "" });
+    const [btn, setBtn] = useState("empleados");
 
-  useEffect(() => {
-    const datos = JSON.parse(localStorage.getItem("auth"));
-    setState(datos.empleado);
-  }, [state.rol]);
+    useEffect(() => {
+        const datos = JSON.parse(localStorage.getItem("auth"));
+        setState(datos.empleado);
+    }, [state.rol]);
 
-  if (state.rol !== "ADMIN_ROLE") {
+    if (state.rol !== "ADMIN_ROLE") {
+        return (
+            <div className="alert alert-danger text-center" role="alert">
+                🚫No autorizado🚫
+            </div>
+        );
+    }
+
     return (
-      <div className="alert alert-danger text-center" role="alert">
-        🚫No autorizado🚫
-      </div>
-    );
-  }
+        <div className="container-fluid" id="container-header-admin">
+            <div className="row">
+                <div className="admin-header">
+                    <h1>Administrador</h1>
+                </div>
+                <div className="col-4 d-grid gap-2 admin-button">
+                    <button
+                        className="btn"
+                        onClick={() => {
+                            setBtn("empleados");
+                        }}
+                    >
+                        <i className="fa fa-user " aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div className="col-4 d-grid gap-2 admin-button">
+                    <button
+                        className="btn"
+                        onClick={() => {
+                            setBtn("empleados");
+                        }}
+                    >
+                        <i className="fa fa-money" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div className="col-4 d-grid gap-2 admin-button">
+                    <button
+                        className="btn"
+                        onClick={() => {
+                            setBtn("licencias");
+                        }}
+                    >
+                        <i className="fa fa-file-text" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
 
   return (
         <div className="container-fluid">

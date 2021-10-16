@@ -2,13 +2,13 @@
 const url = "http://localhost:8080";
 
 export const puestosGet = async (desde) => {
-      const resp = await fetch(`${url}`, {
+    const resp = await fetch(`${url}`, {
         method: "GET",
         headers: {
-          "Content-type": "application/json; charset=UTF-8",
+            "Content-type": "application/json; charset=UTF-8",
         },
-      });
-      const datos = await resp.json();
-    
-      return datos;
-    };
+    });
+    const datos = await resp.json();
+
+    return datos;
+};
