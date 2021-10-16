@@ -3,8 +3,14 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { actualizarEmpleado, obtenerEmpleado, subirImagen } from "../helpers/perfil";
 import { puestosGet } from "../helpers/puesto";
+<<<<<<< HEAD
 import "../style/perfilUsuario.css";
 import "../style/switchStyled.css"
+=======
+import FormImagen from "../components/FormImg.jsx";
+
+import "../styles/perfilUsuario.css";
+>>>>>>> 14b24aa1aa3463450b6d75ee2c71477062439982
 import logo2 from "../assets/logo2.png";
 
 
@@ -65,9 +71,14 @@ const Perfil = () => {
     console.log(datos);
 
     obtenerEmpleado(datos.empleado.uid).then((respuesta) => {
+<<<<<<< HEAD
       //     if(respuesta.empleado.rol === "ADMIN_ROLE"){
       //           return alert("El admin no cuenta con permisos en esta seccion")
       //     }
+=======
+        console.log("entro primero por aca");
+      
+>>>>>>> 14b24aa1aa3463450b6d75ee2c71477062439982
       setPerfil({
         nombre: respuesta.empleado.nombre,
         apellido:respuesta.empleado.apellido,

@@ -1,6 +1,5 @@
 import React from 'react'
-import "../style/error.css"
-import "animate.css"
+import "../styles/error.css"
 import logo from "../assets/upmy.svg"
 import { Link} from "react-router-dom";
 
@@ -27,16 +26,16 @@ const Error404 = () => {
                               </p>
                               <div className="div4-error">
                               <div className="icono-error"> 
-                              <i class="fa fa-instagram" aria-hidden="true"></i>
+                              <i className="fa fa-instagram" aria-hidden="true"></i>
                               </div>
                               <div className="icono-error ">
-                              <i class="fa fa-linkedin" aria-hidden="true"></i>
+                              <i className="fa fa-linkedin" aria-hidden="true"></i>
                               </div>
                               <div className="icono-error">
-                              <i class="fa fa-github" aria-hidden="true"></i>
+                              <i className="fa fa-github" aria-hidden="true"></i>
                                </div>
                               <div className="icono-error"> 
-                              <i class="fa fa-facebook" aria-hidden="true"></i>
+                              <i className="fa fa-facebook" aria-hidden="true"></i>
                               </div>
                               </div>
                               
