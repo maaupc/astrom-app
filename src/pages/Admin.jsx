@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import '../styles/Admin.css'
+import '../styles/admin.css'
 
 //Importacion de componentes
 import EmpleadosTable from '../components/EmpleadosTable'

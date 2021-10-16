@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import ModalEmpleado from "./modals/ModalEmpleado";
 // import BtnPaginacion from "./BtnPaginacion";
-import '../styles/Admin.css'
+import '../styles/admin.css'
 import '../styles/tablaEmpleado.css'
 
 //Importo conexiones con base de datos

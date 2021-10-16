@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { actualizarEmpleado, obtenerEmpleado, subirImagen } from "../helpers/perfil";
 import { puestosGet } from "../helpers/puesto";
-import "../style/perfilUsuario.css";
-import "../style/switchStyled.css"
+import "../styles/perfilUsuario.css";
+import "../styles/switchStyled.css"
 import logo2 from "../assets/logo2.png";
 
 
@@ -348,14 +348,14 @@ const Perfil = () => {
                     <br />
                     <div className="alert alert-secondary" role="alert">
                       {formatCurrency(salarioAnual(puesto.salario))}  
-                      <label class="switch">
+                      <label className="switch">
                          <input   onChange={ (e) => handleChangeSwitch (e.target.value)}
                         checkend={isCheckend}
                         disabled={isCheckend ? false : true}
                          type="checkbox"
                          value="check1"/>
                          
-                        <div class="slider round"></div>
+                        <div className="slider round"></div>
                         </label>
                     </div>
                    
@@ -363,14 +363,14 @@ const Perfil = () => {
                     <br />
                     <div className="alert alert-secondary" role="alert">
                       {formatCurrency(puesto.salario)}
-                      <label class="switch">
+                      <label className="switch">
                          <input   onChange={ (e) => handleChangeSwitch (e.target.value)}
                         checkend={isCheckend}
                         disabled={isCheckend ? false : true}
                          type="checkbox"
                          value="check2"/>
                          
-                        <div class="slider round"></div>
+                        <div className="slider round"></div>
                         </label>
                       
                     </div>

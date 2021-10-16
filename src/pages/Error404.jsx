@@ -40,7 +40,7 @@ const Error404 = () => {
                               </div>
                               
                               <div className="div3-error">
-                               <button className="btn btn-error"> <Link className="nav-link p-0" to="/"> IR A HOME  <i class="fa fa-arrow-right" aria-hidden="true"></i> </Link>  </button>
+                               <button className="btn btn-error"> <Link className="nav-link p-0" to="/"> IR A HOME  <i className="fa fa-arrow-right" aria-hidden="true"></i> </Link>  </button>
                               </div>
                             
                               </div>      
