@@ -22,7 +22,7 @@ const Login = () => {
       Swal.fire({
           position: 'center',
           icon: 'error',
-          title: 'Inicio de sesion exitoso!',
+          title: 'DNI o contraseña incorrecta',
           showConfirmButton: false,
           timer: 1500
         })
@@ -48,6 +48,10 @@ const Login = () => {
     if (dni && password) {
       postAuth(formValue).then((respuesta) => {
         setLogin(respuesta);
+        console.log(respuesta.msg)
+        if(respuesta.msg){
+          Alerterror()
+        }
       });
     }
   };
@@ -59,7 +63,7 @@ const Login = () => {
       Alertsucces()
       localStorage.setItem("auth", JSON.stringify(login));
       setTimeout(() => {
-        history.push("/Inicio");
+        history.push("/inicio");
       }, 1000);
     }
   }, [login, history]);
