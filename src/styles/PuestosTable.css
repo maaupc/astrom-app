@@ -1,0 +1,11 @@
+/* PUESTOS STYLES */
+.puestos-header{
+    height: 250px;
+    background-image: url('https://image.freepik.com/foto-gratis/gente-negocios-oficina_144627-37532.jpg');
+    background-color: #333333;
+    background-position-y: center;
+    background-size: cover;
+    color: white;
+    
+  }
+  

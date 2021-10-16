@@ -1,7 +1,8 @@
 const url = "https://calm-castle-34951.herokuapp.com";
 
-export const licenciasGet = async ()=>{
-    const resp = await fetch(`${url}/api/licencias`,{
+export const licenciasGet = async (limite, vencimiento)=>{
+    console.log("LicenciasGet - vencimiento:", vencimiento)
+    const resp = await fetch(`${url}/api/licencias?limite=${limite}&vencimiento=${vencimiento}`,{
         method: 'GET',
         headers : {
             "Content-type": "application/json; charset=UTF-8",
@@ -45,6 +46,7 @@ export const licenciasPut = async (id, data)=>{
 }
 
 export const licenciasPost = async (data)=>{
+    console.log("intentando hacer peticion POST")
     const resp = await fetch(`${url}/api/licencias/`,{
         method: 'POST',
         body: JSON.stringify(data),
@@ -58,4 +60,18 @@ export const licenciasPost = async (data)=>{
 
     return datos
 
+}
+
+export const licenciaDelete = async (id)=>{
+    const resp = await fetch(`${url}/api/licencias/${id}`, {
+        method: 'DELETE',
+        headers:{
+            "Content-type": "application/json; charset=UTF-8",
+            "x-token": JSON.parse(localStorage.getItem("auth")).token
+        }
+    })
+
+    const datos = resp.json()
+
+    return datos
 }
