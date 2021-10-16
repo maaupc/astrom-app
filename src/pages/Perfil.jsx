@@ -5,7 +5,7 @@ import { actualizarEmpleado, obtenerEmpleado } from "../helpers/perfil";
 import { puestosGet } from "../helpers/puesto";
 import FormImagen from "../components/FormImg.jsx";
 
-import "../style/perfilUsuario.css";
+import "../styles/perfilUsuario.css";
 import logo2 from "../assets/logo2.png";
 
 
@@ -27,9 +27,6 @@ const Perfil = () => {
 
     obtenerEmpleado(datos.empleado.uid).then((respuesta) => {
         console.log("entro primero por aca");
-        if (respuesta.empleado.rol === "ADMIN_ROLE") {
-        return alert("El admin no puede cuenta con permisos en esta seccion");
-      }
       
       setPerfil({
         nombre: respuesta.empleado.nombre,

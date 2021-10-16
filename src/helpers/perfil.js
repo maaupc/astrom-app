@@ -1,5 +1,5 @@
 // const url = "https://calm-castle-34951.herokuapp.com/api/empleados";
-const url = "http://localhost:8080";
+const url = "http://localhost:8080/api/empleados";
 
 //traer los datos del empleado por su id
 export const obtenerEmpleado = async (id) => {
