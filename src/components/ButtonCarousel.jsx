@@ -1,7 +1,7 @@
 import React from "react";
 import "./buttonCarousel.css";
 import { Link } from "react-router-dom";
-import Error404 from "../pages/Error404";
+
 
 const STYLES = ["btn--primary", "btn--outline"];
 const SIZES = ["btn--medium", "btn--large"];

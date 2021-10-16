@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Login.css";
 import logo from "../assets/logo.png";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 import { Link, useHistory } from "react-router-dom";
 import { postAuth } from "../helpers/autentication";
 
 const Login = () => {
-  const Alertsucces=() =>{
-      Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Inicio de sesion exitoso!',
-          showConfirmButton: false,
-          timer: 900
-        })
-  }
-
+  const Alertsucces = () => {
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Inicio de sesion exitoso!",
+      showConfirmButton: false,
+      timer: 900,
+    });
+  };
 
   const Alerterror=() =>{
       Swal.fire({
@@ -60,7 +59,7 @@ const Login = () => {
 
   useEffect(() => {
     if (login.token) {
-      Alertsucces()
+      Alertsucces();
       localStorage.setItem("auth", JSON.stringify(login));
       setTimeout(() => {
         history.push("/inicio");
@@ -88,13 +87,14 @@ const Login = () => {
                   <div>
                     <div className="form-group">
                       <input
+                        id="login_input-dni"
                         type="text"
                         className="form-control"
                         name="dni"
                         placeholder="DNI"
                         required
-                        minlength="8"
-                        maxlength="8"
+                        minLength="8"
+                        maxLength="8"
                         size="10"
                         value={formValue.dni}
                         onChange={handleChange}
@@ -102,6 +102,7 @@ const Login = () => {
                     </div>
                     <div className="form-group">
                       <input
+                        id="login_input-pass"
                         type="password"
                         className="form-control"
                         name="password"
@@ -122,9 +123,9 @@ const Login = () => {
                   </div>
 
                   <div className="overlay">
-                    <div class="volver">
-                      <Link className=" nav-link text-inicio">
-                        Olvido su contraseña?
+                    <div className="volver">
+                      <Link to="/error404" className=" nav-link text-inicio">
+                        ¿Olvidó su contraseña?
                       </Link>
                     </div>
                   </div>
