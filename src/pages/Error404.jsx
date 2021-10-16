@@ -1,31 +1,56 @@
-import React from "react";
-import "../styles/error404.css";
+import React from 'react'
+import "../style/error.css"
+import "animate.css"
+import logo from "../assets/upmy.svg"
+import { Link} from "react-router-dom";
 
 const Error404 = () => {
-  return (
-    <>
-      <div className="container-fluid container-error">
-        <div className="row">
-          <div className="col col-md-8 offset-md-2 text">
-            <div className="title-center">
-              <h1 className="h1-error">Wooops !</h1>
-              <span>
-                <i
-                  class="fa fa-exclamation-triangle i-warning"
-                  aria-hidden="true"
-                ></i>{" "}
-                404 : Page Not Found{" "}
-                <i
-                  class="fa fa-exclamation-triangle i-warning"
-                  aria-hidden="true"
-                ></i>
-              </span>
+
+      return (
+            <>
+            <div className="container-fluid container-error" >
+                  <div className="row">
+                  <div className="col col-md-6 primary">
+                              <div className="div1-error">
+                                   <img src={logo} alt="logoError" />
+                                   
+                              </div>
+                        </div>
+                        <div className="col col-md-6  col-sm-12 text-align-center">
+                        
+                              <div className="div2-error">
+                              <p className="p1-error">Wops! Pagina no encontrada ...</p> 
+                              <p className="p2-error"> 404 </p>
+                               
+                              <p className="p3-error" >
+                                    Lo sentimos, la pagina solicitada no fue encontrada 🤧
+                              </p>
+                              <div className="div4-error">
+                              <div className="icono-error"> 
+                              <i class="fa fa-instagram" aria-hidden="true"></i>
+                              </div>
+                              <div className="icono-error ">
+                              <i class="fa fa-linkedin" aria-hidden="true"></i>
+                              </div>
+                              <div className="icono-error">
+                              <i class="fa fa-github" aria-hidden="true"></i>
+                               </div>
+                              <div className="icono-error"> 
+                              <i class="fa fa-facebook" aria-hidden="true"></i>
+                              </div>
+                              </div>
+                              
+                              <div className="div3-error">
+                               <button className="btn btn-error"> <Link className="nav-link p-0" to="/"> IR A HOME  <i class="fa fa-arrow-right" aria-hidden="true"></i> </Link>  </button>
+                              </div>
+                            
+                              </div>      
+                        </div>     
+                  </div>  
             </div>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
+               
+            </>
+      )
+}
 
 export default Error404;

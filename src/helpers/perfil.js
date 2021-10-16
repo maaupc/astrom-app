@@ -39,3 +39,4 @@ export const actualizarEmpleado = async (id, data) => {
   return datos;
 };
 
+

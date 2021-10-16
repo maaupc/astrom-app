@@ -3,41 +3,51 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { actualizarEmpleado, obtenerEmpleado } from "../helpers/perfil";
 import { puestosGet } from "../helpers/puesto";
+import FormImagen from "../components/FormImg.jsx";
 
-import "../styles/perfilUsuario.css";
+import "../style/perfilUsuario.css";
 import logo2 from "../assets/logo2.png";
+
 
 const Perfil = () => {
   const [update, setUpdate] = useState(false);
+  const [image, setImage] = useState('');
   const [perfil, setPerfil] = useState({
     nombre: "",
     apellido: "",
     asociado: "",
     email: "",
-    licencia: "",
-    img: "",
+    licencia:"",
+    imagen:""
+  
   });
   useEffect(() => {
     const datos = JSON.parse(localStorage.getItem("auth"));
     console.log(datos);
+
     obtenerEmpleado(datos.empleado.uid).then((respuesta) => {
-      console.log("entro primero por aca");
-      if (respuesta.empleado.rol === "ADMIN_ROLE") {
+        console.log("entro primero por aca");
+        if (respuesta.empleado.rol === "ADMIN_ROLE") {
         return alert("El admin no puede cuenta con permisos en esta seccion");
       }
+      
       setPerfil({
         nombre: respuesta.empleado.nombre,
         apellido: respuesta.empleado.apellido,
         asociado: respuesta.empleado.dni,
         email: respuesta.empleado.email,
-        licencia: respuesta.empleado.licencia,
-        img: respuesta.empleado.img,
+        licencia:respuesta.empleado.licencia,
+        imagen:respuesta.empleado.img
       });
+      
       cargarPuesto(respuesta.empleado.puesto);
+      console.log(perfil.imagen)
     });
 
     console.log("pasa x aa");
   }, []);
+  
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
     const { nombre, asociado, email } = perfil;
@@ -53,6 +63,7 @@ const Perfil = () => {
       setPerfil({
         ...perfil,
         [e.target.name]: e.target.value,
+
       });
     }
   };
@@ -92,17 +103,18 @@ const Perfil = () => {
     }).format(number);
   };
 
-  const licenciaEstado = (licen) => {
-    console.log(licen);
-    if (licen === "true") {
-      console.log("hola");
-      return "Activa";
-    } else {
-      console.log("bola");
-      return "No Activa";
-    }
-  };
 
+   const licenciaEstado=(licen)=>{
+         console.log(licen)
+         if(licen==="true"){
+               return ("Activa");
+        }
+         else{
+               return ("No Activa") ;
+         }      
+   }
+
+  
   return (
     <>
       <div className="container">
@@ -125,16 +137,29 @@ const Perfil = () => {
                     ></i>
                   </div>
                   <div className="card-body card-img">
-                    <img
-                      src={perfil.img}
-                      alt="imgPerfil"
-                      className="imgPerfil"
-                    />
-                    <h2 className="title">
-                      {perfil.nombre} {perfil.apellido}
-                    </h2>
-                    {/* <h2>Norali</h2> */}
                     <form onSubmit={handleSubmit}>
+                    <div className="text-center">
+                    <FormImagen setImage={setImage}/>
+                    <div className="d-flex justify-content-center align-items-end ml-4 m-2 card-form">
+                        <div
+                            className="rounded-circle overflow-hidden d-flex align-items-center "
+            
+                        >
+                            <img className="img-fluid " src={perfil.imagen} alt="profile" className="imgPerfil"
+                         />
+                        </div>
+                        <label htmlFor="file-input" style={{ cursor: 'pointer' }}>
+                            <img
+                                src="https://icongr.am/feather/camera.svg?size=128&color=293f8e"
+                                alt="camera edit"
+                                width="20"
+                              
+                            />
+                        </label>
+                       
+                    </div>
+                </div>
+                    <h2 className="title">{perfil.nombre} {perfil.apellido}</h2>
                       <div className="form-group mb-2">
                         <strong>ID Asociado</strong>
                         <input
@@ -282,19 +307,9 @@ const Perfil = () => {
                         src={logo2}
                         alt="logo-astrom"
                         className="img-logo"
-                      />{" "}
-                      Nuestro marco estratégico integra la Responsabilidad
-                      Social Corporativa y se fundamenta en cuatro pilares:
-                      clientes, empleados, proveedores y entorno social.{" "}
-                      <Link className="nav-link" to="/Error404">
-                        <i
-                          className="fa fa-arrow-circle-right"
-                          aria-hidden="true"
-                          id="i-verMas"
-                        >
-                          Ver mas
-                        </i>
-                      </Link>
+                      /> {" "}
+                      Trabajamos con el objetivo de ayudar a nuestros empleados y clientes en una mejor hambiente.
+                      Nuestro marco estratégico integra la Responsabilidad Social Corporativa y se fundamenta en cuatro pilares: clientes, empleados, proveedores y entorno social. <Link className="nav-link" to="/Error404"><i className="fa fa-arrow-circle-right" aria-hidden="true" id="i-verMas">Ver mas</i></Link> 
                     </p>
                   </div>
                 </div>
