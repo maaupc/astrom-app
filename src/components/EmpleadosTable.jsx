@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import ModalEmpleado from "./modals/ModalEmpleado";
 // import BtnPaginacion from "./BtnPaginacion";
-import '../styles/admin.css'
+import '../styles/Admin.css'
 import '../styles/tablaEmpleado.css'
 
 //Importo conexiones con base de datos
@@ -99,12 +99,25 @@ const EmpleadosTable = () => {
 
     return (
         <div>
-            <div>
+            <div className="position-relative">
+                <div className="puestos-header">
+                    <div className="line-header"></div>
+                    <h1 className="h1-header">Empleados</h1>
+                </div>
+                <div className="overlay-header"></div>
+                <div className="button-header d-flex justify-content-end">
+                    <button className="btn agregar-button" onClick={()=>{handleShow() }}>Agregar empleado</button>
+                </div>
+            </div>
+
+
+
+            {/* <div className="admin-header">
                 <h1 className="mb-4">Empleados</h1>
             </div>
             <button className="btn btn-warning mb-3" onClick={handleShow}>
                 Crear empleado
-            </button>
+            </button> */}
 
             <div className="input-group mx-auto">
                 <form onSubmit={submitEmpleados}>
