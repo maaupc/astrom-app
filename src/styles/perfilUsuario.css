@@ -1,40 +1,26 @@
-*{
-      padding: 0;
-      margin: 0;
-      box-sizing: border-box;
-}
-html{
-      scroll-behavior: smooth;
-}
-body{
-      min-height: 100vh;
-    display: flex;
-    flex-direction: column;
 
-}
-.perfil-header{
-      width: 100%;
-      height: 250px;
+.container-perfil-header{
+      display: grid;
+      margin-bottom: 50px;
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: 22rem;
       background-image: url('https://i.postimg.cc/x8Mnmk8d/pexels-photo-4069291.jpg');
-      background-repeat: no-repeat;
-      background-color: #333333;
-      background-position-y: center ;
+      background-position: center center;
       background-size: cover;
-      display:flex;
       position: relative;
-  }
-  .h1-perfil{
+}
+.h1-perfil-header{
         color:#4DAAA7;
         display: flex;
         position: absolute;
         bottom: 20px;
         left: 40px;
   }
-  .title{
+.title_perfil_card{
       color:#4DAAA7 ;
       text-align:start;
 }
-.card{
+.card_perfil{
       border-radius: 3%;
       box-shadow: 9px 8px 18px -3px #000000;
 
@@ -53,7 +39,7 @@ body{
       /* display: flex;
       margin:auto;  */
 }
-.card .i-pencil{
+.card_perfil .i-pencil{
    color: #4DAAA7;
    font-size: 40px;
    margin-top: 10px;
@@ -72,17 +58,17 @@ body{
 .camera-perfil{
       color: #4DAAA7;
 }
- .card-perfil{
+ .card-info-perfil{
     height: 332px;
     text-align:justify;
 }
-.card-img{
+.card-img_perfil{
       height: 520px;
 }
 .card-call{
       height:160px ;
 }
-.card .img-logo{
+.card_perfil .img-logo-perfil{
       width: 30px;
       height: 30px;
 }
@@ -101,6 +87,11 @@ body{
 #i-verMas{
       font-size: 17px;
       color:#4DAAA7; 
+}
+.p-ubicacion{
+    margin-left: 20px;
+    text-justify:initial;
+     
 }
 .span-i{
     margin-left: 20px;

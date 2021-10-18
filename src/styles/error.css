@@ -79,17 +79,17 @@ text-justify: distribute;
       opacity: 1.0;
       background-color: white;
 }
-.fa-instagram{
+#ig-error{
  background:linear-gradient(to right top, #f28d17, #ff613b, #ff2a63, #ee0090, #bb1abc);;
  color: white;
 }
-.fa-linkedin{
+#linked-error{
       color: #0081CF;
 }
-.fa-github{
-      color: black;
+#git-error{
+      color:white;
 }
-.fa-facebook{
+#fb-error{
   color: #009EFA;
 }
 .div3-error{

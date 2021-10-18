@@ -38,15 +38,15 @@ export const actualizarEmpleado = async (id, data) => {
 
   return datos;
 };
-export const subirImagen=async (id)=>{
-      const resp = await fetch(`${url}/${id}/upload`, {
-            method: "POST",
-            headers: {
-              'content-type': 'multipart/form-data'
-            },
-          });
-          const datos = await resp.json();
+// export const subirImagen=async (id)=>{
+//       const resp = await fetch(`${url}/${id}/upload`, {
+//             method: "POST",
+//             headers: {
+//               'content-type': 'multipart/form-data'
+//             },
+//           });
+//           const datos = await resp.json();
         
-          return datos;     
-}
+//           return datos;     
+// }
 
