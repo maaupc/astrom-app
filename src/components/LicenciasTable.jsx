@@ -5,6 +5,7 @@ import '../styles/LicenciasTable.css'
 
 import { licenciasGet, licenciaDelete } from '../helpers/licencias'
 import ModalLicencia from './modals/ModalLicencia'
+import BtnPaginacion from './BtnPaginacion'
 
 
 const LicenciasTable = () => {
@@ -17,6 +18,35 @@ const LicenciasTable = () => {
 
     const [show, setShow] = useState(false)
     const [actualizar, setActualizar] = useState("")
+
+    const [pagina, setPagina] = useState(0);
+     const [totPag, setTotpag] = useState(0);
+
+ 
+     useEffect(() => {
+        
+        licenciasGet().then((respuesta)=>{
+            
+            setLicencias({
+                datos: respuesta.licencias,
+                loading: false
+            })
+             setTotpag(respuesta.Total);
+             console.log("Total licencias:", respuesta.Total)
+            
+         })
+     }, []);
+
+     useEffect(() => {
+        licenciasGet(pagina).then((respuesta)=>{
+            console.log("Pagina:", pagina)
+            setLicencias({
+                datos: respuesta.licencias,
+                loading: false
+            })
+         });
+        
+     }, [pagina])
 
     
     useEffect(() => {
@@ -176,8 +206,11 @@ const LicenciasTable = () => {
 
             </table>
             <div className="d-flex justify-content-center">
-            <ModalLicencia show={show} handleClose={handleClose} actualizar={actualizar} user={user}/>
-          </div>
+                <BtnPaginacion totPag={totPag} pagina={pagina} setPagina={setPagina}/>
+            </div>
+            <div className="d-flex justify-content-center">
+                <ModalLicencia show={show} handleClose={handleClose} actualizar={actualizar} user={user}/>
+            </div>
 
           </div>
 

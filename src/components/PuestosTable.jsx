@@ -5,6 +5,7 @@ import '../styles/PuestosTable.css'
 
 import { puestosGet, puestoDelete } from '../helpers/puestos'
 import ModalPuesto from './modals/ModalPuesto'
+import BtnPaginacion from './BtnPaginacion'
 
 
 const PuestosTable = () => {
@@ -14,6 +15,38 @@ const PuestosTable = () => {
     })
     const [show, setShow] = useState(false)
     const [actualizar, setActualizar] = useState("")
+
+    
+    const [pagina, setPagina] = useState(0);
+     const [totPag, setTotpag] = useState(0);
+
+ 
+     useEffect(() => {
+        
+        puestosGet().then((respuesta)=>{
+            
+            setPuestos({
+                datos: respuesta.puestos,
+                loading: false
+            })
+             setTotpag(respuesta.Total);
+             console.log("Total licencias:", respuesta.Total)
+            
+         })
+     }, []);
+
+     useEffect(() => {
+        puestosGet(pagina).then((respuesta)=>{
+            console.log("Pagina:", pagina)
+            setPuestos({
+                datos: respuesta.puestos,
+                loading: false
+            })
+         });
+        
+     }, [pagina])
+
+ 
     
     useEffect(() => {
         puestosGet().then((respuesta)=>{
@@ -98,6 +131,10 @@ const PuestosTable = () => {
                         </tbody>
     
                     </table>
+                    <div className="d-flex justify-content-center">
+                        <BtnPaginacion totPag={totPag} pagina={pagina} setPagina={setPagina}/>
+                    </div>
+
                     <div className="d-flex justify-content-center">
                         <ModalPuesto show={show} handleClose={handleClose} actualizar={actualizar}/>
                     </div>

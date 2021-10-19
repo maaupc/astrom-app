@@ -39,6 +39,8 @@ const Perfil = () => {
     dni:"",
     nacimiento:""
   });
+  const [salario, setSalario] = useState("x")
+
 function getBase64(imagen) {
       return new Promise((resolve, reject) => {
           const reader = new FileReader();
@@ -164,7 +166,11 @@ useEffect ( async () =>{
 
 
   const formatCurrency = function(number){
+    if(!isNaN(Number(number))){
       return new Intl.NumberFormat('en-US', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(number);
+    }else{
+      return "XXXXXX"
+    }
   };
  
 
@@ -176,6 +182,15 @@ useEffect ( async () =>{
                return ("No Activa") ;
          }      
    } 
+
+   const handleSalario = ({target}) =>{
+     if(target.checked){
+       setSalario(puesto.salario)
+    }else{
+      setSalario("X")
+      }
+   }
+
   return (
     <>
       <div className="container-perfil-header">
@@ -333,31 +348,20 @@ useEffect ( async () =>{
                     <br/>
                     <div className="alert alert-secondary" role="alert"> 
                     <span> </span>
-                    <span >{formatCurrency(salarioAnual(puesto.salario))}</span>  
+                    <span name="salarioMensual">{formatCurrency(salarioAnual(salario))}</span>  
                       <label id="botones-switch" className="switch_perfil">
                      <input  className="boton-input" 
-                        // onChange={handleChangeSwitc}
-                        // checkend={isCheckend}
-                         type="checkbox"
-                         name="check1"
-                         value="check1"/>
-                        <div class="slider-boton round"></div>
+                        type="checkbox"                      
+                         name="mostrarSalario"
+                         onChange={handleSalario}/>
+                        <div className="slider-boton round"></div>
                         </label>
                     </div>
                    
                     <strong>Mensual</strong>
                     <br />
                     <div className="alert alert-secondary" role="alert">
-                      {formatCurrency(puesto.salario)}
-                      {/* <label id="botones-switch" className="switch_perfil">
-                         <input className="boton-input"   onChange={ (e) => handleChangeSwitch ("check2", e.target.value)}
-                        checkend={isCheckend}
-                         type="checkbox"
-                         name= "check2"
-                         value="check2"/>
-                        <div className="slider-boton round"></div>
-                        </label>
-                       */}
+                      <span name="salarioAnual">{formatCurrency(salario)}</span>
                     </div>
                   </div>
                 </div>

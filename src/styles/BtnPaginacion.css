@@ -1,0 +1,8 @@
+.btn-pgn{
+    color: #3F8F8B !important;
+}
+
+.btn-pgn:hover{
+    color: white !important;
+    background: #3F8F8B ;
+}
