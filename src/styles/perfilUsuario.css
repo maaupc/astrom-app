@@ -67,6 +67,7 @@
 }
 .card-call{
       height:160px ;
+      display: initial;
 }
 .card_perfil .img-logo-perfil{
       width: 30px;
@@ -76,7 +77,16 @@
       background-color:#4DAAA7 ;
       color: white;
       width: 100%;
-      margin-top: 5%;
+      margin-top: 3%;
+}
+.btn-save:focus{
+      outline: none;
+      box-shadow: none;
+}
+.button-perfil-emergencia{
+      border: none;
+      background: none;
+      line-height: 50px;
 }
 #i-icon{
       color: #4DAAA7;
@@ -89,25 +99,30 @@
       color:#4DAAA7; 
 }
 .p-ubicacion{
-    margin-left: 20px;
-    text-justify:initial;
-     
+    font-size: 16px;     
+}
+.p-parrafo-perfil{
+      font-size: 16px;
 }
 .span-i{
     margin-left: 20px;
-    text-justify:initial;
 }
- 
 #i-phone{
       color:gold;
-      font-size: 25px;    
+      font-size: 25px;  
+      margin-left: 7px;  
 }
 #i-add{
 color: #4DAAA7;
 align-items: center;
 justify-content: center;
 text-align: center;
-margin-left: 30%;
+margin-left: 50%;
+font-size: 20px;
+}
+#input-perfil-emergencia{
+      text-align: center;
+      margin-left: 18%;
 }
 .row-principal{
       position:sticky;
@@ -115,7 +130,23 @@ margin-left: 30%;
       height:max-content ;
 }
 
-@media screen and (max-width: 780px) { .row-principal{
+@media screen and (max-width: 900px) { .row-principal{
      position:relative;
      height: max-content;
-  } }
+  } 
+  
+}
+@media screen and (max-width: 1300px) { 
+      .div-perfil-emergencia{
+       display:initial;
+       margin: 0;
+   } 
+   #input-perfil-emergencia{
+         margin-left: 15px;
+   }
+}
+@media screen and (max-width: 390px) { #i-phone{
+     margin-left:0 ;
+   } 
+   
+ }

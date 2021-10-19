@@ -7,11 +7,24 @@ import { puestosGet } from "../helpers/puesto";
 import "../styles/perfilUsuario.css";
 import "../styles/switchStyled.css"
 import logo2 from "../assets/logo2.png";
-
+import Swal from "sweetalert2";
 
 const Perfil = () => {
+      const Alertsucces = () => {
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Se actualizaron correctamente los cambios!",
+              showConfirmButton: false,
+              timer: 1700,
+            });
+          };
   const [update, setUpdate] = useState(false);
   const [image, setImage] = useState('');
+  const [show, setShow] = useState(true);
+  const [contacto, setContacto] = useState({
+        emergencia:""
+  });
   const [selectedFile, setSelectedFile] = useState();
   const [perfil, setPerfil] = useState({
     nombre: "",
@@ -88,10 +101,38 @@ useEffect ( async () =>{
     if (nombre && telefono && email && provincia && localidad && domicilio && imagen) {
       actualizarEmpleado(datos.empleado.uid, perfil).then((respuesta) => {
       });
+      Alertsucces()
     }
     console.log(perfil)
     setUpdate(false);
   };
+  const handleChangeConctacto=(e)=>{
+            setContacto({
+                  ...contacto,
+                  [e.target.name]: e.target.value,
+            }
+            )
+  }
+  useEffect(() => {
+      const datos = JSON.parse(localStorage.getItem("auth"));
+      obtenerEmpleado(datos.empleado.uid).then((respuesta) => {
+           setContacto({
+              emergencia:respuesta.empleado.emergencia 
+            })
+      })
+  }, [])
+  const handleSubmitContacto = (e) =>{
+        console.log("hola bb")
+      e.preventDefault()
+        const {emergencia}=contacto
+        const datos = JSON.parse(localStorage.getItem("auth"));
+        if(emergencia){
+            actualizarEmpleado(datos.empleado.uid, contacto).then((respuesta) => {
+            });
+            Alertsucces()     
+        }
+        console.log(contacto)
+  }
   const [puesto,setPuesto] = useState({
         nombre:"",
         horarios:"",
@@ -230,14 +271,37 @@ useEffect ( async () =>{
                       id="i-phone"
                     ></i>
                     <span> Por favor provee tu contacto de emergencia</span>
-                     <Link  className="nav-link" to="/Error404">
+                     <button type="submit" className="button-perfil-emergencia"
+                     onClick={() => {
+                             setShow(!show);
+                         }}>
                      <i
                       className="fa fa-plus-circle "
                       aria-hidden="true"
                       id="i-add"
-                    >Agregar contacto  
+                    > {show ? '' : ''}
                     </i>
-                    </Link>
+                    </button>
+                    {show ? (
+                      ""
+                       ) : (
+                        <div className="div-perfil-emergencia">
+                         <form onSubmit={handleSubmitContacto}>
+                         <input 
+                        id="input-perfil-emergencia"
+                        type="number"
+                        value={contacto.emergencia}
+                        name="emergencia"
+                        onChange={handleChangeConctacto}/>
+                        <button 
+                        type="submit" 
+                         >✅</button>
+                         </form>
+                        
+                         </div>
+                        
+                         )}
+                           
                   </div>
                 </div>
               </div>
@@ -245,7 +309,7 @@ useEffect ( async () =>{
           </div>
           <div className="col-lg-8 col-sm-12 col-md-6 ">
             <div className="row">
-              <div className="col-sm-12 col-lg-6 col-md-12 mb-3 d-none d-md-block">
+              <div className="col-sm-12 col-lg-6 col-md-12 mb-3  d-md-block">
                 <div className="card_perfil">
                   <div className="card-body card-info-perfil">
                     <h3>Info Personal</h3>
@@ -255,8 +319,8 @@ useEffect ( async () =>{
                     <span className="span-i"> Fecha Nac. : {perfil.nacimiento}</span>
                     <hr />
                     <p className="p-ubicacion">Ubicacion : {perfil.domicilio} , {perfil.localidad} , {perfil.provincia} .</p>
-
                     <hr />
+                    <span className="span-i"> N°. Emergencia : {contacto.emergencia}</span>
                   </div>
                 </div>
               </div>
