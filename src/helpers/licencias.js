@@ -3,7 +3,7 @@ const url = "http://localhost:8080";
 
 export const licenciasGet = async (limite, vencimiento)=>{
     console.log("LicenciasGet - vencimiento:", vencimiento)
-    const resp = await fetch(`${url}/api/licencias?limite=${limite}&vencimiento=${vencimiento}`,{
+    const resp = await fetch(`${url}/api/licencias?desde=${limite}&vencimiento=${vencimiento}`,{
         method: 'GET',
         headers : {
             "Content-type": "application/json; charset=UTF-8",

@@ -26,16 +26,19 @@ const Error404 = () => {
                               </p>
                               <div className="div4-error">
                               <div className="icono-error"> 
-                              <i className="fa fa-instagram" aria-hidden="true"></i>
-                              </div>
-                              <div className="icono-error ">
-                              <i className="fa fa-linkedin" aria-hidden="true"></i>
+                              <i className="fa fa-instagram" id="ig-error" aria-hidden="true"></i>
                               </div>
                               <div className="icono-error">
-                              <i className="fa fa-github" aria-hidden="true"></i>
+                              <i className="fa fa-linkedin" 
+                              id="linked-error" aria-hidden="true"></i>
+                              </div>
+                              <div className="icono-error">
+                              <i className="fa fa-github" 
+                              id="git-error" aria-hidden="true"></i>
                                </div>
                               <div className="icono-error"> 
-                              <i className="fa fa-facebook" aria-hidden="true"></i>
+                              <i className="fa fa-facebook" 
+                              id="fb-error" aria-hidden="true"></i>
                               </div>
                               </div>
                               

@@ -1,7 +1,7 @@
-label{
+#botones-switch{
      cursor: pointer; 
 }
-switch span{
+.switch_perfil span{
       display: block;
       width: 76px;
       padding: 4px;
@@ -9,7 +9,7 @@ switch span{
       background: #414048;
       transition:all 0.35s ;
 }
-.switch {
+.switch_perfil {
       position: relative;
       /*display: inline-block;*/
       width: 60px;
@@ -18,12 +18,12 @@ switch span{
     }
      
     /* Ocultamos el checkbox html */
-    .switch input {
+    .switch_perfil .boton-input{
       display:none;
     }
      
     /* Formateamos la caja del interruptor sobre la cual se deslizará la perilla de control o slider */
-    .slider {
+    .slider-boton{
       position: absolute;
       cursor: pointer;
       top: 0;
@@ -36,7 +36,7 @@ switch span{
     }
      
     /* Pintamos la perilla de control o slider usando el selector before */
-    .slider:before {
+    .slider-boton:before {
       position: absolute;
       content: "";
       height: 26px;
@@ -49,22 +49,22 @@ switch span{
     }
      
     /* Cambiamos el color de fondo cuando el checkbox esta activado */
-    input:checked + .slider {
+    .boton-input:checked + .slider-boton{
       background-color: #4DAAA7;
     }
      
     /* Deslizamos el slider a la derecha cuando el checkbox esta activado */ 
-    input:checked + .slider:before {
+    .boton-input:checked + .slider-boton:before {
       -webkit-transform: translateX(26px);
       -ms-transform: translateX(26px);
       transform: translateX(26px);
     }
      
     /* Aplicamos efecto de bordes redondeados en slider y en el fondo del slider */
-    .slider.round {
+    .slider-boton {
       border-radius: 34px;
     }
      
-    .slider.round:before {
+    .slider-boton:before {
       border-radius: 50%;
     }
