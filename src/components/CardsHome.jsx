@@ -5,8 +5,8 @@ import CardItemHome from "./CardItemHome";
 const CardsHome = () => {
   return (
     <div className="cards">
-      <h1>Lo que está pasando en Aström</h1>
-      <p>Las últimas novedades de Aström. Y porqué es relevante para ti.</p>
+      <h1 className="h1-title-home">Lo que está pasando en Aström</h1>
+      <p className="p-news-astrom">Las últimas novedades de Aström. Y porqué es relevante para ti.</p>
       <div className="cards__container">
         <div className="cards__wrapper">
           <ul className="cards__items">

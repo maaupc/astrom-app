@@ -3,13 +3,13 @@
   background: #fff;
 }
 
-h1 {
+.h1-title-home {
   font-size: 48px;
   color: #3F8F8B;
   text-align: center;
 }
 
-p {
+.p-news-astrom {
   margin-bottom: 0;
   font-size: 20px;
   text-align: center;
@@ -136,11 +136,11 @@ p {
 }
 
 @media screen and (max-width: 768px) {
-  h1 {
+  .h1-title-home {
     font-size: 32px;
   }
   
-  p {
+  .p-news-astrom {
     margin-bottom: 0;
     font-size: 20px;
   }
@@ -150,11 +150,11 @@ p {
   .cards{
     padding: 1rem;
   }
-  h1 {
+  .h1-title-home {
     font-size: 32px;
   }
   
-  p {
+  .p-news-astrom {
     margin-bottom: 0;
     font-size: 18px;
   }

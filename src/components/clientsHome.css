@@ -74,7 +74,7 @@
 
 @media screen and (max-width: 460px) {
   .block-logos-container {
-    height: 180px;
+    height: 200px;
   }
   .logos-heading {
     font-size: 1rem;
@@ -83,8 +83,8 @@
   
   .logos-description {
     padding: 0.3rem 1rem;
-    font-size: 0.8rem;
-    line-height: 1;
+    font-size: 0.9rem;
+    line-height: 1.2;
   }
   .slider ul{
     width: 300%;
@@ -96,26 +96,26 @@
 
 @media screen and (max-width: 360px) {
   .block-logos-container {
-    height: 160px;
+    height: 230px;
   }
   .logos-heading {
-    padding: 0 1.2rem;
-    font-size: 1rem;
-    font-weight: bold;
+    padding: 0.3rem 0.3rem;
+    line-height: 1.2;
+    font-size: 1.1rem;
     margin-bottom: 2px;
   }
   
   .logos-description {
-    font-size: 0.7rem;
-    line-height: 1.5;
+    font-size: 0.9rem;
+    line-height: 1.2;
     text-align: center;
     margin-bottom: 20px;
     padding: 0.5rem 0.5rem;
   }
   .slider ul{
-    width: 300%;
+    width: 410%;
   }
   .slider img {
-    width: 18vw;
+    width: 25vw;
   }
 }
