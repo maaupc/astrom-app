@@ -11,68 +11,30 @@ import { empleadoGet } from "../helpers/empleados";
 
 const EmpleadosTable = () => {
     const [empleados, setEmpleados] = useState({
-        response: "",
+        // response: "",
         datos: [],
         loading: true
     });
 
-    // inicio paginacion
-
-
-     /* const [pagina, setPagina] = useState(0);
-     const [totPag, setTotpag] = useState(0);
-
-    
-   
-     useEffect(() => {
-        
-         empleadoGet().then((respuesta)=>{
-            
-             setEmpleados(respuesta.empleados);
-             setTotpag(respuesta.Total);
-            
-         })
-     }, []);
-
-     useEffect(() => {
-         empleadoGet(pagina).then((respuesta)=>{
-         setEmpleados(respuesta.empleados);
-         });
-        
-     }, [pagina])
- */
-
-
-
-
-    // fin paginacion
-
-
+    const [actualizar, setActualizar] = useState("")
     const [filtro, setFiltro] = useState([]);
-
     const [inputValue, setInputValue] = useState("");
-
     const [show, setShow] = useState(false);
     
-    const getEmployees = () => {
+    useEffect(() => {
         empleadoGet().then((respuesta) => {
+            console.log("getEmpleados", respuesta)
             setEmpleados({
                 datos: respuesta.empleados,
                 loading: false,
             });
+            setFiltro(respuesta.empleados)
         });
-    }
+    }, []);
 
-    const handleClose = () => {
-        getEmployees();
-        setShow(false);
-    };
-
+    const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    useEffect(() => {
-        getEmployees()
-    }, []);
 
 
     useEffect(() => {
@@ -97,6 +59,7 @@ const EmpleadosTable = () => {
         setFiltro(busqueda);
     };
 
+
     return (
         <div>
             <div className="position-relative">
@@ -106,18 +69,9 @@ const EmpleadosTable = () => {
                 </div>
                 <div className="overlay-header"></div>
                 <div className="button-header d-flex justify-content-end">
-                    <button className="btn agregar-button" onClick={()=>{handleShow() }}>Agregar empleado</button>
+                    <button className="btn agregar-button" onClick={()=>{handleShow();setActualizar("") }}>Agregar empleado</button>
                 </div>
             </div>
-
-
-
-            {/* <div className="admin-header">
-                <h1 className="mb-4">Empleados</h1>
-            </div>
-            <button className="btn btn-warning mb-3" onClick={handleShow}>
-                Crear empleado
-            </button> */}
 
             <div className="input-group mx-auto">
                 <form onSubmit={submitEmpleados}>
@@ -134,36 +88,44 @@ const EmpleadosTable = () => {
             {/* TABLA EMPLEADOS */}
             
                 <div className=" table-scroll-y scrollbar">
-            <table className=" table table-bordered table-striped table-condensed table-fixed">
-                <thead className="table-dark">
+            <table className=" table table-condensed table-fixed">
+                <thead className="table">
                     <tr>
-                        <th>Dni</th>
-                        <th>Empleado</th>
-                        <th>Domicilio</th>
-                        <th>Telefon</th>
-                        <th>Provincia</th>
-                        <th>Email</th>
-                        <th>Puesto</th>
-                        <th>Estado</th>
+                        <th>DNI</th>
+                        <th></th>
+                        <th>EMPLEADO</th>
+                        <th>DOMICILIO</th>
+                        <th>TELEFONO</th>
+                        <th>PROVINCIA</th>
+                        <th>EMAIL</th>
+                        <th>PUESTO</th>
+                        <th>ESTADO</th>
+                        <th>ACCION</th>
                        
 
 
 
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="table-content">
                     {filtro.map((empleado) => (
                         <tr key={empleado.uid}>
                             <th >{empleado.dni}</th>
+                            <th><div className="d-flex justify-content-center align-items-center name-ab">{empleado.nombre[0]}{empleado.apellido[0]}</div></th>
                             <td >
                                 {empleado.apellido}, {empleado.nombre}
                             </td>
                             <td >{empleado.domicilio}</td>
                             <td >{empleado.telefono}</td>
-                            <td >{empleado.provincia}, {empleado.localidad}</td>
+                            <td >{empleado.provincia}</td>
                             <td >{empleado.email}</td>
                             <td >{empleado.puesto.nombre}</td>
                             <td >{empleado.licencia ? "LICENCIA" : "ACTIVO"}</td>
+                            <th>
+                                <button className="btn btn-succes" onClick={()=>{handleShow();setActualizar(empleado.uid)}}>
+                                    <i className="fa fa-eye" aria-hidden="true"></i>
+                                </button>
+                            </th>
                             
 
                         </tr>
@@ -174,14 +136,8 @@ const EmpleadosTable = () => {
                 </tbody>
             </table>
 
-            <ModalEmpleado show={show} handleClose={handleClose}/>
-            {/*  <div className="d-flex justify-content-center">
-                <BtnPaginacion
-                    totPag={totPag}
-                    pagina={pagina}
-                    setPagina={setPagina}
-                />
-            </div>  */}
+            <ModalEmpleado show={show} handleClose={handleClose} actualizar={actualizar}/>
+
         </div>
         
         </div>

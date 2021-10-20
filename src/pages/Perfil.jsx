@@ -7,11 +7,21 @@ import { puestosGet } from "../helpers/puesto";
 import "../styles/perfilUsuario.css";
 import "../styles/switchStyled.css"
 import logo2 from "../assets/logo2.png";
-
+import Swal from "sweetalert2";
 
 const Perfil = () => {
+      const Alertsucces = () => {
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Se actualizaron correctamente los cambios!",
+              showConfirmButton: false,
+              timer: 1700,
+            });
+          };
   const [update, setUpdate] = useState(false);
   const [image, setImage] = useState('');
+  const [show, setShow] = useState(true);
   const [selectedFile, setSelectedFile] = useState();
   const [perfil, setPerfil] = useState({
     nombre: "",
@@ -22,9 +32,10 @@ const Perfil = () => {
     localidad:"",
     domicilio:"",
     licencia:"",
-    imagen:null,
+    imagen:"https://i.postimg.cc/wxQZ1qbT/blank-profile-picture-973460-960-720.webp",
     dni:"",
-    nacimiento:""
+    nacimiento:"",
+    emergencia:""
   });
   const [salario, setSalario] = useState("x")
 
@@ -67,7 +78,8 @@ useEffect ( async () =>{
         licencia:respuesta.empleado.licencia,
         imagen:respuesta.empleado.img,
         dni:respuesta.empleado.dni,
-        nacimiento:respuesta.empleado.nacimiento
+        nacimiento:respuesta.empleado.nacimiento,
+        emergencia:respuesta.empleado.emergencia
       });
       cargarPuesto(respuesta.empleado.puesto);
      
@@ -82,7 +94,6 @@ useEffect ( async () =>{
         });
       }
     };
- 
   const handleSubmit = (e) => {
     e.preventDefault();
     const { nombre, telefono, email ,provincia,localidad ,domicilio,imagen } = perfil;
@@ -90,10 +101,29 @@ useEffect ( async () =>{
     if (nombre && telefono && email && provincia && localidad && domicilio && imagen) {
       actualizarEmpleado(datos.empleado.uid, perfil).then((respuesta) => {
       });
+      Alertsucces()
     }
     console.log(perfil)
     setUpdate(false);
   };
+  const handleChangeConctacto=(e)=>{
+      setPerfil({
+            ...perfil,
+            [e.target.name]: e.target.value,
+    
+          });
+  }
+  
+  const handleSubmitContacto = (e) =>{
+      e.preventDefault()
+        const {emergencia}=perfil
+        const datos = JSON.parse(localStorage.getItem("auth"));
+        if(emergencia){
+            actualizarEmpleado(datos.empleado.uid,perfil).then((respuesta) => {
+            });
+            Alertsucces()     
+        }
+  }
   const [puesto,setPuesto] = useState({
         nombre:"",
         horarios:"",
@@ -245,14 +275,37 @@ useEffect ( async () =>{
                       id="i-phone"
                     ></i>
                     <span> Por favor provee tu contacto de emergencia</span>
-                     <Link  className="nav-link" to="/Error404">
+                     <button type="submit" className="button-perfil-emergencia"
+                     onClick={() => {
+                             setShow(!show);
+                         }}>
                      <i
                       className="fa fa-plus-circle "
                       aria-hidden="true"
                       id="i-add"
-                    >Agregar contacto  
+                    > {show ? '' : ''}
                     </i>
-                    </Link>
+                    </button>
+                    {show ? (
+                      ""
+                       ) : (
+                        <div className="div-perfil-emergencia">
+                         <form onSubmit={handleSubmitContacto}>
+                         <input 
+                        id="input-perfil-emergencia"
+                        type="number"
+                        value={perfil.emergencia}
+                        name="emergencia"
+                        onChange={handleChangeConctacto}/>
+                        <button 
+                        type="submit" 
+                         >✅</button>
+                         </form>
+                        
+                         </div>
+                        
+                         )}
+                           
                   </div>
                 </div>
               </div>
@@ -260,18 +313,18 @@ useEffect ( async () =>{
           </div>
           <div className="col-lg-8 col-sm-12 col-md-6 ">
             <div className="row">
-              <div className="col-sm-12 col-lg-6 col-md-12 mb-3 d-none d-md-block">
+              <div className="col-sm-12 col-lg-6 col-md-12 mb-3  d-md-block">
                 <div className="card_perfil">
                   <div className="card-body card-info-perfil">
                     <h3>Info Personal</h3>
                     <hr className="hr-card" />
-                    <span className="span-i"> ID Empleado : {perfil.dni}</span>
+                    <span > <i className="fa fa-user icono-perfil-cards" aria-hidden="true"></i> ID Empleado : {perfil.dni}</span>
                     <hr />
-                    <span className="span-i"> Fecha Nac. : {perfil.nacimiento}</span>
+                    <span><i className="fa fa-calendar-check-o icono-perfil-cards" aria-hidden="true"></i> Fecha Nac. : {perfil.nacimiento}</span>
                     <hr />
-                    <p className="p-ubicacion">Ubicacion : {perfil.domicilio} , {perfil.localidad} , {perfil.provincia} .</p>
-
+                    <span className="span-i"><i className="fa fa-phone icono-perfil-cards" aria-hidden="true"></i> N°. Emergencia : {perfil.emergencia}</span>
                     <hr />
+                    <strong className="p-ubicacion"><i className="fa fa-map-marker icono-perfil-cards" aria-hidden="true"></i> Ubicacion : {perfil.domicilio} , {perfil.localidad} , {perfil.provincia} .</strong>
                   </div>
                 </div>
               </div>
@@ -309,11 +362,11 @@ useEffect ( async () =>{
                   <div className="card-body card-info-perfil">
                     <h3>Info Laboral </h3>
                     <hr/>
-                    <strong>Puesto: </strong><span>{puesto.nombre}</span>
+                    <strong> <i className="fa fa-briefcase icono-perfil-cards" aria-hidden="true"> </i> Puesto: </strong><span>{puesto.nombre}</span>
                     <hr />
-                    <strong>Licencia:</strong><span> {licenciaEstado(perfil.licencia)}</span>
+                    <strong><i className="fa fa-id-card-o icono-perfil-cards" aria-hidden="true"></i> Licencia:</strong><span> {licenciaEstado(perfil.licencia)}</span>
                     <hr />
-                    <strong>Horarios:</strong><span> {puesto.horarios}</span>
+                    <strong> <i className="fa fa-clock-o icono-perfil-cards" aria-hidden="true"></i> Horarios:</strong><span> {puesto.horarios}</span>
                     <hr />
                   </div>
                 </div>
