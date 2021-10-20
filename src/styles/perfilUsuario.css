@@ -4,17 +4,16 @@
       margin-bottom: 50px;
       grid-template-columns: repeat(1, 1fr);
       grid-template-rows: 22rem;
-      background-image: url('https://i.postimg.cc/x8Mnmk8d/pexels-photo-4069291.jpg');
+      background-image: url('https://i.postimg.cc/fb8D9ztz/pexels-thisisengineering-3862132.jpg');
       background-position: center center;
       background-size: cover;
       position: relative;
 }
 .h1-perfil-header{
-        color:#4DAAA7;
-        display: flex;
         position: absolute;
-        bottom: 20px;
-        left: 40px;
+        top: 13%;
+        left: 3%;
+        color: white;
   }
 .title_perfil_card{
       color:#4DAAA7 ;
@@ -30,11 +29,11 @@
       color: white;
 }
 .card-form .imgPerfil{
-      border-radius: 50%;
+      border-radius: 100%;
       border: white 1px solid;
       object-fit:cover center;
       height: auto;
-      width: 200px;
+      width: 180px;
       height: 180px;
       /* display: flex;
       margin:auto;  */
@@ -94,6 +93,11 @@
     
   
 }
+.icono-perfil-cards{
+      color:#4DAAA7;
+      font-size: 21px;
+      margin-right: 10px;
+}
 #i-verMas{
       font-size: 17px;
       color:#4DAAA7; 
@@ -103,9 +107,6 @@
 }
 .p-parrafo-perfil{
       font-size: 16px;
-}
-.span-i{
-    margin-left: 20px;
 }
 #i-phone{
       color:gold;

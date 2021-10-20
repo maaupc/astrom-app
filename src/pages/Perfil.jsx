@@ -22,9 +22,6 @@ const Perfil = () => {
   const [update, setUpdate] = useState(false);
   const [image, setImage] = useState('');
   const [show, setShow] = useState(true);
-  const [contacto, setContacto] = useState({
-        emergencia:""
-  });
   const [selectedFile, setSelectedFile] = useState();
   const [perfil, setPerfil] = useState({
     nombre: "",
@@ -35,9 +32,10 @@ const Perfil = () => {
     localidad:"",
     domicilio:"",
     licencia:"",
-    imagen:null,
+    imagen:"https://i.postimg.cc/wxQZ1qbT/blank-profile-picture-973460-960-720.webp",
     dni:"",
-    nacimiento:""
+    nacimiento:"",
+    emergencia:""
   });
   const [salario, setSalario] = useState("x")
 
@@ -80,7 +78,8 @@ useEffect ( async () =>{
         licencia:respuesta.empleado.licencia,
         imagen:respuesta.empleado.img,
         dni:respuesta.empleado.dni,
-        nacimiento:respuesta.empleado.nacimiento
+        nacimiento:respuesta.empleado.nacimiento,
+        emergencia:respuesta.empleado.emergencia
       });
       cargarPuesto(respuesta.empleado.puesto);
      
@@ -95,7 +94,6 @@ useEffect ( async () =>{
         });
       }
     };
- 
   const handleSubmit = (e) => {
     e.preventDefault();
     const { nombre, telefono, email ,provincia,localidad ,domicilio,imagen } = perfil;
@@ -109,31 +107,22 @@ useEffect ( async () =>{
     setUpdate(false);
   };
   const handleChangeConctacto=(e)=>{
-            setContacto({
-                  ...contacto,
-                  [e.target.name]: e.target.value,
-            }
-            )
+      setPerfil({
+            ...perfil,
+            [e.target.name]: e.target.value,
+    
+          });
   }
-  useEffect(() => {
-      const datos = JSON.parse(localStorage.getItem("auth"));
-      obtenerEmpleado(datos.empleado.uid).then((respuesta) => {
-           setContacto({
-              emergencia:respuesta.empleado.emergencia 
-            })
-      })
-  }, [])
+  
   const handleSubmitContacto = (e) =>{
-        console.log("hola bb")
       e.preventDefault()
-        const {emergencia}=contacto
+        const {emergencia}=perfil
         const datos = JSON.parse(localStorage.getItem("auth"));
         if(emergencia){
-            actualizarEmpleado(datos.empleado.uid, contacto).then((respuesta) => {
+            actualizarEmpleado(datos.empleado.uid,perfil).then((respuesta) => {
             });
             Alertsucces()     
         }
-        console.log(contacto)
   }
   const [puesto,setPuesto] = useState({
         nombre:"",
@@ -305,7 +294,7 @@ useEffect ( async () =>{
                          <input 
                         id="input-perfil-emergencia"
                         type="number"
-                        value={contacto.emergencia}
+                        value={perfil.emergencia}
                         name="emergencia"
                         onChange={handleChangeConctacto}/>
                         <button 
@@ -329,13 +318,13 @@ useEffect ( async () =>{
                   <div className="card-body card-info-perfil">
                     <h3>Info Personal</h3>
                     <hr className="hr-card" />
-                    <span className="span-i"> ID Empleado : {perfil.dni}</span>
+                    <span > <i className="fa fa-user icono-perfil-cards" aria-hidden="true"></i> ID Empleado : {perfil.dni}</span>
                     <hr />
-                    <span className="span-i"> Fecha Nac. : {perfil.nacimiento}</span>
+                    <span><i className="fa fa-calendar-check-o icono-perfil-cards" aria-hidden="true"></i> Fecha Nac. : {perfil.nacimiento}</span>
                     <hr />
-                    <p className="p-ubicacion">Ubicacion : {perfil.domicilio} , {perfil.localidad} , {perfil.provincia} .</p>
+                    <span className="span-i"><i className="fa fa-phone icono-perfil-cards" aria-hidden="true"></i> N°. Emergencia : {perfil.emergencia}</span>
                     <hr />
-                    <span className="span-i"> N°. Emergencia : {contacto.emergencia}</span>
+                    <strong className="p-ubicacion"><i className="fa fa-map-marker icono-perfil-cards" aria-hidden="true"></i> Ubicacion : {perfil.domicilio} , {perfil.localidad} , {perfil.provincia} .</strong>
                   </div>
                 </div>
               </div>
@@ -373,11 +362,11 @@ useEffect ( async () =>{
                   <div className="card-body card-info-perfil">
                     <h3>Info Laboral </h3>
                     <hr/>
-                    <strong>Puesto: </strong><span>{puesto.nombre}</span>
+                    <strong> <i className="fa fa-briefcase icono-perfil-cards" aria-hidden="true"> </i> Puesto: </strong><span>{puesto.nombre}</span>
                     <hr />
-                    <strong>Licencia:</strong><span> {licenciaEstado(perfil.licencia)}</span>
+                    <strong><i className="fa fa-id-card-o icono-perfil-cards" aria-hidden="true"></i> Licencia:</strong><span> {licenciaEstado(perfil.licencia)}</span>
                     <hr />
-                    <strong>Horarios:</strong><span> {puesto.horarios}</span>
+                    <strong> <i className="fa fa-clock-o icono-perfil-cards" aria-hidden="true"></i> Horarios:</strong><span> {puesto.horarios}</span>
                     <hr />
                   </div>
                 </div>
