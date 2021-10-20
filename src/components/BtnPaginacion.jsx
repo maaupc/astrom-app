@@ -1,7 +1,7 @@
 import React from "react";
 import '../styles/BtnPaginacion.css'
 
-const BtnPaginacion = ({ totPag, pagina, setPagina, limite = 2 }) => {
+const BtnPaginacion = ({ totPag, pagina, setPagina, limite = 5 }) => {
   let total = totPag;
   const nextPag = () => {
     if (total > pagina + limite) {
