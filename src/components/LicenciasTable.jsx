@@ -71,7 +71,7 @@ const LicenciasTable = () => {
     
     const handleVencidas = ({target})=>{
         if(target.checked){
-            licenciasGet(10, Date.now()).then((respuesta)=>{
+            licenciasGet(5, Date.now()).then((respuesta)=>{
                 console.log(respuesta)
                 setLicencias({
                     datos: respuesta.licencias,

@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { empleadoPost, empleadoPut, empleadoGet } from "../../helpers/empleados";
+import { empleadoPost, empleadoPut, obtenerEmpleado } from "../../helpers/empleados";
 import { puestosGet } from '../../helpers/puesto';
 import { Modal, Button } from "react-bootstrap";
-// import DatePicker from 'react-datepicker';
-// import 'react-datepicker/dist/react-datepicker.css';
-
 
 
 const ModalEmpleado = ({ show, handleClose, actualizar}) => {
     // Seteando fecha de nacimiento
-    const [puestos, setPuestos] = useState([]);
-    const [startDate, setStartDate] = useState(new Date());
+    // const [puestos, setPuestos] = useState([]);
+    const [puestos, setPuestos] = useState({
+        datos: [],
+        loading: true
+    })
 
     const [loading, setLoading] = useState(false);
     const [formValue, setFormValue] = useState({
@@ -24,31 +24,72 @@ const ModalEmpleado = ({ show, handleClose, actualizar}) => {
         localidad: "",
         provincia: "",
         nacimiento: "",
-        password: "",
         puesto: "",
         rol: "",
     });
 
-    useEffect(() => {
-        (async () => {
-            const puestos = await puestosGet()
-            setPuestos(puestos.puestos);
-        })()
+    useEffect(()=>{
+        puestosGet().then((respuesta)=>{
+            setPuestos({
+                datos: respuesta.puestos,
+                loading:false
+            })
+        })
     }, [])
+
+    useEffect(() => {
+        setFormValue({
+            nombre: "",
+            apellido: "",
+            email: "",
+            dni: "",
+            telefono: "",
+            emergencia: "",
+            domicilio: "",
+            localidad: "",
+            provincia: "",
+            nacimiento: "",
+            puesto: "",
+            rol: "",
+        })
+        if(actualizar){
+            console.log("entro")
+            obtenerEmpleado(actualizar).then((respuesta)=>{
+                console.log(respuesta)
+                setFormValue({
+                    nombre: respuesta.empleado.nombre,
+                    apellido: respuesta.empleado.apellido,
+                    email: respuesta.empleado.email,
+                    dni: respuesta.empleado.dni,
+                    telefono: respuesta.empleado.telefono,
+                    emergencia: respuesta.empleado.emergencia,
+                    domicilio: respuesta.empleado.domicilio,
+                    localidad: respuesta.empleado.localidad,
+                    provincia: respuesta.empleado.provincia,
+                    nacimiento: respuesta.empleado.nacimiento,
+                    puesto: respuesta.empleado.puesto,
+                    rol: respuesta.empleado.rol,
+                })
+            })
+        }
+    }, [actualizar])
+
+    
 
     const handleChange = (e) => {
         setFormValue({
             ...formValue,
             [e.target.name]: e.target.value,
         });
+        console.log("handleChange", formValue)
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-
         // actualizar datos
         if (actualizar) {
+            console.log("Actualizacion:",formValue)
             empleadoPut(actualizar, formValue).then((respuesta) => {
                 if (respuesta.errors) {
                     return window.alert(respuesta.errors[0].msg);
@@ -57,17 +98,6 @@ const ModalEmpleado = ({ show, handleClose, actualizar}) => {
                     window.alert(respuesta.msg)
                 }
             })
-        }
-
-        setLoading(true);
-
-        empleadoPost(formValue).then((respuesta) => {
-            console.log(respuesta);
-            if (respuesta.errors) {
-                setLoading(false);
-                return window.alert(respuesta.errors[0].msg);
-            }
-            setLoading(false);
             setFormValue({
                 nombre: "",
                 apellido: "",
@@ -84,14 +114,38 @@ const ModalEmpleado = ({ show, handleClose, actualizar}) => {
                 rol: "",
             });
             handleClose();
-        });
+        }else{
+            empleadoPost(formValue).then((respuesta) => {
+                console.log(respuesta);
+                if (respuesta.errors) {
+                    setLoading(false);
+                    return window.alert(respuesta.errors[0].msg);
+                }
+                setFormValue({
+                    nombre: "",
+                    apellido: "",
+                    email: "",
+                    dni: "",
+                    telefono: "",
+                    emergencia: "",
+                    domicilio: "",
+                    localidad: "",
+                    provincia: "",
+                    nacimiento: "",
+                    password: "",
+                    puesto: "",
+                    rol: "",
+                });
+                handleClose();
+            });
+        }
     };
 
     return (
         <div>
             <Modal show={show} onHide={handleClose} centered>
-                <Modal.Header closeButton>
-                    <Modal.Title>Alta de Empleado</Modal.Title>
+                <Modal.Header >
+                <Modal.Title>{actualizar? "Editar" : "Nuevo empleado"}</Modal.Title>
                 </Modal.Header>
                 <form onSubmit={handleSubmit}>
                     <Modal.Body>
@@ -144,8 +198,6 @@ const ModalEmpleado = ({ show, handleClose, actualizar}) => {
                                 name="password"
                                 className="form-control"
                                 maxLength="15"
-                                required
-                                value={formValue.password}
                                 onChange={handleChange}
                             />
                         </div>
@@ -248,7 +300,7 @@ const ModalEmpleado = ({ show, handleClose, actualizar}) => {
                                 required
                             >
                                 <option value="">Elige un puesto</option>
-                                {puestos.map((puesto) => {
+                                {puestos.datos.map((puesto) => {
                                     return <option key={puesto._id} value={puesto._id}>{puesto.nombre}</option>
                                 })}
                             </select>
@@ -265,7 +317,7 @@ const ModalEmpleado = ({ show, handleClose, actualizar}) => {
                                 onChange={handleChange}
                                 required
                             >
-                                <option defaultValue="">Elige un Rol</option>
+                                {/* <option defaultValue="">Elige un Rol</option> */}
                                 <option value="USER_ROLE">Usuario</option>
                                 <option value="ADMIN_ROLE">Administrador</option>
                             </select>
@@ -275,7 +327,7 @@ const ModalEmpleado = ({ show, handleClose, actualizar}) => {
                         <Button variant="secondary" onClick={handleClose}>
                             Cerrar
                         </Button>
-                        <Button variant="success" type="submit" disabled={loading}>
+                        <Button variant="success" type="submit">
                             Guardar
                         </Button>
                     </Modal.Footer>

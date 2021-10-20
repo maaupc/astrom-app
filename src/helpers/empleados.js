@@ -3,7 +3,6 @@ const url = "http://localhost:8080";
 
 
 
-
 export const empleadoGet = async (limite) => {
     const resp = await fetch(`${url}/api/empleados?desde=${limite}`, {
         method: 'GET',
@@ -16,6 +15,20 @@ export const empleadoGet = async (limite) => {
 
     return empleados
 }
+
+export const obtenerEmpleado = async (id) => {
+    const resp = await fetch(`${url}/api/empleados/${id}`, {
+        method: 'GET',
+        headers: {
+            "Content-type": "application/json; charset=UTF-8",
+        }
+    })
+
+    const empleados = resp.json()
+
+    return empleados
+}
+
 
 
 
