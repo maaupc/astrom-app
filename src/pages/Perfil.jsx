@@ -58,14 +58,12 @@ useEffect ( async () =>{
              if (selectedFile){  
                    const file= await getBase64(selectedFile);
                    setImage(file);
-                   console.log(file)
              }   
            }, [selectedFile]);
 
 
   useEffect(() => {
     const datos = JSON.parse(localStorage.getItem("auth"));
-      console.log(datos)
     obtenerEmpleado(datos.empleado.uid).then((respuesta) => {
       setPerfil({
         nombre: respuesta.empleado.nombre,
@@ -103,7 +101,6 @@ useEffect ( async () =>{
       });
       Alertsucces()
     }
-    console.log(perfil)
     setUpdate(false);
   };
   const handleChangeConctacto=(e)=>{

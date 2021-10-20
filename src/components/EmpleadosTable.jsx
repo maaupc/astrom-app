@@ -23,7 +23,6 @@ const EmpleadosTable = () => {
     
     useEffect(() => {
         empleadoGet().then((respuesta) => {
-            console.log("getEmpleados", respuesta)
             setEmpleados({
                 datos: respuesta.empleados,
                 loading: false,
@@ -79,7 +78,7 @@ const handleFocus=()=>{
             <div className="input-group empleado-busqueda-admin">
                   <div className=" container busqueda-dni">
                   <form  className=" form-busqueda-admin" onSubmit={submitEmpleados}>
-                  <div class="form-group row div-buscador-admin">
+                  <div className="form-group row div-buscador-admin">
                   <div className="col-md-5 input-group">
                   <span className="input-group-addon span-icon-busqueda"><i className="fa fa-search " 
                   aria-hidden="true" 
@@ -94,18 +93,7 @@ const handleFocus=()=>{
                    onChange={changeInput}/>
                   </div>
                   </div>
-                  {/* <label for="stactic"> Documentacion
-                  <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Ingrese un DNI "
-                        id="static"
-                        value={inputValue}
-                        onChange={changeInput}
-                    />
-                  </label>
-                    
-                    <i class="fa fa-search" aria-hidden="true"></i> */}
+                
                 </form>
                   </div>
                 

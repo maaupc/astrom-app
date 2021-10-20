@@ -8,22 +8,16 @@
     color: white;
 }
 
-
-
 /* se modifica objectfit por backgroundsize para ajustar imagen a lo ancho */
-.container-admin-empleado{
-      padding-right: 0;
-      padding-left: 0;
-}
+
 .admin-header {
-  /* background-image: url(https://i.ibb.co/H2Hj2Sd/admin-edited.jpg);
-  background-repeat: no-repeat;
-  background-size: cover; 
-  height: 450px;
-  width: 100%;
-  background-color: #3f8f8b;
-  color: white; */
-  display: grid;
+  height: 250px;
+    background-image: url('https://image.freepik.com/foto-gratis/gente-negocios-oficina_144627-37532.jpg');
+    background-color: #333333;
+    background-position-y: center;
+    background-size: cover;
+    color: white;
+  /* display: grid;
   margin-bottom: 50px;
   height: 100%;
   grid-template-columns: repeat(1, 1fr);
@@ -31,7 +25,7 @@
   background-image: url('https://i.ibb.co/H2Hj2Sd/admin-edited.jpg');
   background-position: center center;
   background-size: cover;
-  position: relative;
+  position: relative; */
 }
 
 .admin-header h1{
@@ -40,6 +34,7 @@
   font-size: 50px;
   color: #fff;
 }
+
 .empleado-busqueda-admin{
       background-color: #333333;
       width: 100%;
@@ -101,13 +96,13 @@
     margin-top: 10%;
 }
   
-/* .line-header{
+.line-header{
     position: relative;
     top: 33%;
     height: 2%;
     width: 16%;
     background: #3F8F8B;
-} */
+}
   
 .h1-header{
     position: absolute;
