@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import { useState } from "react";
+import { useState ,useRef} from "react";
 import ModalEmpleado from "./modals/ModalEmpleado";
 // import BtnPaginacion from "./BtnPaginacion";
 import '../styles/admin.css'
@@ -15,7 +15,7 @@ const EmpleadosTable = () => {
         datos: [],
         loading: true
     });
-
+    const inputRef=useRef()
     const [actualizar, setActualizar] = useState("")
     const [filtro, setFiltro] = useState([]);
     const [inputValue, setInputValue] = useState("");
@@ -58,7 +58,10 @@ const EmpleadosTable = () => {
 
         setFiltro(busqueda);
     };
-
+const handleFocus=()=>{
+    const input= inputRef.current
+   input.focus()
+}
 
     return (
         <div>
@@ -73,16 +76,39 @@ const EmpleadosTable = () => {
                 </div>
             </div>
 
-            <div className="input-group mx-auto">
-                <form onSubmit={submitEmpleados}>
-                    <input
+            <div className="input-group empleado-busqueda-admin">
+                  <div className=" container busqueda-dni">
+                  <form  className=" form-busqueda-admin" onSubmit={submitEmpleados}>
+                  <div class="form-group row div-buscador-admin">
+                  <div className="col-md-5 input-group">
+                  <span className="input-group-addon span-icon-busqueda"><i className="fa fa-search " 
+                  aria-hidden="true" 
+                  type="submit"
+                  onClick={handleFocus} ></i></span>
+                   <input 
+                   ref={inputRef}
+                   type="text"
+                   className="input-busqueda-admin form-control"
+                   placeholder="  Ingrese un DNI "
+                   value={inputValue}
+                   onChange={changeInput}/>
+                  </div>
+                  </div>
+                  {/* <label for="stactic"> Documentacion
+                  <input
                         type="text"
                         className="form-control"
-                        placeholder="Ingrese un DNI"
+                        placeholder="Ingrese un DNI "
+                        id="static"
                         value={inputValue}
                         onChange={changeInput}
                     />
+                  </label>
+                    
+                    <i class="fa fa-search" aria-hidden="true"></i> */}
                 </form>
+                  </div>
+                
             </div>
 
             {/* TABLA EMPLEADOS */}

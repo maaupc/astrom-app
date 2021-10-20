@@ -158,7 +158,7 @@ useEffect ( async () =>{
     if(!isNaN(Number(number))){
       return new Intl.NumberFormat('en-US', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(number);
     }else{
-      return "XXXXXX"
+      return "$ XXXXXX.XX"
     }
   };
  

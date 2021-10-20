@@ -11,14 +11,27 @@
 
 
 /* se modifica objectfit por backgroundsize para ajustar imagen a lo ancho */
+.container-admin-empleado{
+      padding-right: 0;
+      padding-left: 0;
+}
 .admin-header {
-  background-image: url(https://i.ibb.co/H2Hj2Sd/admin-edited.jpg);
+  /* background-image: url(https://i.ibb.co/H2Hj2Sd/admin-edited.jpg);
   background-repeat: no-repeat;
   background-size: cover; 
   height: 450px;
   width: 100%;
   background-color: #3f8f8b;
-  color: white;
+  color: white; */
+  display: grid;
+  margin-bottom: 50px;
+  height: 100%;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: 22rem;
+  background-image: url('https://i.ibb.co/H2Hj2Sd/admin-edited.jpg');
+  background-position: center center;
+  background-size: cover;
+  position: relative;
 }
 
 .admin-header h1{
@@ -27,7 +40,53 @@
   font-size: 50px;
   color: #fff;
 }
-
+.empleado-busqueda-admin{
+      background-color: #333333;
+      width: 100%;
+      height: 100px;
+}
+.busqueda-dni {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items:flex-start;
+}
+.form-busqueda-admin{
+      width: 100%;
+}
+.input-busqueda-admin{
+      text-align: center;
+      padding: 0.25rem 0.6rem;
+      border: solid white 1px;
+      width: 30%;
+      border-radius: 0.3rem;
+      box-shadow: 0.2px 3px rgba(0,0,0 / 0.5);
+      font-family: "Font Awesome 5 Free"; 
+      font-weight: 900;
+}
+.input-busqueda-admin::placeholder{
+      font-family: "Font Awesome 5 Free"; 
+}
+.input-busqueda-admin:focus{
+      outline: none;
+}
+.span-icon-busqueda{
+      background:#3F8F8B;
+      color: white;
+      width: 50px;
+}
+.span-icon-busqueda i{
+      font-size: 20px;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+     flex-direction: column;
+     height: 100%;
+}
+.div-buscador-admin{
+      display: inline-block;
+}
 
 /* GENERAL PUESTOS Y LICENCIAS STYLES  */
 .form-check-input:checked{
@@ -42,13 +101,13 @@
     margin-top: 10%;
 }
   
-.line-header{
+/* .line-header{
     position: relative;
     top: 33%;
     height: 2%;
     width: 16%;
     background: #3F8F8B;
-}
+} */
   
 .h1-header{
     position: absolute;

@@ -65,7 +65,7 @@ const Admin = () => {
     //         </div>
 
   return (
-        <div className="container-fluid">
+        <div className="container-fluid container-admin-empleado">
             <div className="row">
                 <div className="col-4 d-grid gap-2 admin-button">
                     <button className="btn" onClick={()=>{setBtn("empleados")}}>
