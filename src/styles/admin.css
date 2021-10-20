@@ -10,6 +10,7 @@
 
 
 
+<<<<<<< HEAD
 /* se modifica objectfit por backgroundsize para ajustar imagen a lo ancho */
 .container-admin-empleado{
       padding-right: 0;
@@ -88,6 +89,8 @@
       display: inline-block;
 }
 
+=======
+>>>>>>> 083dfbda679490d309ccd344445d4f48b2fb94d5
 /* GENERAL PUESTOS Y LICENCIAS STYLES  */
 .form-check-input:checked{
     background-color: #3F8F8B !important;

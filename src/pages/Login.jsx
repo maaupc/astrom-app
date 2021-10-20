@@ -78,10 +78,10 @@ const Login = () => {
                 className="col-md-6 col-lg-4 col-sm-9 login-form-2"
                 id="login-form-2"
               >
-                <div className="container container-logo col-sm-7">
-                  <img id="imagen-logo" src={logo} alt="logo" />
+                <div className="container_logo-login col-sm-7">
+                  <img id="imagen-logo-login" src={logo} alt="logo" />
                   <br />
-                  <h4>INICIAR SESIÓN</h4>
+                  <h4 className="text-inicio-sesion">INICIAR SESIÓN</h4>
                 </div>
                 <form onSubmit={handleSubmit}>
                   <div>
@@ -113,8 +113,8 @@ const Login = () => {
                     </div>
                     <div className="form-group">
                       <button
-                        className="btn float-right btnSubmit mt-1"
-                        id="btnSubmit"
+                        className="btn float-right btnSubmit-login mt-1"
+                        id="btnSubmit-login"
                         type="submit"
                       >
                         Ingresar
@@ -124,7 +124,7 @@ const Login = () => {
 
                   <div className="overlay">
                     <div className="volver">
-                      <Link to="/error404" className=" nav-link text-inicio">
+                      <Link to="/error404" className="nav-link text-inicio">
                         ¿Olvidó su contraseña?
                       </Link>
                     </div>
