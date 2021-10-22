@@ -1,5 +1,5 @@
 import React from "react";
-import "./buttonCarousel.css";
+import "../styles/buttonCarousel.css";
 import { Link } from "react-router-dom";
 
 

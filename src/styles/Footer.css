@@ -1,11 +1,8 @@
 .main-footer{
     color: white;
     background-color: #333333;
-    /* padding-top: relative;
-    position: relative; */
-    /* bottom: 0; */
     width: 100%;
-
+    margin-top: 50px;
 }
 
 .list-unstyled-icon{
@@ -21,7 +18,7 @@
     text-align: center;
 }
 
-
+/* 
 @media (max-width: 425px) { .list-unstyled-icon{
     text-align: center;
     font-size: 24px;
@@ -52,5 +49,5 @@
 @media (min-width: 1024px) and (max-width: 1366px) {.main-footer{
    margin-top: 29%
 }
-}
+} */
  

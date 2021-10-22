@@ -73,7 +73,6 @@ const Login = () => {
         <div id="overlay" className=" font-weight-bold">
           <div className="container login-container">
             <div className="row" id="row-padre">
-              <div className="col-md-6 col-lg-8 col-sm-3 mt-4 login-form-1"></div>
               <div
                 className="col-md-6 col-lg-4 col-sm-9 login-form-2"
                 id="login-form-2"
@@ -124,7 +123,7 @@ const Login = () => {
 
                   <div className="overlay">
                     <div className="volver">
-                      <Link to="/error404" className="nav-link text-inicio">
+                      <Link to="/error404" className="nav-link text-inicio" alt="error">
                         ¿Olvidó su contraseña?
                       </Link>
                     </div>

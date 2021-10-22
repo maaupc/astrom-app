@@ -3,7 +3,12 @@
     background-color: #333333;
     /* width: 100%; */
 }
-  
+.admin-button:hover{
+    background-color: rgb(250, 216, 21);
+}
+.btn:focus{
+    box-shadow: none;
+}
 .admin-button i{
     color: white;
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import "./clientsHome.css";
+import "../styles/clientsHome.css";
 
 const ClientsHome = () => {
   return (

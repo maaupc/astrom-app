@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import "./navbar.css";
+import "../styles/navbar.css";
 import {obtenerEmpleado} from '../helpers/perfil'
 import { Link, useHistory } from "react-router-dom";
 import logo from "../assets/logo.png";
@@ -38,7 +38,7 @@ const Navbar = () => {
     <>
       <nav className="navbar">
         <div className="container-fluid">
-          <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+          <Link to="/inicio" className="navbar-logo" onClick={closeMobileMenu}>
             <img src={logo} alt="logo" />
           </Link>
           <div className="menu-icon" onClick={handleClick}>
@@ -76,7 +76,7 @@ const Navbar = () => {
                 {empleado?.rol === "ADMIN_ROLE" && (
                 <li>
                   <Link className="dropdown-item" to="/admin" onClick={closeMobileMenu}>
-                    Admin
+                  <i className="fa fa-user-circle-o" aria-hidden="true" /> Admin
                   </Link>
                 </li>
                 )}

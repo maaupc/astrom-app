@@ -1,7 +1,7 @@
 import React from "react";
-import "../index.css";
+import "../styles/homeCarousel.css";
 import ButtonCarousel from "./ButtonCarousel";
-import "./homeCarousel.css";
+
 
 const HomeCarousel = () => {
   return (
