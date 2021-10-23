@@ -54,6 +54,7 @@ useEffect(() => {
               });
             }   
           }, [image]);
+          
 useEffect ( async () =>{
              if (selectedFile){  
                    const file= await getBase64(selectedFile);
@@ -98,8 +99,13 @@ useEffect ( async () =>{
     const datos = JSON.parse(localStorage.getItem("auth"));
     if (nombre && telefono && email && provincia && localidad && domicilio && imagen) {
       actualizarEmpleado(datos.empleado.uid, perfil).then((respuesta) => {
+        if(respuesta.errors){
+          return window.alert(respuesta.errors[0].msg);
+      }
+      if(respuesta.msg){
+        Alertsucces()
+      }
       });
-      Alertsucces()
     }
     setUpdate(false);
   };
@@ -117,8 +123,13 @@ useEffect ( async () =>{
         const datos = JSON.parse(localStorage.getItem("auth"));
         if(emergencia){
             actualizarEmpleado(datos.empleado.uid,perfil).then((respuesta) => {
+              if(respuesta.errors){
+                return window.alert(respuesta.errors[0].msg);
+            }
+            if(respuesta.msg){
+              Alertsucces()
+            }
             });
-            Alertsucces()     
         }
   }
   const [puesto,setPuesto] = useState({

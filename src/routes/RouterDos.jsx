@@ -21,7 +21,6 @@ const RouterDos = () => {
         <Route exact path="/perfil" component={Perfil} />
         <Route exact path="/licencias" component={Licencias} />
         <Route exact path="/nosotros" component= {Nosotros} />
-        <Route component={Error404} />
       </Switch>
       <Footer/>
     </>

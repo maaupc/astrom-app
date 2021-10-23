@@ -1,4 +1,5 @@
-const url = "http://localhost:8080";
+// const url = "http://localhost:8080";
+const url = "https://calm-castle-34951.herokuapp.com/";
 
 export const puestosGet = async (limite)=>{
     const resp = await fetch(`${url}/api/puestos?desde=${limite}`, {

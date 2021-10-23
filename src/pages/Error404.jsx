@@ -55,7 +55,7 @@ const Error404 = () => {
               <div className="div3-error">
                 <button className="btn btn-error">
                   {" "}
-                  <Link className="nav-link p-0" to="/">
+                  <Link className="nav-link p-0" to="/inicio">
                     {" "}
                     IR A HOME{" "}
                     <i

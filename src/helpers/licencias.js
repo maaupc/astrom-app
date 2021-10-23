@@ -1,5 +1,5 @@
-// const url = "https://calm-castle-34951.herokuapp.com";
-const url = "http://localhost:8080";
+const url = "https://calm-castle-34951.herokuapp.com";
+// const url = "http://localhost:8080";
 
 export const licenciasGet = async (limite, vencimiento)=>{
     const resp = await fetch(`${url}/api/licencias?desde=${limite}&vencimiento=${vencimiento}`,{

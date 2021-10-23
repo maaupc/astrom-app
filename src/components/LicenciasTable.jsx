@@ -33,6 +33,8 @@ const LicenciasTable = () => {
             })
              setTotpag(respuesta.Total);
          })
+
+
      }, []);
 
      useEffect(() => {
@@ -60,6 +62,7 @@ const LicenciasTable = () => {
     
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
 
     const licenciasUsuario = licencias.datos.filter((licencia)=>{
         return licencia.empleado._id === user.empleado.uid
@@ -138,7 +141,7 @@ const LicenciasTable = () => {
 
             {licencias.loading ? (
                 <div className="d-flex justify-content-center">
-                    <img src="https://www.grupoyomar.com/img/loading.gif" className="gif-loading"/>
+                    <img src="https://www.grupoyomar.com/img/loading.gif" className="gif-loading" alt="gift loading"/>
                 </div>
             ) : (
 

@@ -112,6 +112,7 @@ const ModalEmpleado = ({ show, handleClose, actualizar}) => {
             handleClose();
         }else{
             empleadoPost(formValue).then((respuesta) => {
+                console.log("formValue", formValue)
                 if (respuesta.errors) {
                     setLoading(false);
                     return window.alert(respuesta.errors[0].msg);
@@ -207,6 +208,7 @@ const ModalEmpleado = ({ show, handleClose, actualizar}) => {
                                 className="form-control"
                                 autoComplete="off"
                                 maxLength="8"
+                                minLength="8"
                                 required
                                 value={formValue.dni}
                                 onChange={handleChange}
