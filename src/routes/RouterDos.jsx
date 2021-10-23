@@ -18,7 +18,6 @@ const RouterDos = () => {
             getImagen();
       }, []);
     const getImagen=()=>{
-          console.log("hola ")
       const datos = JSON.parse(localStorage.getItem("auth"));
       obtenerEmpleado(datos.empleado.uid).then((respuesta)=>{
         setImagen({

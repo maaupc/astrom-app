@@ -1,5 +1,5 @@
-// const url = "https://calm-castle-34951.herokuapp.com/api/empleados";
-const url = "http://localhost:8080/api/empleados";
+const url = "https://calm-castle-34951.herokuapp.com/api/empleados";
+// const url = "http://localhost:8080/api/empleados";
 
 //traer los datos del empleado por su id
 export const obtenerEmpleado = async (id) => {
@@ -38,15 +38,5 @@ export const actualizarEmpleado = async (id, data) => {
 
   return datos;
 };
-// export const subirImagen=async (id)=>{
-//       const resp = await fetch(`${url}/${id}/upload`, {
-//             method: "POST",
-//             headers: {
-//               'content-type': 'multipart/form-data'
-//             },
-//           });
-//           const datos = await resp.json();
-        
-//           return datos;     
-// }
+
 
