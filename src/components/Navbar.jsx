@@ -6,28 +6,11 @@ import { Link, useHistory } from "react-router-dom";
 import logo from "../assets/logo.png";
 
 
-const Navbar = () => {
+const Navbar = ({imagen}) => {
   const [click, setClick] = useState(false);
-
   const handleClick = () => setClick(!click);
-
   const closeMobileMenu = () => setClick(false);
-  
-
-  const [empleado, setEmpleado] = useState(null);
-  const [imagen, setImagen] = useState({
-    img:" "
-  })
-
-  useEffect(() => {
-    const datos = JSON.parse(localStorage.getItem("auth"));
-    setEmpleado(datos.empleado);
-    obtenerEmpleado(datos.empleado.uid).then((respuesta)=>{
-      setImagen({
-        img:respuesta.empleado.img
-      })
-    })
-  }, []);
+  const {empleado}= JSON.parse(localStorage.getItem("auth"));
 
   const history = useHistory();
   const logout = () => {

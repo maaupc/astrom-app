@@ -9,12 +9,13 @@ import "../styles/switchStyled.css"
 import logo2 from "../assets/logo2.png";
 import Swal from "sweetalert2";
 
-const Perfil = () => {
+const Perfil = ({getImagen}) => {
+      
       const Alertsucces = () => {
             Swal.fire({
               position: "center",
               icon: "success",
-              title: "Se actualizaron correctamente los cambios!",
+              html: '<b  class="swal-title"> Se actualizaron correctamente los cambios! </>',
               showConfirmButton: false,
               timer: 1700,
             });
@@ -32,13 +33,13 @@ const Perfil = () => {
     localidad:"",
     domicilio:"",
     licencia:"",
-    imagen:"https://i.postimg.cc/wxQZ1qbT/blank-profile-picture-973460-960-720.webp",
+    imagen:"",
     dni:"",
     nacimiento:"",
     emergencia:""
   });
   const [salario, setSalario] = useState("x")
-
+  const msg= "Ingrese un imagen de tamaño grande"
 function getBase64(imagen) {
       return new Promise((resolve, reject) => {
           const reader = new FileReader();
@@ -93,11 +94,13 @@ useEffect ( async () =>{
         });
       }
     };
+    
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { nombre, telefono, email ,provincia,localidad ,domicilio,imagen } = perfil;
+    console.log("submit")
+    const { telefono, email ,imagen } = perfil;
     const datos = JSON.parse(localStorage.getItem("auth"));
-    if (nombre && telefono && email && provincia && localidad && domicilio && imagen) {
+    if ( telefono && email && imagen) {
       actualizarEmpleado(datos.empleado.uid, perfil).then((respuesta) => {
         if(respuesta.errors){
           return window.alert(respuesta.errors[0].msg);
@@ -106,9 +109,15 @@ useEffect ( async () =>{
         Alertsucces()
       }
       });
-    }
-    setUpdate(false);
-  };
+    //         getImagen();
+    //          console.log("getImagen")
+    //   });
+
+    //   Alertsucces()
+    // }
+    // setUpdate(false);
+    };
+  }
   const handleChangeConctacto=(e)=>{
       setPerfil({
             ...perfil,
@@ -210,19 +219,20 @@ useEffect ( async () =>{
                   </div>
                   <div className="card-body card-img_perfil">
                     <form onSubmit={handleSubmit}>
-                    <div className="text-center">
+                    <div className="text-center ">
                     <div className="d-flex justify-content-center align-items-end ml-4 m-2 card-form">
-                        <div
+                        <div 
                             className="rounded-circle overflow-hidden d-flex align-items-center "
             
                         >
-                            <img src={perfil.imagen  } alt="profile" className="imgPerfil"/>
+                            <img src={perfil.imagen}  alt="profile" className="imgPerfil"/>
                         </div>
                         <label htmlFor="file-input" style={{ cursor: 'pointer' }}  >
                             <img
                                 src="https://icongr.am/jam/camera.svg?size=148&color=4daaa7"
                                 alt="camera edit"
                                 width="25"
+                                className="camera-perfil"
                                 />
                         </label>
                         <input
@@ -238,9 +248,10 @@ useEffect ( async () =>{
                 </div>
                
                     <h2 className="title_perfil_card">{perfil.nombre} {perfil.apellido}</h2>
-                      <div className="form-group mb-2">
+                      <div className="form-group mb-2 ">
                         <strong>N° Telefono</strong>
-                        <input
+                        <input 
+                          maxlength="10"
                           type="string"
                           className="form-control"
                           name="telefono"
@@ -300,6 +311,7 @@ useEffect ( async () =>{
                         <div className="div-perfil-emergencia">
                          <form onSubmit={handleSubmitContacto}>
                          <input 
+                        maxlength="10"
                         id="input-perfil-emergencia"
                         type="number"
                         value={perfil.emergencia}

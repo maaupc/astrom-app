@@ -12,6 +12,14 @@
 .admin-button i{
     color: white;
 }
+<<<<<<< HEAD
+.admin-button{
+    background-color: #333333;
+    /* width: 100%; */
+}
+
+=======
+>>>>>>> 5fd68147f71ca25e3d00b7b8f3712a5df1317065
 
 /* se modifica objectfit por backgroundsize para ajustar imagen a lo ancho */
 
