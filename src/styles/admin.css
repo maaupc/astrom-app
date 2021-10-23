@@ -7,7 +7,10 @@
 .admin-button i{
     color: white;
 }
-
+.admin-button{
+    background-color: #333333;
+    /* width: 100%; */
+}
 
 
 /* se modifica objectfit por backgroundsize para ajustar imagen a lo ancho */
