@@ -30,14 +30,12 @@ const PuestosTable = () => {
                 loading: false
             })
              setTotpag(respuesta.Total);
-             console.log("Total licencias:", respuesta.Total)
             
          })
      }, []);
 
      useEffect(() => {
         puestosGet(pagina).then((respuesta)=>{
-            console.log("Pagina:", pagina)
             setPuestos({
                 datos: respuesta.puestos,
                 loading: false
@@ -95,7 +93,7 @@ const PuestosTable = () => {
 
             {puestos.loading ? (
                 <div className="d-flex justify-content-center">
-                    <img src="https://www.grupoyomar.com/img/loading.gif" className="gif-loading"/>
+                    <img src="https://www.grupoyomar.com/img/loading.gif" className="gif-loading" alt="loading gift"/>
                 </div>
             ) : 
             (

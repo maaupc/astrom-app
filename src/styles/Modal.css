@@ -8,3 +8,13 @@
     background-color: #3F8F8B !important;
     color: white !important;
   }
+
+  .btn-success{
+    background-color: white !important;
+    color: #3F8F8B !important;
+  }
+
+  .btn-success:hover{
+    background-color: rgb(230, 228, 228) !important;
+    color: #52bdb7 !important;
+  }

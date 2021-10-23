@@ -1,5 +1,5 @@
 import React from "react";
-import "./cardsHome.css";
+import "../styles/cardsHome.css";
 import CardItemHome from "./CardItemHome";
 
 const CardsHome = () => {

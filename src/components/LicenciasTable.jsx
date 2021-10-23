@@ -32,14 +32,11 @@ const LicenciasTable = () => {
                 loading: false
             })
              setTotpag(respuesta.Total);
-             console.log("Total licencias:", respuesta.Total)
-            
          })
      }, []);
 
      useEffect(() => {
         licenciasGet(pagina).then((respuesta)=>{
-            console.log("Pagina:", pagina)
             setLicencias({
                 datos: respuesta.licencias,
                 loading: false
@@ -72,7 +69,6 @@ const LicenciasTable = () => {
     const handleVencidas = ({target})=>{
         if(target.checked){
             licenciasGet(5, Date.now()).then((respuesta)=>{
-                console.log(respuesta)
                 setLicencias({
                     datos: respuesta.licencias,
                     loading: false

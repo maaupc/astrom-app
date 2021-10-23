@@ -8,10 +8,6 @@
   flex-direction: column;
 }
 
-.login-container{
-  line-height: 50%;
-}
-
 #row-padre {
   height: 100vh;
   display: flex;
@@ -38,7 +34,7 @@
 .login-form-2 {
   padding: 5%;
   border-radius: 40px;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.00);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   border: 2px solid rgba(255, 255, 255, 0.1);
@@ -122,55 +118,20 @@
   color: #e5e5e5;
 }
 
-/* @media (max-width: 600) {
-  .login-form-2 {
-    font-size: 5px;
-    margin-top: 20px;
-    line-height: 1.2;
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    height: 100vh;
-  }
-} */
-
 @media screen and (max-width: 768px) {
   .login-form-2 {
-    width: 70%;
-  }
-}
-@media screen and (max-width: 576px) {
-  .login-form-2 {
-    width: 70%;
+    width: 60%;
+    height: 28rem;
   }
 }
 
 @media screen and (max-width: 460px) {
   .login-form-2 {
     width: 80%;
+    height: 28rem;
   }
 }
 
-@media screen and (max-width: 360px) {
-  .login-form-2 {
-    width: 90%;
-  }
-}
-@media(max-width:600){login-form-2{
-      font-size: 5px;
-      margin-top: 20px;
-      line-height: 1.2
-}
-}
-@media only screen and (min-width:700px) and (max-width: 900px) { .login-form-2{
-      width: 50%;
-} }
-@media(min-width: 1024px){
-      body{
-            height: 100vh;
-      }
-}
+
 
 

@@ -21,7 +21,6 @@ const ModalPuesto = ({show, handleClose, actualizar}) => {
         })
         if(actualizar){
             puestoGet(actualizar).then((respuesta)=>{
-                console.log(respuesta)
                 setFormValue({
                     nombre: respuesta.puesto.nombre,
                     horarios: respuesta.puesto.horarios,

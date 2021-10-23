@@ -65,7 +65,6 @@ useEffect ( async () =>{
 
   useEffect(() => {
     const datos = JSON.parse(localStorage.getItem("auth"));
-      console.log(datos)
     obtenerEmpleado(datos.empleado.uid).then((respuesta) => {
       setPerfil({
         nombre: respuesta.empleado.nombre,
@@ -272,7 +271,7 @@ useEffect ( async () =>{
               <div className="col mb-3">
                 <div className="card_perfil w-100">
                   <div className="card-body card-call">
-                    <strong>Contactos de Emergencia</strong>
+                    <strong >Contactos de Emergencia</strong>
                     <hr />
                     <i
                       className="fa fa-volume-control-phone "
@@ -330,7 +329,7 @@ useEffect ( async () =>{
                     <hr />
                     <span className="span-i"><i className="fa fa-phone icono-perfil-cards" aria-hidden="true"></i> N°. Emergencia : {perfil.emergencia}</span>
                     <hr />
-                    <strong className="p-ubicacion"><i className="fa fa-map-marker icono-perfil-cards" aria-hidden="true"></i> Ubicacion : {perfil.domicilio} , {perfil.localidad} , {perfil.provincia} .</strong>
+                    <strong className="p-ubicacion"><i className="fa fa-map-marker icono-perfil-cards" aria-hidden="true"></i> Ubicación : {perfil.domicilio} , {perfil.localidad} , {perfil.provincia} .</strong>
                   </div>
                 </div>
               </div>
@@ -388,8 +387,7 @@ useEffect ( async () =>{
                         alt="logo-astrom"
                         className="img-logo-perfil"
                       /> 
-                      Trabajamos con el objetivo de ayudar a nuestros empleados y clientes en una mejor hambiente.
-                      Nuestro marco estratégico integra la Responsabilidad Social Corporativa y se fundamenta en cuatro pilares: clientes, empleados, proveedores y entorno social. <Link className="nav-link" to="/Error404"><i className="fa fa-arrow-circle-right" aria-hidden="true" id="i-verMas">Ver mas</i></Link> 
+                      Trabajamos con el objetivo de ayudar a nuestros empleados y clientes en un mejor ambiente. Nuestro marco estratégico integra la Responsabilidad Social Corporativa y se fundamenta en cuatro pilares: clientes, empleados, proveedores y el entorno social.<Link className="nav-link" to="/Error404"><i className="fa fa-arrow-circle-right" aria-hidden="true" id="i-verMas">Ver más</i></Link> 
                     </p>
                   </div>
                 </div>

@@ -26,46 +26,8 @@ const Admin = () => {
         );
     }
 
-    // return (
-    //     <div className="container-fluid" id="container-header-admin">
-    //         <div className="row">
-    //             <div className="admin-header">
-    //                 <h1>Administrador</h1>
-    //             </div>
-    //             <div className="col-4 d-grid gap-2 admin-button">
-    //                 <button
-    //                     className="btn"
-    //                     onClick={() => {
-    //                         setBtn("empleados");
-    //                     }}
-    //                 >
-    //                     <i className="fa fa-user " aria-hidden="true"></i>
-    //                 </button>
-    //             </div>
-    //             <div className="col-4 d-grid gap-2 admin-button">
-    //                 <button
-    //                     className="btn"
-    //                     onClick={() => {
-    //                         setBtn("empleados");
-    //                     }}
-    //                 >
-    //                     <i className="fa fa-money" aria-hidden="true"></i>
-    //                 </button>
-    //             </div>
-    //             <div className="col-4 d-grid gap-2 admin-button">
-    //                 <button
-    //                     className="btn"
-    //                     onClick={() => {
-    //                         setBtn("licencias");
-    //                     }}
-    //                 >
-    //                     <i className="fa fa-file-text" aria-hidden="true"></i>
-    //                 </button>
-    //             </div>
-    //         </div>
-
   return (
-        <div className="container-fluid container-admin-empleado">
+        <div className="container-fluid">
             <div className="row">
                 <div className="col-4 d-grid gap-2 admin-button">
                     <button className="btn" onClick={()=>{setBtn("empleados")}}>

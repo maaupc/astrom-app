@@ -53,9 +53,7 @@ const ModalEmpleado = ({ show, handleClose, actualizar}) => {
             rol: "",
         })
         if(actualizar){
-            console.log("entro")
             obtenerEmpleado(actualizar).then((respuesta)=>{
-                console.log(respuesta)
                 setFormValue({
                     nombre: respuesta.empleado.nombre,
                     apellido: respuesta.empleado.apellido,
@@ -81,7 +79,6 @@ const ModalEmpleado = ({ show, handleClose, actualizar}) => {
             ...formValue,
             [e.target.name]: e.target.value,
         });
-        console.log("handleChange", formValue)
     };
 
     const handleSubmit = (e) => {
@@ -89,7 +86,6 @@ const ModalEmpleado = ({ show, handleClose, actualizar}) => {
 
         // actualizar datos
         if (actualizar) {
-            console.log("Actualizacion:",formValue)
             empleadoPut(actualizar, formValue).then((respuesta) => {
                 if (respuesta.errors) {
                     return window.alert(respuesta.errors[0].msg);
@@ -116,7 +112,6 @@ const ModalEmpleado = ({ show, handleClose, actualizar}) => {
             handleClose();
         }else{
             empleadoPost(formValue).then((respuesta) => {
-                console.log(respuesta);
                 if (respuesta.errors) {
                     setLoading(false);
                     return window.alert(respuesta.errors[0].msg);
