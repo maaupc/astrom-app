@@ -29,7 +29,7 @@ const EmpleadosTable = () => {
             });
             setFiltro(respuesta.empleados)
         });
-    }, []);
+    }, [show]);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);

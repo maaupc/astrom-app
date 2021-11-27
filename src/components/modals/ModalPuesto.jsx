@@ -19,6 +19,7 @@ const ModalPuesto = ({show, handleClose, actualizar}) => {
             horarios: "",
             salario: "",
         })
+        
         if(actualizar){
             puestoGet(actualizar).then((respuesta)=>{
                 setFormValue({
@@ -27,7 +28,7 @@ const ModalPuesto = ({show, handleClose, actualizar}) => {
                     salario: respuesta.puesto.salario,
                 })
             })
-        }
+        } 
     }, [actualizar])
 
     const handleChange = ({target})=>{
@@ -42,41 +43,36 @@ const ModalPuesto = ({show, handleClose, actualizar}) => {
 
         if(actualizar){
             puestoPut(actualizar, formValue).then((respuesta)=>{
+                handleClose()
                 if(respuesta.errors){
                     return window.alert(respuesta.errors[0].msg);
                 }
                 if(respuesta.msg){
-                    window.alert(respuesta.msg)
-                }
-
-                setFormValue({
-                    nombre: "",
-                    horarios: "",
-                    salario: "",
-                })
-                
-                handleClose()
+                    window.alert(respuesta.msg) 
+                }    
             })
             
-
+            // setFormValue({
+            //     nombre: "",
+            //     horarios: "",
+            //     salario: "",
+            // })
 
         }else{
-
             puestoPost(formValue).then((respuesta)=>{
+                handleClose()
                 if(respuesta.errors){
                     return window.alert(respuesta.errors[0].msg);
                 }
                 if(respuesta.msg){
                     window.alert(respuesta.msg)
-                }
-
-                setFormValue({
-                    nombre: "",
-                    horarios: "",
-                    salario: "",
-                })
-
-                handleClose()  
+                }                
+            })
+            
+            setFormValue({
+                nombre: "",
+                horarios: "",
+                salario: "",
             })
         }
     }
@@ -85,7 +81,7 @@ const ModalPuesto = ({show, handleClose, actualizar}) => {
 
     return (
         <div>
-            <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
+            <Modal show={show} onHide={handleClose} centered>
                 <Modal.Header>
                     <Modal.Title>{actualizar? "Editar" : "Nuevo puesto"}</Modal.Title>
                 </Modal.Header>
@@ -98,7 +94,7 @@ const ModalPuesto = ({show, handleClose, actualizar}) => {
                         </div>
                         <div>
                             <label className="form-label">Horarios</label>
-                            <input name="horarios" type="text" className="form-control" value={formValue.horarios} onChange={handleChange} maxLength="50"/>
+                            <input name="horarios" type="text" className="form-control" value={formValue.horarios} onChange={handleChange} maxLength="16" placeholder="14.00 a 15.00 hs"/>
                         </div>
                         <div>
                             <label className="form-label">Salario</label>

@@ -22,7 +22,6 @@ const PuestosTable = () => {
 
  
      useEffect(() => {
-        
         puestosGet().then((respuesta)=>{
             
             setPuestos({
@@ -32,28 +31,28 @@ const PuestosTable = () => {
              setTotpag(respuesta.Total);
             
          })
-     }, []);
+     }, [show]);
 
-     useEffect(() => {
-        puestosGet(pagina).then((respuesta)=>{
-            setPuestos({
-                datos: respuesta.puestos,
-                loading: false
-            })
-         });
+    //  useEffect(() => {
+    //     puestosGet(pagina).then((respuesta)=>{
+    //         setPuestos({
+    //             datos: respuesta.puestos,
+    //             loading: false
+    //         })
+    //      });
         
-     }, [pagina])
+    //  }, [pagina])
 
  
     
-    useEffect(() => {
-        puestosGet().then((respuesta)=>{
-            setPuestos({
-                datos: respuesta.puestos,
-                loading: false
-            })
-        })
-    }, [show])
+    // useEffect(() => {
+    //     puestosGet().then((respuesta)=>{
+    //         setPuestos({
+    //             datos: respuesta.puestos,
+    //             loading: false
+    //         })
+    //     })
+    // }, [show])
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -69,6 +68,12 @@ const PuestosTable = () => {
         if(validar){
             puestoDelete(id).then((respuesta)=>{
                 if(respuesta.msg){
+                    puestosGet(pagina).then((respuesta)=>{
+                        setPuestos({
+                            datos: respuesta.puestos,
+                            loading: false
+                        })
+                    })
                     window.alert(respuesta.msg)
                 }
 

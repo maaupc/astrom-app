@@ -35,7 +35,7 @@ const LicenciasTable = () => {
          })
 
 
-     }, []);
+     }, [show]);
 
      useEffect(() => {
         licenciasGet(pagina).then((respuesta)=>{
@@ -208,7 +208,7 @@ const LicenciasTable = () => {
                 <BtnPaginacion totPag={totPag} pagina={pagina} setPagina={setPagina}/>
             </div>
             <div className="d-flex justify-content-center">
-                <ModalLicencia show={show} handleClose={handleClose} actualizar={actualizar} user={user}/>
+                <ModalLicencia show={show} handleClose={handleClose} actualizar={actualizar} user={user} setActualizar={setActualizar}/>
             </div>
 
           </div>

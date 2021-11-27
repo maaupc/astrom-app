@@ -9,7 +9,7 @@ import {empleadoGet, empleadoPut} from '../../helpers/empleados'
 import { licenciaGet, licenciasPut, licenciasPost } from '../../helpers/licencias'
 
 
-const ModalLicencia = ({show, handleClose, actualizar, user}) => {
+const ModalLicencia = ({show, handleClose, actualizar, user, setActualizar}) => {
     // const user = JSON.parse(localStorage.getItem("auth"))
     
 
@@ -105,8 +105,9 @@ const ModalLicencia = ({show, handleClose, actualizar, user}) => {
                     motivo: "",
                     activa: false
                 })
-                handleClose()
+                setActualizar("")
             })
+            handleClose()
             
 
 

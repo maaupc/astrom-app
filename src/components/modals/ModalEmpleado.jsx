@@ -6,11 +6,15 @@ import { Modal, Button } from "react-bootstrap";
 
 const ModalEmpleado = ({ show, handleClose, actualizar}) => {
     // Seteando fecha de nacimiento
-    // const [puestos, setPuestos] = useState([]);
+    const day = new Date().getDate().toString()
+    const month = (new Date().getMonth()+1).toString() 
+    const year = (new Date().getFullYear()-18).toString()
+    const today = year+"-"+month+"-"+day
     const [puestos, setPuestos] = useState({
         datos: [],
         loading: true
     })
+
 
     const [loading, setLoading] = useState(false);
     const [formValue, setFormValue] = useState({
@@ -70,7 +74,7 @@ const ModalEmpleado = ({ show, handleClose, actualizar}) => {
                 })
             })
         }
-    }, [actualizar])
+    }, [show])
 
     
 
@@ -83,10 +87,11 @@ const ModalEmpleado = ({ show, handleClose, actualizar}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        
         // actualizar datos
         if (actualizar) {
             empleadoPut(actualizar, formValue).then((respuesta) => {
+                handleClose()
                 if (respuesta.errors) {
                     return window.alert(respuesta.errors[0].msg);
                 }
@@ -109,12 +114,13 @@ const ModalEmpleado = ({ show, handleClose, actualizar}) => {
                 puesto: "",
                 rol: "",
             });
-            handleClose();
+            // console.log("hola")
+            // handleClose();
         }else{
             empleadoPost(formValue).then((respuesta) => {
-                console.log("formValue", formValue)
+                handleClose();
                 if (respuesta.errors) {
-                    setLoading(false);
+                    // handleClose();
                     return window.alert(respuesta.errors[0].msg);
                 }
                 setFormValue({
@@ -132,7 +138,6 @@ const ModalEmpleado = ({ show, handleClose, actualizar}) => {
                     puesto: "",
                     rol: "",
                 });
-                handleClose();
             });
         }
     };
@@ -224,7 +229,8 @@ const ModalEmpleado = ({ show, handleClose, actualizar}) => {
                                 type="date"
                                 className="form-control"
                                 value={formValue.nacimiento}
-                                onChange={handleChange} />
+                                onChange={handleChange} 
+                                max={today}/>
 
 
                         </div>}
@@ -312,6 +318,7 @@ const ModalEmpleado = ({ show, handleClose, actualizar}) => {
                                 aria-label="Default select example"
                                 value={formValue.rol}
                                 onChange={handleChange}
+                                defaultValue= "USER_ROLE"
                                 required
                             >
                                 {/* <option defaultValue="">Elige un Rol</option> */}
