@@ -6,7 +6,7 @@ import '../../styles/Modal.css'
 
 import { puestoGet, puestoPost, puestoPut } from '../../helpers/puestos'
 
-const ModalPuesto = ({show, handleClose, actualizar}) => {
+const ModalPuesto = ({show, handleClose, actualizar, setActualizar}) => {
     const [formValue, setFormValue] = useState({
         nombre: "",
         horarios: "",
@@ -43,37 +43,41 @@ const ModalPuesto = ({show, handleClose, actualizar}) => {
 
         if(actualizar){
             puestoPut(actualizar, formValue).then((respuesta)=>{
-                handleClose()
                 if(respuesta.errors){
                     return window.alert(respuesta.errors[0].msg);
                 }
                 if(respuesta.msg){
                     window.alert(respuesta.msg) 
                 }    
+
+                setFormValue({
+                    nombre: "",
+                    horarios: "",
+                    salario: "",
+                })
+                
+                setActualizar("")
             })
+            handleClose()
             
-            // setFormValue({
-            //     nombre: "",
-            //     horarios: "",
-            //     salario: "",
-            // })
 
         }else{
             puestoPost(formValue).then((respuesta)=>{
-                handleClose()
                 if(respuesta.errors){
                     return window.alert(respuesta.errors[0].msg);
                 }
                 if(respuesta.msg){
                     window.alert(respuesta.msg)
                 }                
+                
+                setFormValue({
+                    nombre: "",
+                    horarios: "",
+                    salario: "",
+                })
             })
+            setActualizar("1")
             
-            setFormValue({
-                nombre: "",
-                horarios: "",
-                salario: "",
-            })
         }
     }
 

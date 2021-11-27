@@ -22,7 +22,31 @@ const PuestosTable = () => {
 
  
      useEffect(() => {
-        puestosGet().then((respuesta)=>{
+        puestosGet(pagina).then((respuesta)=>{
+            
+            setPuestos({
+                datos: respuesta.puestos,
+                loading: false
+            })
+             setTotpag(respuesta.Total);
+            
+         })
+     }, [actualizar]);
+
+     useEffect(() => {
+        puestosGet(pagina).then((respuesta)=>{
+            setPuestos({
+                datos: respuesta.puestos,
+                loading: false
+            })
+         });
+        
+     }, [pagina])
+
+ 
+    
+     useEffect(() => {
+        puestosGet(pagina).then((respuesta)=>{
             
             setPuestos({
                 datos: respuesta.puestos,
@@ -33,27 +57,6 @@ const PuestosTable = () => {
          })
      }, [show]);
 
-    //  useEffect(() => {
-    //     puestosGet(pagina).then((respuesta)=>{
-    //         setPuestos({
-    //             datos: respuesta.puestos,
-    //             loading: false
-    //         })
-    //      });
-        
-    //  }, [pagina])
-
- 
-    
-    // useEffect(() => {
-    //     puestosGet().then((respuesta)=>{
-    //         setPuestos({
-    //             datos: respuesta.puestos,
-    //             loading: false
-    //         })
-    //     })
-    // }, [show])
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -63,16 +66,27 @@ const PuestosTable = () => {
             return data._id === id
         })
 
+        let actPagina = totPag - pagina
+
         let validar = window.confirm(`Esta seguro que desea eliminar el puesto de ${puesto.nombre} ?`)
 
         if(validar){
             puestoDelete(id).then((respuesta)=>{
                 if(respuesta.msg){
                     puestosGet(pagina).then((respuesta)=>{
-                        setPuestos({
-                            datos: respuesta.puestos,
-                            loading: false
-                        })
+                        if(actPagina === 1){
+                            setPuestos({
+                                datos: respuesta.puestos,
+                                loading: false
+                            })
+                            setTotpag(respuesta.Total);
+                            setPagina(0);
+                        }else{
+                            setPuestos({
+                                datos: respuesta.puestos,
+                                loading: false
+                            })
+                        }
                     })
                     window.alert(respuesta.msg)
                 }
@@ -139,7 +153,7 @@ const PuestosTable = () => {
                     </div>
 
                     <div className="d-flex justify-content-center">
-                        <ModalPuesto show={show} handleClose={handleClose} actualizar={actualizar}/>
+                        <ModalPuesto show={show} handleClose={handleClose} actualizar={actualizar} setActualizar={setActualizar} setShow={setShow}/>
                     </div>
                 </div>
 
