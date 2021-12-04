@@ -85,14 +85,12 @@ useEffect ( async () =>{
      
     });
   }, []);
+
   const handleChange = (e) => {
-      if (update) {
         setPerfil({
           ...perfil,
           [e.target.name]: e.target.value,
-  
         });
-      }
     };
 
   const handleSubmit = (e) => {
@@ -110,14 +108,9 @@ useEffect ( async () =>{
       }
       });
       console.log(perfil)
-    //         getImagen();
-    //          console.log("getImagen")
-    //   });
-
-    //   Alertsucces()
-    // }
-    // setUpdate(false);
     };
+
+    document.getElementById('pencil').style.cssText = 'color: #4daaa7;';
   }
   const handleChangeConctacto=(e)=>{
       setPerfil({
@@ -198,6 +191,14 @@ useEffect ( async () =>{
       }
    }
 
+   const handleEdit = () =>{
+     if(!update){
+       document.getElementById('pencil').style.cssText = 'color: white;';
+      }else{
+        document.getElementById('pencil').style.cssText = 'color: #4daaa7;';
+      }
+   }
+
   return (
     <>
       <div className="container-perfil-header">
@@ -215,7 +216,8 @@ useEffect ( async () =>{
                     <i
                       className="fa fa-pencil i-pencil"
                       aria-hidden="true"
-                      onClick={() => setUpdate(true)}
+                      id= 'pencil'
+                      onClick={() => {setUpdate(!update); handleEdit()}}
                     ></i>
                   </div>
                   <div className="card-body card-img_perfil">
@@ -274,7 +276,7 @@ useEffect ( async () =>{
                       </div>
                      
                           <div>
-                        <button type="submit" className="btn btn-save btn-lg btn-block">
+                        <button type="submit" className="btn btn-save btn-lg btn-block" onClick={()=>setUpdate(false)}>
                           Actualizar
                         </button>
                       </div>

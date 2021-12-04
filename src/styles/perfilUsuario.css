@@ -45,9 +45,9 @@
   top: 5%;
 }
 .i-pencil:hover {
-  background-color: yellow;
+  background-color: #4daaa7;
   border-radius: 5px;
-  color: black;
+  color: white !important;
 }
 .i-pencil:before {
   padding: 7px;
